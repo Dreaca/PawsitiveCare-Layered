@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="749.0" prefWidth="1035.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AppointmentsFormController">
+   <children>
+      <Label layoutX="401.0" layoutY="3.0" text="Appointments">
+         <font>
+            <Font name="Manjari Thin" size="39.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tblAppointment" layoutX="31.0" layoutY="154.0" prefHeight="445.0" prefWidth="973.0" style="-fx-border-color: faa80a;">
+        <columns>
+          <TableColumn fx:id="colDate" prefWidth="168.3333282470703" text="Date" />
+          <TableColumn fx:id="colTime" prefWidth="110.66665649414062" text="Time " />
+            <TableColumn fx:id="colCustomer" prefWidth="236.33334350585938" text="Customer" />
+            <TableColumn fx:id="colContact" prefWidth="176.66668701171875" text="Contact" />
+            <TableColumn fx:id="colType" prefWidth="149.33331298828125" text="Type" />
+            <TableColumn fx:id="colPrice" prefWidth="128.66668701171875" text="Price" />
+        </columns>
+      </TableView>
+      <JFXButton buttonType="RAISED" layoutX="825.0" layoutY="83.0" onAction="#addNewAppointmentONAction" prefHeight="51.0" prefWidth="175.0" style="-fx-background-color: faa80a;" text="Add new appointment">
+         <graphic>
+            <ImageView fitHeight="51.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Assets/icon/add.png" />
+               </image>
+            </ImageView>
+         </graphic></JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="629.0" layoutY="83.0" onAction="#clearTable" prefHeight="51.0" prefWidth="175.0" style="-fx-background-color: faa80a;" text="Clear Table">
+         <graphic>
+            <ImageView fitHeight="51.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Assets/icon/broom.png" />
+               </image>
+            </ImageView>
+         </graphic></JFXButton>
+   </children>
+</AnchorPane>

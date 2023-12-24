@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="root" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: ffbe4f;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EmployeeDashController">
+   <children>
+      <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="741.0" prefWidth="295.0" style="-fx-background-color: ffffff; -fx-background-radius: 20;">
+         <children>
+            <JFXButton fx:id="btnUser" layoutX="12.0" layoutY="14.0" onAction="#logoutOnAction" prefHeight="55.0" prefWidth="272.0" ripplerFill="#e80000" style="-fx-background-color: white; -fx-background-radius: 11;" text="user">
+               <font>
+                  <Font name="Dyuthi Regular" size="31.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></JFXButton>
+            <JFXButton fx:id="btnAppointments" layoutX="3.0" layoutY="115.0" onAction="#appointmentsOnAction" prefHeight="72.0" prefWidth="283.0" style="-fx-background-color: white;" text="Appointments">
+               <font>
+                  <Font name="Manjari Thin" size="30.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="55.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Assets/image/veterinary.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></JFXButton>
+            <JFXButton fx:id="btnCustomer" layoutX="3.0" layoutY="187.0" onAction="#customerOnAction" prefHeight="72.0" prefWidth="283.0" style="-fx-background-color: white;" text="Customer">
+               <font>
+                  <Font name="Manjari Thin" size="31.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="55.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Assets/image/costumer.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></JFXButton>
+            <JFXButton fx:id="btnPets" layoutX="7.0" layoutY="403.0" onAction="#petOnAction" prefHeight="72.0" prefWidth="283.0" style="-fx-background-color: white;" text="Pets">
+               <font>
+                  <Font name="Manjari Thin" size="31.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="55.0" fitWidth="51.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Assets/image/dog.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+               </graphic></JFXButton>
+            <JFXButton fx:id="btnSchedule" layoutX="7.0" layoutY="259.0" onAction="#scheduleOnAction" prefHeight="72.0" prefWidth="283.0" style="-fx-background-color: white;" text="Schedule">
+               <font>
+                  <Font name="Manjari Thin" size="31.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="55.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Assets/image/calendar.png" />
+                     </image>
+                  </ImageView>
+               </graphic></JFXButton>
+            <JFXButton fx:id="btnOrders" layoutX="3.0" layoutY="331.0" onAction="#ordersOnAction" prefHeight="72.0" prefWidth="283.0" style="-fx-background-color: white;" text="Orders">
+               <font>
+                  <Font name="Manjari Thin" size="31.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="55.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Assets/image/order-delivery.png" />
+                     </image>
+                  </ImageView>
+               </graphic></JFXButton>
+            <ImageView fitHeight="71.0" fitWidth="75.0" layoutX="21.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Assets/icon/employee.png" />
+               </image>
+            </ImageView>
+         </children></AnchorPane>
+      <AnchorPane fx:id="sidePane" layoutX="322.0" layoutY="13.0" prefHeight="740.0" prefWidth="1035.0" style="-fx-background-color: white; -fx-background-radius: 20;" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="325.0" prefWidth="268.0" style="-fx-border-color: faa80a; -fx-background-radius: 20; -fx-border-radius: 20;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EmployeeTileController">
+   <children>
+      <ImageView fx:id="imgEmpImg" fitHeight="130.0" fitWidth="119.0" layoutX="79.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="lblEmpName" layoutX="121.0" layoutY="150.0" text="Label" />
+      <Label fx:id="lblEmpId" layoutX="121.0" layoutY="176.0" text="Label" />
+      <Label fx:id="lblAddress" layoutX="121.0" layoutY="198.0" text="Label" />
+      <Label fx:id="lblContact" layoutX="120.0" layoutY="221.0" text="Label" />
+      <Label fx:id="lblUserId" layoutX="120.0" layoutY="241.0" text="Label" />
+      <Label fx:id="lblSalary" layoutX="120.0" layoutY="259.0" text="Label" />
+      <JFXButton buttonType="RAISED" layoutX="184.0" layoutY="287.0" onAction="#deleteOnAction" text="Delete" />
+      <Label fx:id="lblSalary1" layoutX="120.0" layoutY="275.0" text="Label" />
+      <Label fx:id="lblNIC" layoutX="120.0" layoutY="291.0" text="Label" />
+   </children>
+</AnchorPane>

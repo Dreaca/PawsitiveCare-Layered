@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="root" blendMode="DARKEN" prefHeight="522.0" prefWidth="374.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UpdatePetController">
+   <children>
+      <TextField fx:id="txtPetName" layoutX="37.0" layoutY="107.0" prefHeight="24.0" prefWidth="288.0" style="-fx-border-color: faa80a;" />
+      <Label layoutX="112.0" layoutY="5.0" prefHeight="45.0" prefWidth="169.0" text="Update Pet" textFill="#faa80a">
+         <font>
+            <Font name="Manjari Thin" size="30.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtOwner" layoutX="37.0" layoutY="265.0" prefHeight="24.0" prefWidth="288.0" style="-fx-border-color: faa80a;" />
+      <Label layoutX="38.0" layoutY="87.0" text="Pet Name">
+         <font>
+            <Font name="Manjari Thin" size="15.0" />
+         </font></Label>
+      <ComboBox fx:id="cmbBreed" layoutX="37.0" layoutY="157.0" prefHeight="24.0" prefWidth="288.0" promptText="Breed" style="-fx-background-color: faa80a;" />
+      <Label layoutX="38.0" layoutY="138.0" text="Pet Breed">
+         <font>
+            <Font name="Manjari Thin" size="15.0" />
+         </font></Label>
+      <ComboBox fx:id="cmbGender" layoutX="36.0" layoutY="209.0" prefHeight="24.0" prefWidth="288.0" promptText="Gender" style="-fx-background-color: faa80a;" />
+      <Label layoutX="36.0" layoutY="188.0" text="Pet Gender">
+         <font>
+            <Font name="Manjari Thin" size="15.0" />
+         </font></Label>
+      <Label layoutX="37.0" layoutY="245.0" text="Pet Owner">
+         <font>
+            <Font name="Manjari Thin" size="15.0" />
+         </font></Label>
+      <AnchorPane layoutX="24.0" layoutY="357.0" prefHeight="108.0" prefWidth="320.0" style="-fx-border-color: faa80a;">
+         <children>
+            <Label layoutX="87.0" layoutY="46.0" text="Add new Records here" />
+         </children>
+         <effect>
+            <Glow />
+         </effect>
+      </AnchorPane>
+      <TextField fx:id="txtColor" layoutX="37.0" layoutY="313.0" prefHeight="24.0" prefWidth="288.0" style="-fx-border-color: faa80a;" />
+      <Label layoutX="38.0" layoutY="295.0" text="Color">
+         <font>
+            <Font name="Manjari Thin" size="15.0" />
+         </font></Label>
+      <JFXButton layoutX="282.0" layoutY="465.0" onAction="#doneOnAction" text=" ">
+         <graphic>
+            <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Assets/icon/diskette.png" />
+               </image>
+            </ImageView>
+         </graphic></JFXButton>
+      <JFXButton layoutX="231.0" layoutY="465.0" onAction="#cancelOnAction" prefHeight="48.0" prefWidth="41.0" text=" ">
+         <graphic>
+            <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Assets/icon/multiply.png" />
+               </image>
+            </ImageView>
+         </graphic></JFXButton>
+      <Label layoutX="39.0" layoutY="47.0" prefHeight="41.0" prefWidth="64.0" text="PetID :">
+         <font>
+            <Font name="Manjari Thin" size="21.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblPetID" layoutX="106.0" layoutY="55.0" prefHeight="24.0" prefWidth="147.0" text="Ba">
+         <font>
+            <Font name="Arial Black" size="20.0" />
+         </font>
+      </Label>
+   </children>
+   <effect>
+      <DropShadow />
+   </effect>
+   <cursor>
+      <Cursor fx:constant="HAND" />
+   </cursor>
+   <opaqueInsets>
+      <Insets />
+   </opaqueInsets>
+</AnchorPane>

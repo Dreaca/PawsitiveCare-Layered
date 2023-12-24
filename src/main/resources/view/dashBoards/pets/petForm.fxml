@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="749.0" prefWidth="1035.0" style="-fx-border-radius: 20; -fx-background-radius: 20;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PetFormController">
+   <children>
+      <TextField layoutX="16.0" layoutY="13.0" prefHeight="47.0" prefWidth="1007.0" promptText="Search Pets" style="-fx-background-radius: 20; -fx-border-radius: 20; -fx-border-color: faa80a;" />
+      <ComboBox fx:id="cbmFilter" layoutX="791.0" layoutY="73.0" prefHeight="35.0" prefWidth="222.0" promptText="Filter Breed" style="-fx-background-color: faa80a;" />
+      <TableView fx:id="tblPet" layoutX="24.0" layoutY="121.0" prefHeight="590.0" prefWidth="995.0" style="-fx-background-color: transparent;">
+        <columns>
+          <TableColumn fx:id="colId" prefWidth="96.33332824707031" text="PetId" />
+          <TableColumn fx:id="colName" prefWidth="131.99998474121094" text="Name" />
+            <TableColumn fx:id="colBreed" prefWidth="126.33334350585938" text="Breed" />
+            <TableColumn fx:id="colGender" prefWidth="121.66665649414062" text="Gender" />
+            <TableColumn fx:id="colColor" prefWidth="121.66665649414062" text="Color" />
+            <TableColumn fx:id="colOwner" prefWidth="160.66668701171875" text="Owner" />
+            <TableColumn fx:id="colRec" prefWidth="143.33331298828125" text="Records" />
+            <TableColumn fx:id="colModify" prefWidth="89.0" text=" " />
+        </columns>
+      </TableView>
+      <JFXButton layoutX="25.0" layoutY="65.0" onAction="#addNewPetOnaction" prefHeight="24.0" prefWidth="167.0" style="-fx-background-color: faa80a; -fx-background-radius: 20; -fx-border-radius: 20;" text="Add new Pet">
+         <graphic>
+            <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Assets/icon/add.png" />
+               </image>
+            </ImageView>
+         </graphic></JFXButton>
+      <JFXButton layoutX="721.0" layoutY="66.0" onAction="#refreshOnAction" text=" ">
+         <graphic>
+            <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Assets/icon/refresh.png" />
+               </image>
+            </ImageView>
+         </graphic></JFXButton>
+   </children>
+</AnchorPane>

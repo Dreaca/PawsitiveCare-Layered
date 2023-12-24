@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="root" prefHeight="117.0" prefWidth="776.0" style="-fx-border-color: faa80a;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AddNewItemController">
+   <children>
+      <Label layoutX="24.0" layoutY="21.0" text="Item Id : ">
+         <font>
+            <Font name="Manjari Thin" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblItemCode" layoutX="108.0" layoutY="27.0" text="I001" textFill="#14fc2f">
+         <font>
+            <Font name="Andale Mono" size="20.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtDescription" layoutX="24.0" layoutY="60.0" prefHeight="33.0" prefWidth="271.0" promptText="Description">
+         <font>
+            <Font name="Manjari Thin" size="16.0" />
+         </font></TextField>
+      <TextField fx:id="txtQtO" layoutX="301.0" layoutY="60.0" prefHeight="35.0" prefWidth="167.0" promptText="Quantaty On Hand">
+         <font>
+            <Font name="Manjari Thin" size="16.0" />
+         </font></TextField>
+      <TextField fx:id="txtUnitPrice" layoutX="475.0" layoutY="60.0" prefHeight="33.0" prefWidth="146.0" promptText="Unit Price">
+         <font>
+            <Font name="Manjari Thin" size="16.0" />
+         </font></TextField>
+      <JFXButton buttonType="RAISED" cancelButton="true" layoutX="634.0" layoutY="55.0" onAction="#cancelOnAction" prefHeight="45.0" prefWidth="0.0" text=" ">
+         <graphic>
+            <ImageView fitHeight="37.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Assets/icon/multiply.png" />
+               </image>
+            </ImageView>
+         </graphic></JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="691.0" layoutY="55.0" onAction="#saveOnAction" ripplerFill="#faa80a" text=" ">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <graphic>
+            <ImageView fitHeight="37.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Assets/icon/diskette.png" />
+               </image>
+            </ImageView>
+         </graphic></JFXButton>
+   </children>
+   <effect>
+      <Blend />
+   </effect>
+</AnchorPane>

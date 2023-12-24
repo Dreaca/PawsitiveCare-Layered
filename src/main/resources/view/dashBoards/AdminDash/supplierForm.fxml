@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="root" prefHeight="749.0" prefWidth="1035.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SupplierFormController">
+   <children>
+      <Label layoutX="464.0" layoutY="3.0" text="Supplier">
+         <font>
+            <Font name="Manjari Thin" size="37.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tblSupplier" layoutX="27.0" layoutY="319.0" prefHeight="385.0" prefWidth="980.0" style="-fx-background-color: faa85a;">
+        <columns>
+          <TableColumn fx:id="colSupplierId" prefWidth="95.0" text="SupplierID" />
+          <TableColumn fx:id="colSupName" prefWidth="155.0" text="Name" />
+            <TableColumn fx:id="coltype" prefWidth="221.0" text="type" />
+            <TableColumn fx:id="colContact" prefWidth="198.6666717529297" text="Contact" />
+            <TableColumn fx:id="colLocation" prefWidth="180.66665649414062" text="Location" />
+            <TableColumn fx:id="colInvoice" prefWidth="132.3333740234375" text="Invoice" />
+        </columns>
+      </TableView>
+      <TextField fx:id="txtSearch" layoutX="96.0" layoutY="79.0" prefHeight="46.0" prefWidth="893.0" promptText="Search" style="-fx-border-color: faa80a; -fx-background-radius: 20; -fx-border-radius: 20;">
+         <font>
+            <Font name="Manjari Regular" size="20.0" />
+         </font></TextField>
+      <JFXButton buttonType="RAISED" layoutX="587.0" layoutY="258.0" onAction="#addsupplierONAction" prefHeight="50.0" prefWidth="192.0" style="-fx-background-color: lime; -fx-background-radius: 20;" text="Add new supplier ">
+         <graphic>
+            <ImageView fitHeight="42.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Assets/icon/add.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font name="Manjari Thin" size="15.0" />
+         </font></JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="798.0" layoutY="259.0" onAction="#updateSupplierOnAction" prefHeight="50.0" prefWidth="189.0" style="-fx-background-color: yellow; -fx-background-radius: 20;" text="Update Supplier">
+         <graphic>
+            <ImageView fitHeight="42.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Assets/icon/refresh.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font name="Manjari Thin" size="15.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="32.0" layoutY="78.0" onAction="#searchOnAction" prefHeight="45.0" prefWidth="24.0" style="-fx-background-color: transparent;" text=" ">
+         <graphic>
+            <ImageView fitHeight="37.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Assets/icon/search.png" />
+               </image>
+            </ImageView>
+         </graphic></JFXButton>
+      <TextField fx:id="txtSupplierId" layoutX="25.0" layoutY="135.0" onAction="#searchSupplier" prefHeight="41.0" prefWidth="196.0" promptText="Supplier Id" style="-fx-border-color: faa80a; -fx-background-radius: 20; -fx-border-radius: 20;" />
+      <TextField fx:id="txtSupplierNAme" layoutX="255.0" layoutY="135.0" prefHeight="41.0" prefWidth="735.0" promptText="Name " style="-fx-border-color: faa80a; -fx-background-radius: 20; -fx-border-radius: 20;" />
+      <ComboBox fx:id="cmbType" layoutX="25.0" layoutY="196.0" prefHeight="43.0" prefWidth="198.0" promptText="Type" style="-fx-background-color: faa80a; -fx-background-radius: 20; -fx-border-radius: 20;" />
+      <TextField fx:id="txtLocation" layoutX="256.0" layoutY="198.0" prefHeight="41.0" prefWidth="475.0" promptText="Location" style="-fx-border-color: faa80a; -fx-background-radius: 20; -fx-border-radius: 20;" />
+      <TextField fx:id="txtContact" layoutX="753.0" layoutY="197.0" prefHeight="41.0" prefWidth="236.0" promptText="Contact" style="-fx-border-color: faa80a; -fx-background-radius: 20; -fx-border-radius: 20;" />
+   </children>
+</AnchorPane>

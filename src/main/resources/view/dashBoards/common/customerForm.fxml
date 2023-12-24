@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="749.0" prefWidth="1035.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CustomerFormController">
+   <children>
+      <TextField fx:id="txtCustomerID" layoutX="87.0" layoutY="39.0" onAction="#customerSearchOnaction" prefHeight="39.0" prefWidth="250.0" promptText="Customer Id " style="-fx-border-color: faa80a;">
+         <font>
+            <Font name="Manjari Thin" size="15.0" />
+         </font></TextField>
+      <TextField fx:id="txtCustomerFname" layoutX="400.0" layoutY="39.0" onAction="#txtCustomerFnameSearch" prefHeight="39.0" prefWidth="250.0" promptText="First Name" style="-fx-border-color: faa80a;">
+         <font>
+            <Font name="Manjari Thin" size="15.0" />
+         </font></TextField>
+      <TextField fx:id="txtCustomerLname" layoutX="712.0" layoutY="38.0" onAction="#customerLnameSearchOnAction" prefHeight="39.0" prefWidth="250.0" promptText="Last Name" style="-fx-border-color: faa80a;">
+         <font>
+            <Font name="Manjari Thin" size="15.0" />
+         </font></TextField>
+      <TextField fx:id="txtCusAddress" layoutX="87.0" layoutY="102.0" prefHeight="39.0" prefWidth="874.0" promptText="Address" style="-fx-border-color: faa80a;">
+         <font>
+            <Font name="Manjari Thin" size="15.0" />
+         </font></TextField>
+      <TextField fx:id="txtContactNo" layoutX="85.0" layoutY="162.0" onAction="#customerContactSearch" prefHeight="39.0" prefWidth="250.0" promptText="Contact No ." style="-fx-border-color: faa80a;">
+         <font>
+            <Font name="Manjari Thin" size="15.0" />
+         </font></TextField>
+      <TextField fx:id="txtContact2nd" disable="true" layoutX="712.0" layoutY="159.0" prefHeight="39.0" prefWidth="250.0" promptText="Contact No ." style="-fx-border-color: faa80a;" />
+      <RadioButton fx:id="rdbtnCustomer2ndNum" layoutX="387.0" layoutY="162.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="287.0" text="Have a 2nd Number">
+         <font>
+            <Font name="Manjari Thin" size="15.0" />
+         </font>
+      </RadioButton>
+      <TableView fx:id="tblCustomer" layoutX="85.0" layoutY="294.0" prefHeight="398.0" prefWidth="883.0" style="-fx-background-color: faa85a;">
+        <columns>
+          <TableColumn fx:id="colCustomerID" prefWidth="110.66667175292969" text="CustomerID" />
+          <TableColumn fx:id="colCustomerName" minWidth="0.0" prefWidth="215.33334350585938" text="Name" />
+            <TableColumn fx:id="colCustomerAddress" prefWidth="292.33331298828125" text="Addresss" />
+            <TableColumn fx:id="colCustomerContact" prefWidth="144.66668701171875" text="Contact" />
+            <TableColumn fx:id="colCustomerPets" prefWidth="117.0" text="Pets" />
+        </columns>
+      </TableView>
+      <JFXButton fx:id="btnSaveCustomer" buttonType="RAISED" layoutX="589.0" layoutY="234.0" onAction="#customerSaveOnaction" prefHeight="36.0" prefWidth="111.0" style="-fx-background-color: faa80a; -fx-background-radius: 20;" text="Save">
+         <graphic>
+            <ImageView fitHeight="35.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Assets/icon/diskette.png" />
+               </image>
+            </ImageView>
+         </graphic></JFXButton>
+      <JFXButton fx:id="btnDeleteCustomer" buttonType="RAISED" layoutX="722.0" layoutY="233.0" onAction="#customerDeleteOnAction" prefHeight="36.0" prefWidth="111.0" style="-fx-background-color: faa80a; -fx-background-radius: 20;" text="Delete">
+         <graphic>
+            <ImageView fitHeight="35.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Assets/icon/delete.png" />
+               </image>
+            </ImageView>
+         </graphic></JFXButton>
+      <JFXButton fx:id="btnUpdate" buttonType="RAISED" layoutX="854.0" layoutY="232.0" onAction="#btnUpdateOnAction" prefHeight="36.0" prefWidth="111.0" style="-fx-background-color: faa80a; -fx-background-radius: 20;" text="Update">
+         <graphic>
+            <ImageView fitHeight="35.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Assets/icon/refresh.png" />
+               </image>
+            </ImageView>
+         </graphic></JFXButton>
+      <JFXButton fx:id="btnClear" buttonType="RAISED" layoutX="457.0" layoutY="234.0" onAction="#clearOnAction" prefHeight="36.0" prefWidth="111.0" style="-fx-background-color: faa80a; -fx-background-radius: 20;" text="Clear">
+         <graphic>
+            <ImageView fitHeight="35.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Assets/icon/broom.png" />
+               </image>
+            </ImageView>
+         </graphic></JFXButton>
+      <Label layoutX="91.0" layoutY="17.0" text="* CUSTOMER ID NOT VALID" textFill="#ee1414" visible="false" />
+   </children>
+</AnchorPane>

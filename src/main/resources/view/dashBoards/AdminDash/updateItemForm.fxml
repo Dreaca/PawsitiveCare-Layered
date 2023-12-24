@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="root" prefHeight="181.0" prefWidth="600.0" style="-fx-border-color: faa80a;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UpdateItemFormController">
+   <children>
+      <ComboBox fx:id="cmbItemCode" layoutX="14.0" layoutY="34.0" prefHeight="31.0" prefWidth="222.0" promptText="Item Code" />
+      <TextField fx:id="description" layoutX="278.0" layoutY="34.0" prefHeight="31.0" prefWidth="296.0" promptText="Description">
+         <font>
+            <Font name="Manjari Thin" size="13.0" />
+         </font></TextField>
+      <TextField fx:id="txtQTO" layoutX="14.0" layoutY="87.0" prefHeight="31.0" prefWidth="222.0" promptText="Qty On Hand">
+         <font>
+            <Font name="Manjari Thin" size="13.0" />
+         </font></TextField>
+      <TextField fx:id="txtUnitPrice" layoutX="278.0" layoutY="87.0" prefHeight="31.0" prefWidth="222.0" promptText="Unit Price">
+         <font>
+            <Font name="Manjari Thin" size="13.0" />
+         </font></TextField>
+      <JFXButton buttonType="RAISED" layoutX="471.0" layoutY="130.0" onAction="#cancelOnAction" prefHeight="40.0" prefWidth="37.0" text=" ">
+         <graphic>
+            <ImageView fitHeight="32.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Assets/icon/multiply.png" />
+               </image>
+            </ImageView>
+         </graphic></JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="523.0" layoutY="128.0" onAction="#saveUpdateOnAction" prefHeight="44.0" prefWidth="37.0" text=" ">
+         <graphic>
+            <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Assets/icon/diskette.png" />
+               </image>
+            </ImageView>
+         </graphic></JFXButton>
+   </children>
+</AnchorPane>

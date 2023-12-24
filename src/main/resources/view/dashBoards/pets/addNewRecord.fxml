@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="615.0" style="-fx-border-color: faa80a;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AddNewRecordController">
+   <children>
+      <Label alignment="CENTER" layoutX="187.0" layoutY="14.0" prefHeight="41.0" prefWidth="242.0" text="Add New Record">
+         <font>
+            <Font name="Manjari Thin" size="26.0" />
+         </font>
+      </Label>
+      <Label layoutX="21.0" layoutY="66.0" prefHeight="16.0" prefWidth="102.0" text="Record ID : ">
+         <font>
+            <Font name="Manjari Thin" size="15.0" />
+         </font></Label>
+      <Label layoutX="102.0" layoutY="67.0" prefHeight="16.0" prefWidth="102.0" text="R001">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Label>
+      <Label layoutX="473.0" layoutY="68.0" prefHeight="16.0" prefWidth="60.0" text="Pet ID :">
+         <font>
+            <Font name="Manjari Thin" size="15.0" />
+         </font></Label>
+      <Label alignment="CENTER_RIGHT" layoutX="479.0" layoutY="66.0" prefHeight="16.0" prefWidth="102.0" text="P001">
+         <font>
+            <Font name="Manjari Thin" size="15.0" />
+         </font></Label>
+      <TextField layoutX="21.0" layoutY="94.0" prefHeight="24.0" prefWidth="557.0" promptText="Description" style="-fx-border-color: faa80a;" />
+      <AnchorPane layoutX="21.0" layoutY="134.0" prefHeight="200.0" prefWidth="571.0" style="-fx-border-color: faa80a;">
+         <children>
+            <Label alignment="CENTER" layoutX="165.0" layoutY="39.0" prefHeight="41.0" prefWidth="242.0" text="Drag a file here" textFill="#0000006f">
+               <font>
+                  <Font name="Manjari Thin" size="30.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="163.0" layoutY="73.0" prefHeight="41.0" prefWidth="242.0" text="or...." textFill="#0000006f">
+               <font>
+                  <Font name="Manjari Thin" size="30.0" />
+               </font>
+            </Label>
+            <JFXButton buttonType="RAISED" layoutX="233.0" layoutY="120.0" text="Upload" textFill="#0e2dc9">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

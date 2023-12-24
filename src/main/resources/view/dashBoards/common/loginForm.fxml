@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="root" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginFormController">
+   <children>
+      <AnchorPane fx:id="stuff" blendMode="SRC_ATOP" layoutX="91.0" layoutY="19.0" prefHeight="689.0" prefWidth="537.0" style="-fx-background-color: faa80a; -fx-background-radius: 20; -fx-border-radius: 20;">
+         <children>
+            <ImageView fitHeight="665.0" fitWidth="515.0" layoutX="10.0" layoutY="12.0">
+               <image>
+                  <Image url="@../../Assets/image/login2.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2197ff00" height="668.0" layoutX="723.0" layoutY="29.0" stroke="BLACK" strokeType="INSIDE" width="608.0" />
+      <TextField fx:id="txtUserNAme" layoutX="845.0" layoutY="286.0" prefHeight="58.0" prefWidth="393.0" promptText="User name" style="-fx-background-radius: 20; -fx-border-radius: 20; -fx-border-color: black;">
+         <font>
+            <Font name="Manjari Thin" size="21.0" />
+         </font>
+      </TextField>
+      <PasswordField fx:id="txtPassword" layoutX="845.0" layoutY="382.0" prefHeight="58.0" prefWidth="393.0" promptText="Password" style="-fx-background-radius: 20; -fx-border-radius: 20; -fx-border-color: black;">
+         <font>
+            <Font name="Manjari Thin" size="23.0" />
+         </font>
+      </PasswordField>
+      <JFXButton fx:id="btnLogin" buttonType="RAISED" layoutX="935.0" layoutY="485.0" onAction="#loginOnAction" prefHeight="74.0" prefWidth="214.0" ripplerFill="#ffbe4fe5" style="-fx-background-color: orange; -fx-background-radius: 25;" text="Login">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </JFXButton>
+      <Label layoutX="891.0" layoutY="85.0" prefHeight="100.0" prefWidth="287.0" text="Pawsitive Care" textAlignment="CENTER" textFill="#faa80a" wrapText="true">
+         <font>
+            <Font name="NATS" size="53.0" />
+         </font>
+      </Label>
+      <Label layoutX="966.0" layoutY="66.0" text="Welcome to">
+         <font>
+            <Font name="Manjari Thin" size="26.0" />
+         </font>
+      </Label>
+      <Label fx:id="incorrect" disable="true" layoutX="838.0" layoutY="242.0" prefHeight="29.0" prefWidth="392.0" text="* Password or Username is Incorrect" textFill="#eb0808" />
+      <ImageView fitHeight="44.0" fitWidth="53.0" layoutX="792.0" layoutY="291.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Assets/icon/paw.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="44.0" fitWidth="53.0" layoutX="793.0" layoutY="389.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Assets/icon/veterinary.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="749.0" prefWidth="1035.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.OrderFormController">
+   <children>
+      <TableView fx:id="tblOrder" layoutX="24.0" layoutY="63.0" prefHeight="642.0" prefWidth="580.0" style="-fx-background-radius: 20; -fx-border-color: faa80a; -fx-border-radius: 20;">
+        <columns>
+          <TableColumn fx:id="colItemCode" prefWidth="105.66666412353516" text="Item Code" />
+          <TableColumn fx:id="colDescription" prefWidth="162.33333587646484" text="Description" />
+            <TableColumn fx:id="colQty" prefWidth="91.66667175292969" text="Qty" />
+            <TableColumn fx:id="colUnitPrice" prefWidth="116.66665649414062" text="Unit Price" />
+            <TableColumn fx:id="colAmount" prefWidth="104.33334350585938" text="Amount" />
+        </columns>
+      </TableView>
+      <AnchorPane layoutX="627.0" layoutY="62.0" prefHeight="639.0" prefWidth="386.0" style="-fx-background-color: faa80a; -fx-background-radius: 20; -fx-border-color: black; -fx-border-radius: 20;">
+         <children>
+            <Label layoutX="26.0" layoutY="18.0" prefHeight="43.0" prefWidth="108.0" text="Order ID" textFill="#fcfcfc">
+               <font>
+                  <Font name="Manjari Thin" size="22.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblOrderId" layoutX="143.0" layoutY="17.0" prefHeight="43.0" prefWidth="108.0" text="O001" textFill="#fcfcfc">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <Accordion layoutX="70.0" layoutY="101.0" />
+            <ComboBox fx:id="cmbItemCode" layoutX="23.0" layoutY="64.0" onAction="#itemCodeOnAction" prefHeight="32.0" prefWidth="345.0" promptText="Item Code" style="-fx-border-color: black;" />
+            <TextField fx:id="txtUnitPrice" layoutX="29.0" layoutY="171.0" prefHeight="32.0" prefWidth="162.0" promptText="Unit Price" style="-fx-border-color: black;" />
+            <TextField fx:id="txtQty" layoutX="205.0" layoutY="172.0" prefHeight="32.0" prefWidth="160.0" promptText="Qty" style="-fx-border-color: black;" />
+            <TextField fx:id="txtDescription" layoutX="26.0" layoutY="120.0" prefHeight="32.0" prefWidth="343.0" promptText="Description" style="-fx-border-color: black;" />
+            <JFXButton buttonType="RAISED" layoutX="282.0" layoutY="227.0" onAction="#btnAddItemOnAction" prefHeight="24.0" prefWidth="81.0" style="-fx-background-color: white; -fx-border-color: black;" text="Add" />
+            <JFXButton buttonType="RAISED" layoutX="189.0" layoutY="227.0" onAction="#btnClearOnAction" prefHeight="24.0" prefWidth="81.0" style="-fx-background-color: white; -fx-border-color: black;" text="Clear" />
+            <Label layoutX="32.0" layoutY="523.0" text="Total Items">
+               <font>
+                  <Font name="Manjari Thin" size="15.0" />
+               </font></Label>
+            <Label layoutX="33.0" layoutY="550.0" text="Net Total">
+               <font>
+                  <Font name="Manjari Thin" size="20.0" />
+               </font></Label>
+            <JFXButton buttonType="RAISED" layoutX="274.0" layoutY="590.0" onAction="#placeOrderOnAction" style="-fx-background-color: white; -fx-border-color: black;" text="Place Order" />
+            <Label fx:id="lblItemCount" alignment="CENTER_RIGHT" layoutX="288.0" layoutY="525.0" prefHeight="16.0" prefWidth="81.0" text="0">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font></Label>
+            <Label fx:id="lblNetTotal" alignment="CENTER_RIGHT" layoutX="289.0" layoutY="543.0" prefHeight="16.0" prefWidth="81.0" text="0.00">
+               <font>
+                  <Font size="20.0" />
+               </font></Label>
+            <Separator layoutX="23.0" layoutY="513.0" prefHeight="0.0" prefWidth="349.0" />
+            <JFXButton buttonType="RAISED" layoutX="197.0" layoutY="590.0" onAction="#cancelOnAction" style="-fx-background-color: white; -fx-border-color: black;" text="Cancel" />
+            <TextField fx:id="txtCustomerId" layoutX="24.0" layoutY="280.0" prefHeight="32.0" prefWidth="343.0" promptText="Customer ID" style="-fx-border-color: black;" />
+            <TextField fx:id="txtCustomerName" layoutX="24.0" layoutY="324.0" onAction="#customerOnAction" prefHeight="32.0" prefWidth="343.0" promptText="Customer Name" style="-fx-border-color: black;" />
+            <TextField fx:id="txtCustomerContact" layoutX="23.0" layoutY="369.0" prefHeight="32.0" prefWidth="343.0" promptText="Contact" style="-fx-border-color: black;" />
+            <JFXButton buttonType="RAISED" layoutX="210.0" layoutY="417.0" onAction="#addNewCustomerOnAction" prefHeight="24.0" prefWidth="154.0" style="-fx-background-color: white; -fx-border-color: black;" text="Add new Customer" />
+         </children>
+      </AnchorPane>
+      <Label layoutX="701.0" layoutY="7.0" text="Add a new Order" underline="true">
+         <font>
+            <Font name="Manjari Thin" size="34.0" />
+         </font>
+      </Label>
+      <Label layoutX="42.0" layoutY="28.0" prefHeight="16.0" prefWidth="61.0" text="Date ">
+         <font>
+            <Font name="Manjari Thin" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblDate" layoutX="115.0" layoutY="28.0" prefHeight="25.0" prefWidth="145.0" text="DD/MM/YYYY">
+         <font>
+            <Font name="Manjari Thin" size="22.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

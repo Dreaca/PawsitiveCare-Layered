@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="749.0" prefWidth="1035.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ScheduleFormController">
+   <children>
+      <TableView fx:id="tblSchedule" layoutX="26.0" layoutY="108.0" prefHeight="525.0" prefWidth="979.0" style="-fx-background-color: faa85a;">
+        <columns>
+          <TableColumn fx:id="colDate" prefWidth="148.3333282470703" text="Date" />
+<!--          <TableColumn fx:id="colDay" prefWidth="119.0" text="Day" />-->
+            <TableColumn fx:id="colTime" prefWidth="128.33331298828125" text="Time" />
+            <TableColumn fx:id="colVetName" prefWidth="301.6666259765625" text="VetName" />
+            <TableColumn fx:id="colDuration" prefWidth="218.3333740234375" text="Duration" />
+            <TableColumn fx:id="colMod" prefWidth="60.6666259765625" text=" " />
+        </columns>
+      </TableView>
+      <JFXButton layoutX="791.0" layoutY="642.0" onAction="#printScheduleOnAction" prefHeight="40.0" prefWidth="199.0" style="-fx-background-color: faa80a; -fx-background-radius: 20;" text="Print Schedule">
+         <graphic>
+            <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Assets/icon/printer.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font name="Manjari Thin" size="15.0" />
+         </font></JFXButton>
+      <JFXButton layoutX="61.0" layoutY="643.0" onAction="#mailVetsOnAction" prefHeight="48.0" prefWidth="149.0" style="-fx-background-color: faa80a; -fx-background-radius: 20;" text="Mail to vets">
+         <graphic>
+            <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Assets/icon/medical.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font name="Manjari Thin" size="15.0" />
+         </font></JFXButton>
+      <Label layoutX="410.0" layoutY="17.0" text="Schedule">
+         <font>
+            <Font name="Manjari Thin" size="60.0" />
+         </font>
+      </Label>
+      <JFXButton layoutX="34.0" layoutY="43.0" onAction="#refreshOnAction" style="-fx-background-color: faa80a; -fx-background-radius: 20; -fx-border-radius: 20;" text="Refresh">
+         <graphic>
+            <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Assets/icon/refresh.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font name="Manjari Thin" size="15.0" />
+         </font></JFXButton>
+      <JFXButton layoutX="796.0" layoutY="46.0" onAction="#addScheduleOnAction" style="-fx-background-color: faa80a; -fx-background-radius: 20; -fx-border-radius: 20;" text="Add new schdule Item">
+         <graphic>
+            <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Assets/icon/add.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font name="Manjari Thin" size="15.0" />
+         </font></JFXButton>
+   </children>
+</AnchorPane>

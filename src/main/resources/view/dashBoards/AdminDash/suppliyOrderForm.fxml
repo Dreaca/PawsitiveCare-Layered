@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SuppliyOrderFormController">
+   <children>
+      <Label layoutX="242.0" layoutY="6.0" text="Supply Order">
+         <font>
+            <Font name="Manjari Thin" size="21.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="47.0" prefHeight="16.0" prefWidth="161.0" text="Supplier Order Number :">
+         <font>
+            <Font name="Manjari Thin" size="13.0" />
+         </font></Label>
+      <Label fx:id="lblSupOrderNum" layoutX="152.0" layoutY="48.0" text="S001" textFill="#e80909">
+         <font>
+            <Font name="Manjari Thin" size="13.0" />
+         </font></Label>
+      <ComboBox fx:id="cmbItemCode" layoutX="14.0" layoutY="75.0" prefHeight="37.0" prefWidth="267.0" promptText="select Item" style="-fx-background-color: faa80a;" />
+      <TextField fx:id="txtItemCode" layoutX="307.0" layoutY="76.0" prefHeight="37.0" prefWidth="267.0" promptText="Description" style="-fx-border-color: faa80a;">
+         <font>
+            <Font name="Manjari Thin" size="13.0" />
+         </font></TextField>
+      <ComboBox fx:id="cmbSupplier" layoutX="14.0" layoutY="132.0" prefHeight="37.0" prefWidth="267.0" promptText="select supplier" style="-fx-background-color: faa80a;" />
+      <TextField fx:id="txtSupplierName" layoutX="307.0" layoutY="131.0" prefHeight="37.0" prefWidth="267.0" promptText="Supplier Name" style="-fx-border-color: faa80a;">
+         <font>
+            <Font name="Manjari Thin" size="13.0" />
+         </font></TextField>
+      <TextField fx:id="txtQty" layoutX="14.0" layoutY="189.0" prefHeight="37.0" prefWidth="267.0" promptText="Qty" style="-fx-border-color: faa80a;">
+         <font>
+            <Font name="Manjari Thin" size="13.0" />
+         </font></TextField>
+      <DatePicker fx:id="dpkSelectDate" layoutX="307.0" layoutY="187.0" prefHeight="37.0" prefWidth="267.0" promptText="Select Prefered date" style="-fx-border-color: faa80a;" />
+      <Label layoutX="16.0" layoutY="254.0" text="Issued Date :">
+         <font>
+            <Font name="Manjari Thin" size="13.0" />
+         </font></Label>
+      <Label fx:id="lblIssuedDate" layoutX="96.0" layoutY="254.0" text="DD/MM/YYYY">
+         <font>
+            <Font name="Manjari Thin" size="13.0" />
+         </font></Label>
+      <TextArea editable="false" layoutX="13.0" layoutY="278.0" opacity="0.84" prefHeight="100.0" prefWidth="211.0" style="-fx-border-color: transparent; -fx-background-color: transparent;" text="Blue Husky Pet Clinic,&#10;Kosnathota,&#10;Godakawela.&#10;071 - 345 3455">
+         <font>
+            <Font name="Manjari Thin" size="15.0" />
+         </font>
+         <effect>
+            <Blend />
+         </effect>
+      </TextArea>
+      <JFXButton buttonType="RAISED" layoutX="445.0" layoutY="237.0" onAction="#placeOrderOnAction" prefHeight="37.0" prefWidth="131.0" style="-fx-background-color: faa80a;" text="Place Order">
+         <font>
+            <Font name="Manjari Thin" size="15.0" />
+         </font></JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="446.0" layoutY="286.0" onAction="#cancelOrderOnAction" prefHeight="37.0" prefWidth="131.0" style="-fx-background-color: faa80a;" text="Cancel Order">
+         <font>
+            <Font name="Manjari Thin" size="15.0" />
+         </font></JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="447.0" layoutY="335.0" onAction="#backOnAction" prefHeight="37.0" prefWidth="131.0" style="-fx-background-color: faa80a;" text="Back">
+         <font>
+            <Font name="Manjari Thin" size="15.0" />
+         </font></JFXButton>
+   </children>
+</AnchorPane>
