@@ -1,5 +1,7 @@
 package controller;
 
+import bo.BOFactory;
+import bo.PetBo;
 import dto.PetDto;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -11,6 +13,7 @@ import model.CustomerModel;
 import model.PetModel;
 
 import java.io.IOException;
+import java.net.http.HttpResponse;
 import java.sql.SQLException;
 import java.util.Arrays;
 
@@ -23,8 +26,8 @@ public class AddNewPetController {
     public TextField txtPetName;
     public AnchorPane recordsPane;
     public Hyperlink uploadLink;
-    PetModel model = new PetModel();
-
+//    PetModel model = new PetModel();
+    private PetBo bo = (PetBo) BOFactory.getBOFactory().getBo(BOFactory.BoTypes.PET);
     public void savePetOnAction() throws SQLException {
         String petId = lblPetId.getText();
         String petName = txtPetName.getText();
@@ -34,7 +37,12 @@ public class AddNewPetController {
         String color = txtColor.getText();
 
         var dto = new PetDto(petId,petName,petBreed,gender,ownerId,color);
-        boolean isSaved = PetModel.savePet(dto);
+        boolean isSaved = false;
+        try {
+            isSaved = bo.savePet(dto);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
         if (isSaved) {
             new Alert(Alert.AlertType.CONFIRMATION,"Pet Saved ").show();
 //            PetFormController.loadAllData();
@@ -43,8 +51,12 @@ public class AddNewPetController {
         }
 
     }
-    public void initialize() throws SQLException {
-        lblPetId.setText(model.getNextPetId());
+    public void initialize()  {
+        try {
+            lblPetId.setText(bo.getNextPetId());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         loadBreedAndGender();
     }
 

@@ -1,5 +1,7 @@
 package controller;
 
+import bo.BOFactory;
+import bo.ScheduleBo;
 import dto.ScheduleDto;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -27,11 +29,11 @@ public class AddNewScheduleItemController extends ScheduleFormController {
     public ComboBox cmbDuration;
     public ComboBox cmbHours;
     private String schedId;
-    ScheduleModel mod = new ScheduleModel();
-
+//    ScheduleModel mod = new ScheduleModel();
+    private ScheduleBo bo = (ScheduleBo) BOFactory.getBOFactory().getBo(BOFactory.BoTypes.SCHEDULE);
 
     private String generateNextScheduleId() throws SQLException {
-        return mod.getNextShedId();
+        return bo.getNextShedId();
     }
 
 
@@ -44,13 +46,17 @@ public class AddNewScheduleItemController extends ScheduleFormController {
         close();
     }
 
-    public void btnSaveOnAction(MouseEvent mouseEvent) throws SQLException {
+    public void btnSaveOnAction(MouseEvent mouseEvent) {
         LocalDate date = dpkSchedule.getValue();
         String time = txtTime.getText();
         String vetName = (String) cmbVet.getValue();
         String duration = (String) cmbDuration.getValue();
         var dto = new ScheduleDto(schedId,date,time,vetName,duration);
-        mod.saveScheduleItem(dto);
+        try {
+            bo.saveScheduleItem(dto);
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
 
 
     }

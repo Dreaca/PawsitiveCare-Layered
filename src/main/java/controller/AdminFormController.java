@@ -1,5 +1,8 @@
 package controller;
 
+import bo.AdminBo;
+import bo.BOFactory;
+import bo.EmployeeBo;
 import dto.AdminDto;
 import dto.EmployeeDto;
 import dto.LoginFormDto;
@@ -60,8 +63,10 @@ public class AdminFormController {
 
     @FXML
     private JFXButton btnUser;
-    private LoginModel Lmodel = new LoginModel();
-    EmployeeModel model = new EmployeeModel();
+//    private LoginModel Lmodel = new LoginModel();
+    private AdminBo adminBo = (AdminBo) BOFactory.getBOFactory().getBo(BOFactory.BoTypes.ADMIN);
+//    EmployeeModel model = new EmployeeModel();
+    private EmployeeBo bo = (EmployeeBo) BOFactory.getBOFactory().getBo(BOFactory.BoTypes.EMPLOYEE);
     public void initialize() throws SQLException {
 
     }
@@ -182,7 +187,7 @@ public class AdminFormController {
     public void addNewUserName() throws SQLException {
         String userName = txtName.getText();
         String userIdText = adminUserId.getText();
-        boolean b = Lmodel.updateUserName(userName, userIdText);
+        boolean b = adminBo.updateUserName(userName, userIdText);
         if (b) {
             txtName.setVisible(false);
             btnUserName1.setVisible(false);
@@ -196,27 +201,31 @@ public class AdminFormController {
         txtConfirmPAss.setVisible(true);
         btnPass.setVisible(true);
     }
-    public void addNewNIC() throws SQLException {
+    public void addNewNIC() {
         String NIC = txtnewNIc.getText();
         String userId = adminUserId.getText();
-        if (model.UpdateNIC(userId,NIC)) {
-            txtnewNIc.setVisible(false);
-            btnNic.setVisible(false);
-            lblUpdateNICSuccess.setVisible(true);
-        }
-        else{
-            new Alert(Alert.AlertType.ERROR,"Something went wrong").show();
+        try {
+            if (bo.UpdateNIC(userId,NIC)) {
+                txtnewNIc.setVisible(false);
+                btnNic.setVisible(false);
+                lblUpdateNICSuccess.setVisible(true);
+            }
+            else{
+                new Alert(Alert.AlertType.ERROR,"Something went wrong").show();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 
     public void addNewPassWordOnAction(ActionEvent event) throws SQLException {
         String userId = adminUserId.getText();
         String oldPasswordText = txtOldPassword.getText();
-        if (Lmodel.checkPass(userId,oldPasswordText)) {
+        if (adminBo.validatePasswords(userId,oldPasswordText)) {
             String newpW = txtNewPassWord.getText();
             String confPw = txtConfirmPAss.getText();
             if (newpW.equals(confPw)){
-                boolean b = Lmodel.updatePassword(userId, newpW);
+                boolean b = adminBo.updatePassword(userId, newpW);
                 if (b) {
                     txtOldPassword.setVisible(false);
                     txtNewPassWord.setVisible(false);
@@ -232,7 +241,7 @@ public class AdminFormController {
         }
     }
     public void setDashBoard() throws SQLException {
-        AdminDto userAdmin = Lmodel.getUser(user);
+        AdminDto userAdmin = adminBo.getUser(user);
         System.out.println(user);
         EmployeeDto dto = userAdmin.getDto();
         System.out.println(dto+"Admin dash");
@@ -244,10 +253,13 @@ public class AdminFormController {
         adminPass.setText(loginFormDto.getPassword());
     }
 
-    public void addNewNameOnAction(ActionEvent event) throws SQLException {
+    public void addNewNameOnAction(ActionEvent event)  {
         String name = txtNewUSerName.getText();
         String userId = adminUserId.getText();
-        boolean b = model.updateName(name, userId);
+        boolean b = false;
+        try {
+            b = bo.updateName(name, userId);
+
         if (b) {
             txtNewUSerName.setVisible(false);
             btnUserName.setVisible(false);
@@ -255,6 +267,9 @@ public class AdminFormController {
         }
         else {
             new Alert(Alert.AlertType.ERROR, "Something Went Wrong").show();
+        }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 

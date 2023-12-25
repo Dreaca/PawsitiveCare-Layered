@@ -1,18 +1,14 @@
 package controller;
 
-import bo.AddNewAppointmentBo;
+import bo.AppointmentBo;
 import bo.BOFactory;
-import dao.custom.AppointmentDao;
-import dao.custom.Impl.AppointmentDAOImpl;
 import dto.AppointmentDto;
-import dto.CustomerDto;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import model.AppointmentModel;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -27,7 +23,7 @@ public class AddNewAppointmentController {
     public TextField txtCustomer;
     public TextField txtCustomerContact;
     public ComboBox cmbApType;
-    private AddNewAppointmentBo bo = (AddNewAppointmentBo) BOFactory.getBOFactory().getBo(BOFactory.BoTypes.ADDAPPOINTMENT);
+    private AppointmentBo bo = (AppointmentBo) BOFactory.getBOFactory().getBo(BOFactory.BoTypes.APPOINTMENT);
 
     public void cancelOnAction(ActionEvent actionEvent) {
         Stage stage = (Stage) root.getScene().getWindow();

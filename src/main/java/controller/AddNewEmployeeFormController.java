@@ -1,12 +1,7 @@
 package controller;
 
-import bo.AddNewEmployeeFormBO;
-import bo.AddNewEmployeeFormBoImpl;
+import bo.EmployeeBo;
 import bo.BOFactory;
-import dao.custom.EmployeeDao;
-import dao.custom.Impl.EmployeeDaoImpl;
-import dao.custom.Impl.LoginDaoImpl;
-import dao.custom.LoginDao;
 import dto.EmployeeDto;
 import dto.LoginFormDto;
 import com.jfoenix.controls.JFXButton;
@@ -76,7 +71,7 @@ public class AddNewEmployeeFormController {
     public void setStage(Stage stage){
         this.stage = stage;
     }
-    AddNewEmployeeFormBO bo = (AddNewEmployeeFormBO) BOFactory.getBOFactory().getBo(BOFactory.BoTypes.ADDEMPLOYEE);
+    EmployeeBo bo = (EmployeeBo) BOFactory.getBOFactory().getBo(BOFactory.BoTypes.EMPLOYEE);
 
 //    private EmployeeModel employeeModel = new EmployeeModel();
 //    private LoginModel logModel = new LoginModel();

@@ -2,11 +2,14 @@ package bo;
 
 import dto.EmployeeDto;
 import dto.LoginFormDto;
-import model.EmployeeModel;
 
 import java.sql.SQLException;
 
-public interface AddNewEmployeeFormBO extends SuperBO{
+public interface EmployeeBo extends SuperBO{
     boolean saveUser(LoginFormDto dto) throws SQLException, ClassNotFoundException;
     boolean saveEmployee(EmployeeDto dto) throws SQLException, ClassNotFoundException;
+
+    boolean UpdateNIC(String userId, String nic) throws SQLException;
+
+    boolean updateName(String name, String userId) throws SQLException;
 }

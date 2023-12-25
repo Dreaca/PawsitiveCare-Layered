@@ -1,5 +1,7 @@
 package controller;
 
+import bo.AppointmentBo;
+import bo.BOFactory;
 import dto.AppointmentDto;
 import dto.Tm.AppointmentTm;
 import javafx.collections.FXCollections;
@@ -26,16 +28,16 @@ public class AppointmentsFormController {
     public TableColumn colType;
     public TableColumn colPrice;
 
+    private AppointmentBo bo = (AppointmentBo) BOFactory.getBOFactory().getBo(BOFactory.BoTypes.APPOINTMENT);
     public void initialize(){
         setCellValueFactory();
         loadAllAppointments();
     }
 
     private void loadAllAppointments() {
-        var model = new AppointmentModel();
         ObservableList<AppointmentTm> oblist = FXCollections.observableArrayList();
         try {
-            List<AppointmentDto> list = model.getAllAppointments();
+            List<AppointmentDto> list = bo.getAllAppointments();
             for (AppointmentDto d: list) {
                 oblist.add(
                         new AppointmentTm(
@@ -51,6 +53,8 @@ public class AppointmentsFormController {
             tblAppointment.setItems(oblist);
             tblAppointment.refresh();
         } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
     }
