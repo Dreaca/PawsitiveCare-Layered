@@ -1,30 +1,26 @@
 package dao.custom.Impl;
 
+import dao.SQLUtil;
 import dao.custom.ScheduleDao;
 import db.DbConnection;
-import dto.ScheduleDto;
-import model.VetModel;
+import entity.Schedule;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.List;
 
 public class ScheduleDaoImpl implements ScheduleDao {
     @Override
-    public ArrayList<ScheduleDto> getAll() throws SQLException {
-        ArrayList<ScheduleDto> dtos = new ArrayList<>();
-        Connection connection = DbConnection.getInstance().getConnection();
-        PreparedStatement pstm = connection.prepareStatement("SELECT * FROM schedule");
-        ResultSet resultSet = pstm.executeQuery();
+    public ArrayList<Schedule> getAll() throws SQLException {
+        ArrayList<Schedule> dtos = new ArrayList<>();
+        ResultSet resultSet = SQLUtil.execute("SELECT * FROM schedule");
         while (resultSet.next()){
-            String vetName = getVetSheduleData(resultSet.getString("scheduleId"));
+//            String vetName = getVetSheduleData(resultSet.getString("scheduleId"));
             dtos.add(
-                    new ScheduleDto(
+                    new Schedule(
                             resultSet.getString("scheduleId"),
                             resultSet.getDate("date").toLocalDate(),
                             resultSet.getString("duration"),
-                            resultSet.getString("time"),
-                            vetName
+                            resultSet.getString("time")
                     )
             );
         }
@@ -36,33 +32,22 @@ public class ScheduleDaoImpl implements ScheduleDao {
         return false;
     }
 
-    @Override
-    public String getVetSheduleData(String sheduleId) throws SQLException {
-        VetModel model = new VetModel();
-        Connection connection = DbConnection.getInstance().getConnection();
-        PreparedStatement pstm = connection.prepareStatement("SELECT vetId FROM vet_schedule WHERE scheduleId = ? ");
-        pstm.setString(1,sheduleId);
-        ResultSet resultSet = pstm.executeQuery();
-        if(resultSet.next()){
-            return model.getVetName(resultSet.getString("vetId"));
-        }else
-            return null;
-    }
+
 
     @Override
-    public boolean save(ScheduleDto dto) throws SQLException {
+    public boolean save(Schedule entity) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
         var model = new VetModel();
-        String vetId = model.getVetId(dto.getVetName());
+        String vetId = model.getVetId(entity.getVetName());
         PreparedStatement pstm = connection.prepareStatement("INSERT INTO schedule VALUES(?,?,?,?)");
-        pstm.setString(1,dto.getScheduleId());
-        pstm.setDate(2, Date.valueOf(dto.getDate()));
-        pstm.setString(3,dto.getDuration());
-        pstm.setTime(4, Time.valueOf(dto.getTime()));
+        pstm.setString(1,entity.getScheduleId());
+        pstm.setDate(2, Date.valueOf(entity.getDate()));
+        pstm.setString(3,entity.getDuration());
+        pstm.setTime(4, Time.valueOf(entity.getTime()));
         int i = pstm.executeUpdate();
         if(i>0){
             PreparedStatement pstm1 = connection.prepareStatement("INSERT INTO vet_schedule VALUES (?,?)");
-            pstm1.setString(1,dto.getScheduleId());
+            pstm1.setString(1,entity.getScheduleId());
             pstm1.setString(2,vetId);
             int i1 = pstm1.executeUpdate();
             return i1>0;
@@ -71,12 +56,12 @@ public class ScheduleDaoImpl implements ScheduleDao {
     }
 
     @Override
-    public boolean update(ScheduleDto dto) throws SQLException, ClassNotFoundException {
+    public boolean update(Schedule entity) throws SQLException, ClassNotFoundException {
         return false;
     }
 
     @Override
-    public ScheduleDto search(String id) throws SQLException, ClassNotFoundException {
+    public Schedule search(String id) throws SQLException, ClassNotFoundException {
         return null;
     }
 

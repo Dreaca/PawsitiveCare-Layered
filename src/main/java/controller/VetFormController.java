@@ -1,5 +1,7 @@
 package controller;
 
+import bo.BOFactory;
+import bo.VetBo;
 import dto.Tm.VetTm;
 import dto.VetDto;
 import com.jfoenix.controls.JFXButton;
@@ -12,7 +14,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
-import model.VetModel;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -32,7 +33,8 @@ public class VetFormController {
     public TextField txtEmail;
     public TableView tblVet;
 
-    private VetModel model = new VetModel();
+//    private VetModel model = new VetModel();
+    private VetBo bo = (VetBo) BOFactory.getBOFactory().getBo(BOFactory.BoTypes.VET);
     public void clearOnAction(ActionEvent actionEvent) {
         txtEmail.clear();
         txtLastName.clear();
@@ -41,25 +43,33 @@ public class VetFormController {
         txtID.clear();
     }
 
-    public void searchVetOnAction() throws SQLException {
+    public void searchVetOnAction() {
         String id = txtID.getText();
-        var dto = model.searchVet(id);
+        VetDto dto = null;
+        try {
+            dto = bo.searchVet(id);
+
         txtID.setText(dto.getVetId());
         String[]name = dto.getVetName().split(" ");
         txtFirstName.setText(name[0]);
         txtLastName.setText(name[1]);
         txtContact.setText(dto.getContact());
         txtEmail.setText(dto.getEmail());
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public void deleteOnAction(ActionEvent actionEvent) {
         String id = txtID.getText();
         try {
-            if(model.deleteVet(id)){
+            if(bo.deleteVet(id)){
                 new Alert(Alert.AlertType.CONFIRMATION,"Veterianrian Deleted !!!").show();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -71,12 +81,14 @@ public class VetFormController {
 
         var dto = new VetDto(vetId,fullname,contact,email);
         try {
-            if(model.saveVeterinarian(dto)){
+            if(bo.saveVeterinarian(dto)){
                 new Alert(Alert.AlertType.CONFIRMATION,"Veterinarian Saved !!").show();
                 loadAllData();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
         }
 
     }
@@ -89,7 +101,7 @@ public class VetFormController {
         ObservableList<VetTm> oblist = FXCollections.observableArrayList();
 
         try {
-            List<VetDto> dto = model.getAllVets();
+            List<VetDto> dto = bo.loadAllVets();
             for (VetDto d:dto) {
                 oblist.add(
                        new VetTm(
@@ -103,6 +115,8 @@ public class VetFormController {
             }
             tblVet.setItems(oblist);
         } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
     }

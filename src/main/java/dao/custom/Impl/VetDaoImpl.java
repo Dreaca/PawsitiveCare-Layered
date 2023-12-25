@@ -90,18 +90,6 @@ public class VetDaoImpl implements VetDao {
     }
 
     @Override
-    public List<String> getAllVetNames() throws SQLException {
-        ArrayList <String> list = new ArrayList<>();
-        Connection connection = DbConnection.getInstance().getConnection();
-        PreparedStatement pstm = connection.prepareStatement("SELECT name FROM veterinarian");
-        ResultSet resultSet = pstm.executeQuery();
-        while(resultSet.next()) {
-            list.add(resultSet.getString(1));
-        }
-        return list;
-    }
-
-    @Override
     public String getVetId(String vetName) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
         PreparedStatement pstm = connection.prepareStatement("SELECT vetId FROM veterinarian WHERE name = ?");

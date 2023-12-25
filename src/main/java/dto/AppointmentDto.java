@@ -8,15 +8,44 @@ import static dto.AppointmentDto.AppType.*;
 @ToString
 @Getter
 @Setter
-@AllArgsConstructor
 public class AppointmentDto {
     private String appId;
     private String customerName;
     private String contact;
     private AppType type;
     private String time;
+
+    public AppointmentDto(String appId, String contact, AppType type, String time, String date, String customerId) {
+        this.appId = appId;
+        this.contact = contact;
+        this.type = type;
+        this.time = time;
+        this.date = date;
+        this.customerId = customerId;
+    }
+
+    public AppointmentDto(String appId, String customerName, String contact, AppType type, String time, String date, String customerId) {
+        this.appId = appId;
+        this.customerName = customerName;
+        this.contact = contact;
+        this.type = type;
+        this.time = time;
+        this.date = date;
+        this.customerId = customerId;
+    }
+
     private String date;
-//    private String customerId;
+
+    public AppointmentDto(String appId, String customerName, String contact, AppType type, String time, String date) {
+        this.appId = appId;
+        this.customerName = customerName;
+        this.contact = contact;
+        this.type = type;
+        this.time = time;
+        this.date = date;
+    }
+
+    private String customerId;
 
     public AppointmentDto(String appId, String customerName, AppType type, String time, String date) {
         this.appId = appId;

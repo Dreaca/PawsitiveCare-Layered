@@ -1,5 +1,7 @@
 package controller;
 
+import bo.BOFactory;
+import bo.ItemBo;
 import dto.ItemDto;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
@@ -7,7 +9,6 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import model.ItemModel;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -18,14 +19,15 @@ public class UpdateItemFormController {
     public TextField txtQTO;
     public TextField txtUnitPrice;
     public AnchorPane root;
-    private ItemModel model = new ItemModel();
+//    private ItemModel model = new ItemModel();
+    private ItemBo bo = (ItemBo) BOFactory.getBOFactory().getBo(BOFactory.BoTypes.ITEM);
     public void initialize(){
         loadComboBox();
     }
 
     private void loadComboBox() {
         try {
-            List<String> list = model.getItemCodes();
+            List<String> list = bo.getItemcodes();
             cmbItemCode.getItems().setAll(list);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -44,11 +46,13 @@ public class UpdateItemFormController {
         double unitprice = Double.parseDouble(txtUnitPrice.getText());
         var dto = new ItemDto(itemCode,description,QTO,unitprice);
         try {
-            if(model.updateItem(dto)){
+            if(bo.updateItem(dto)){
                 new Alert(Alert.AlertType.CONFIRMATION,"Item Updated",ButtonType.OK,ButtonType.CANCEL).show();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
         }
 
     }

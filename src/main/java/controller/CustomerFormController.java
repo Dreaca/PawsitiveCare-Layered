@@ -2,8 +2,6 @@ package controller;
 
 import bo.BOFactory;
 import bo.CustomerBo;
-import dao.custom.CustomerDao;
-import dao.custom.Impl.CustomerDaoImpl;
 import dto.CustomerDto;
 import dto.Tm.CustomerTm;
 import com.jfoenix.controls.JFXButton;
@@ -13,7 +11,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import model.CustomerModel;
 
 import java.sql.SQLException;
 import java.util.List;

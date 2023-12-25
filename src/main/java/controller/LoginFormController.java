@@ -1,5 +1,7 @@
 package controller;
 
+import bo.BOFactory;
+import bo.LoginBo;
 import dto.LoginFormDto;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
@@ -10,7 +12,6 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import model.LoginModel;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -22,22 +23,26 @@ public class LoginFormController {
     public AnchorPane root;
     public AnchorPane stuff;
     public Label incorrect;
+    private LoginBo bo = (LoginBo) BOFactory.getBOFactory().getBo(BOFactory.BoTypes.LOGIN);
 
     public void initialize(){
         incorrect.setVisible(false);
     }
 
-    public void loginOnAction(ActionEvent actionEvent) throws SQLException {
+    public void loginOnAction(ActionEvent actionEvent) {
 
         String userName = txtUserNAme.getText();
         String password = txtPassword.getText();
 
-        LoginFormDto login = new LoginFormDto(userName,password);
+        LoginFormDto loginFormDto = new LoginFormDto(userName,password);
 
-        boolean authenticateResult = LoginModel.authenticate(login);
+        boolean authenticateResult = false;
+        try {
+            authenticateResult = bo.authenticateUser(loginFormDto);
+
 
         if(authenticateResult){
-            String currentUser = LoginModel.getUser(login);
+            String currentUser = bo.getUserDetail(loginFormDto);
             if(currentUser.startsWith("A")){
                loadAdminDash(userName);
             } else if (currentUser.startsWith("E")) {
@@ -47,6 +52,9 @@ public class LoginFormController {
         else {
             incorrect.setVisible(true);
             }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     private void loadAdminDash(String userName) throws SQLException {

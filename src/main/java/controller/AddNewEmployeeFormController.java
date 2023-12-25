@@ -2,6 +2,7 @@ package controller;
 
 import bo.EmployeeBo;
 import bo.BOFactory;
+import bo.LoginBo;
 import dto.EmployeeDto;
 import dto.LoginFormDto;
 import com.jfoenix.controls.JFXButton;
@@ -14,8 +15,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
-import model.EmployeeModel;
-import model.LoginModel;
 
 import java.sql.SQLException;
 import java.util.Objects;
@@ -72,12 +71,16 @@ public class AddNewEmployeeFormController {
         this.stage = stage;
     }
     EmployeeBo bo = (EmployeeBo) BOFactory.getBOFactory().getBo(BOFactory.BoTypes.EMPLOYEE);
-
+//     loginBo = (LoginBo) BOFactory.getBOFactory().getBo(BOFactory.BoTypes.LOGIN);
 //    private EmployeeModel employeeModel = new EmployeeModel();
 //    private LoginModel logModel = new LoginModel();
-    public void initialize() throws SQLException {
-        lblEmployeeID.setText(EmployeeModel.generateNextEmpId());
-        lbluserID.setText(LoginModel.generateNExtUserID());
+    public void initialize() {
+        try {
+            lblEmployeeID.setText(bo.generateNextEmpId());
+            lbluserID.setText(bo.generateNExtUserID());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML

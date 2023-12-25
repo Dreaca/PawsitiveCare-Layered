@@ -1,3 +1,4 @@
+/*
 package controller;
 
 import dto.CustomerDto;
@@ -10,10 +11,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import model.CustomerModel;
-import model.ItemModel;
-import model.OrderModel;
-import model.PlaceOrderModel;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -92,7 +89,7 @@ public class OrderFormController {
     }
 
     public void btnClearOnAction(){
-        
+
     }
     public void placeOrderOnAction(){
         String orderId = lblOrderId.getText();
@@ -115,7 +112,7 @@ public class OrderFormController {
         }
     }
     public void cancelOnAction(){
-        
+
     }
     public void customerOnAction() throws SQLException {
         var cus = new CustomerModel();
@@ -148,3 +145,4 @@ public class OrderFormController {
         colAmount.setCellValueFactory(new PropertyValueFactory<>("amount"));
     }
 }
+*/

@@ -1,5 +1,7 @@
 package controller;
 
+import bo.BOFactory;
+import bo.ItemBo;
 import dto.ItemDto;
 import dto.Tm.ItemTm;
 import com.jfoenix.controls.JFXButton;
@@ -17,7 +19,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-import model.ItemModel;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -37,7 +38,8 @@ public class ManageItemFormController {
     private Image image =  new Image("/view/Assets/icon/trashbin.png");
     private ImageView imgV = new ImageView(image);
 
-    private ItemModel model = new ItemModel();
+//    private ItemModel model = new ItemModel();
+    private ItemBo bo = (ItemBo) BOFactory.getBOFactory().getBo(BOFactory.BoTypes.ITEM);
     Tooltip t1 = new Tooltip("Add item");
     Tooltip t2 = new Tooltip("Update Item");
     Tooltip t3 = new Tooltip("Create supply order");
@@ -78,7 +80,7 @@ public class ManageItemFormController {
         ObservableList<ItemTm> oblist  =FXCollections.observableArrayList();
 
         try {
-            List<ItemDto> dto = model.getAllItems();
+            List<ItemDto> dto = bo.getAllItems();
             for (ItemDto d: dto) {
                 oblist.add(
                         new ItemTm(
@@ -100,6 +102,8 @@ public class ManageItemFormController {
             }
 
         } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
     }

@@ -1,10 +1,11 @@
 package bo;
 
 import dto.AdminDto;
+import dto.LoginFormDto;
 
 import java.sql.SQLException;
 
-public interface AdminBo extends SuperBO{
+public interface LoginBo extends SuperBO{
     boolean updateUserName(String userName, String userIdText) throws SQLException;
 
     boolean validatePasswords(String userId, String oldPasswordText) throws SQLException;
@@ -13,4 +14,9 @@ public interface AdminBo extends SuperBO{
 
     AdminDto getUser(String user) throws SQLException;
 
+    boolean authenticateUser(LoginFormDto loginFormDto) throws SQLException;
+
+    String getUserDetail(LoginFormDto loginFormDto) throws SQLException;
+
+    String generateNExtUserID() throws SQLException;
 }

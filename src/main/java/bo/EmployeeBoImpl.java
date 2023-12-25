@@ -9,6 +9,7 @@ import dto.EmployeeDto;
 import dto.LoginFormDto;
 
 import java.sql.SQLException;
+import java.util.List;
 
 public class EmployeeBoImpl implements EmployeeBo {
 private EmployeeDao dao = (EmployeeDao) DaoFactory.getInstance().getDAO(DaoFactory.DAOType.EMPLOYEE);
@@ -31,5 +32,30 @@ private EmployeeDao dao = (EmployeeDao) DaoFactory.getInstance().getDAO(DaoFacto
     @Override
     public boolean updateName(String name, String userId) throws SQLException {
         return dao.updateName(name,userId);
+    }
+
+    @Override
+    public boolean deleteEmployee(String empId) throws SQLException, ClassNotFoundException {
+        return dao.delete(empId);
+    }
+
+    @Override
+    public List<EmployeeDto> getEmployees() throws SQLException, ClassNotFoundException {
+        return dao.getAll();
+    }
+
+    @Override
+    public boolean UpdateUserId(String oldUserName, String newUserId) throws SQLException {
+        return dao.updateName(oldUserName,newUserId);
+    }
+
+    @Override
+    public String generateNextEmpId() throws SQLException {
+        return dao.generateNextEmpId();
+    }
+
+    @Override
+    public String generateNExtUserID() throws SQLException {
+       return loginDao.generateNExtUserID();
     }
 }

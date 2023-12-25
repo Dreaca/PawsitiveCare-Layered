@@ -5,14 +5,13 @@ import bo.ScheduleBo;
 import dto.ScheduleDto;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import model.ScheduleModel;
-import model.VetModel;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -31,15 +30,20 @@ public class AddNewScheduleItemController extends ScheduleFormController {
     private String schedId;
 //    ScheduleModel mod = new ScheduleModel();
     private ScheduleBo bo = (ScheduleBo) BOFactory.getBOFactory().getBo(BOFactory.BoTypes.SCHEDULE);
-
     private String generateNextScheduleId() throws SQLException {
         return bo.getNextShedId();
     }
 
 
-    VetModel model = new VetModel();
-    public void initialize() throws SQLException {
-        setData();
+//    VetModel model = new VetModel();
+    public void initialize() {
+        try {
+            setData();
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public void btnBackOnAction(ActionEvent event) {
@@ -53,7 +57,10 @@ public class AddNewScheduleItemController extends ScheduleFormController {
         String duration = (String) cmbDuration.getValue();
         var dto = new ScheduleDto(schedId,date,time,vetName,duration);
         try {
-            bo.saveScheduleItem(dto);
+            boolean b = bo.saveScheduleItem(dto);
+            if(b){
+                new Alert(Alert.AlertType.CONFIRMATION,"Schedule Item Saved !!!!").show();
+            }
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
@@ -64,9 +71,9 @@ public class AddNewScheduleItemController extends ScheduleFormController {
         Stage sta = (Stage) root.getScene().getWindow();
         sta.close();
     }
-    public void setData() throws SQLException {
+    public void setData() throws SQLException, ClassNotFoundException {
         cmbDuration.getItems().setAll("8 hours","3 Hours","5 Hours");
-        cmbVet.getItems().addAll(FXCollections.observableArrayList(model.getAllVetNames()));
+        cmbVet.getItems().addAll(FXCollections.observableArrayList(bo.getAllVetNames()));
         List<LocalTime> list = new ArrayList<>();
         LocalTime start = LocalTime.of(6,0);
         LocalTime end = LocalTime.of(21,0);

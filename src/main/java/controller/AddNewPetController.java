@@ -9,11 +9,8 @@ import javafx.scene.control.*;
 import javafx.scene.input.DragEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import model.CustomerModel;
-import model.PetModel;
 
 import java.io.IOException;
-import java.net.http.HttpResponse;
 import java.sql.SQLException;
 import java.util.Arrays;
 
@@ -28,28 +25,34 @@ public class AddNewPetController {
     public Hyperlink uploadLink;
 //    PetModel model = new PetModel();
     private PetBo bo = (PetBo) BOFactory.getBOFactory().getBo(BOFactory.BoTypes.PET);
-    public void savePetOnAction() throws SQLException {
-        String petId = lblPetId.getText();
-        String petName = txtPetName.getText();
-        String petBreed = String.valueOf(cmbBreed.getValue());
-        String gender = (String) cmbGender.getValue();
-        String ownerId = CustomerModel.getCustomerId(txtOwner.getText());
-        String color = txtColor.getText();
-
-        var dto = new PetDto(petId,petName,petBreed,gender,ownerId,color);
-        boolean isSaved = false;
+    public void savePetOnAction()  {
         try {
-            isSaved = bo.savePet(dto);
+
+                String petId = lblPetId.getText();
+                String petName = txtPetName.getText();
+                String petBreed = String.valueOf(cmbBreed.getValue());
+                String gender = (String) cmbGender.getValue();
+                String ownerId = null;
+
+                    ownerId = bo.getCustomerId(txtOwner.getText());
+
+                String color = txtColor.getText();
+
+                var dto = new PetDto(petId,petName,petBreed,gender,ownerId,color);
+                boolean
+                    isSaved = bo.savePet(dto);
+
+                if (isSaved) {
+                    new Alert(Alert.AlertType.CONFIRMATION,"Pet Saved ").show();
+        //            PetFormController.loadAllData();
+                }else{
+                    new Alert(Alert.AlertType.ERROR,"Something went wrong").show();
+                }
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-        if (isSaved) {
-            new Alert(Alert.AlertType.CONFIRMATION,"Pet Saved ").show();
-//            PetFormController.loadAllData();
-        }else{
-            new Alert(Alert.AlertType.ERROR,"Something went wrong").show();
-        }
-
     }
     public void initialize()  {
         try {

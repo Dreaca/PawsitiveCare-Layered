@@ -1,5 +1,7 @@
 package controller;
 
+import bo.BOFactory;
+import bo.PetBo;
 import dto.PetDto;
 import dto.Tm.PetTm;
 import com.jfoenix.controls.JFXButton;
@@ -14,8 +16,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-import model.CustomerModel;
-import model.PetModel;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -36,9 +36,7 @@ public class PetFormController {
     private Image im = new Image("/view/Assets/icon/settings.png");
     private ImageView imv = new ImageView(im);
 
-    public PetFormController() throws IOException {
-    }
-
+    private PetBo bo = (PetBo) BOFactory.getBOFactory().getBo(BOFactory.BoTypes.PET);
     public void combofiller(){
         for (String string : Arrays.asList("Dog", "Cat", "Birds", "Other")) {
             cbmFilter.getItems().add(string);
@@ -53,10 +51,10 @@ public class PetFormController {
     }
 
     void loadAllData() {
-        PetModel model = new PetModel();
+//        PetModel model = new PetModel();
         ObservableList<PetTm> oblist = FXCollections.observableArrayList();
         try {
-            List<PetDto> list = model.getAllPets();
+            List<PetDto> list = bo.getAllPets();
             for (PetDto pet: list) {
                 oblist.add(
                   new PetTm(
@@ -65,13 +63,15 @@ public class PetFormController {
                           pet.getPetBreed(),
                           pet.getPetGender(),
                           pet.getColor(),
-                          CustomerModel.getCustomerName(pet.getOwnerId()),
+                          bo.getCustomerName(pet.getOwnerId()),
                           null,
                           new JFXButton("Modify")
                   )
                 );
             }
         } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
         for (int i = 0; i < oblist.size(); i++) {
@@ -97,11 +97,11 @@ public class PetFormController {
                    });
                    con.getItems().get(1).setOnAction(actionEvent1 -> {
                        try {
-                           if (model.deletePet(oblist.get(finalI3).getPetId())) {
+                           if (bo.deletePet(oblist.get(finalI3).getPetId())) {
                                new Alert(Alert.AlertType.CONFIRMATION,"Pet Deleted !!!").show();
                                loadAllData();
                            }
-                       } catch (SQLException e) {
+                       } catch (SQLException | ClassNotFoundException e) {
                            new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
                        }
                        tblPet.refresh();

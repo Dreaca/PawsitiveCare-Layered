@@ -1,5 +1,7 @@
 package controller;
 
+import bo.BOFactory;
+import bo.ScheduleBo;
 import dto.ScheduleDto;
 import dto.Tm.ScheduleTm;
 import com.jfoenix.controls.JFXButton;
@@ -14,7 +16,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-import model.ScheduleModel;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -28,7 +29,8 @@ public class ScheduleFormController {
     public TableColumn colMod;
     public TableView tblSchedule;
 
-    public  ScheduleModel model = new ScheduleModel();
+//    public  ScheduleModel model = new ScheduleModel();
+    private ScheduleBo bo = (ScheduleBo) BOFactory.getBOFactory().getBo(BOFactory.BoTypes.SCHEDULE);
     private Image image = new Image("/view/Assets/icon/settings.png");
     private ImageView imageView = new ImageView(image);
     public void initialize() throws SQLException {
@@ -60,7 +62,7 @@ public class ScheduleFormController {
     public void loadData(){
         ObservableList<ScheduleTm> oblist = FXCollections.observableArrayList();
         try {
-            List<ScheduleDto> list = model.getScheduleData();
+            List<ScheduleDto> list = bo.loadScheduleList();
             for (ScheduleDto d: list) {
                 oblist.add(
                         new ScheduleTm(
@@ -76,6 +78,8 @@ public class ScheduleFormController {
 
 
         } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
     }

@@ -1,5 +1,7 @@
 package controller;
 
+import bo.BOFactory;
+import bo.EmployeeBo;
 import dto.EmployeeDto;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
@@ -11,7 +13,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
-import model.EmployeeModel;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -33,6 +34,7 @@ public class ManageEmployeeController {
     public HBox employeeHbox;
     @FXML
     private AnchorPane employeeAnchor;
+    private EmployeeBo bo = (EmployeeBo) BOFactory.getBOFactory().getBo(BOFactory.BoTypes.EMPLOYEE);
 
     static Stage stage = new Stage();
     public void initialize() throws IOException, SQLException {
@@ -43,8 +45,15 @@ public class ManageEmployeeController {
 
     }
 
-    private void loadAllEmployees() throws IOException, SQLException {
-        List<EmployeeDto> dtos= EmployeeModel.getEmployeeDtos();
+    private void loadAllEmployees() throws IOException {
+        List<EmployeeDto> dtos= null;
+        try {
+            dtos = bo.getEmployees();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
         for (EmployeeDto dto: dtos) {
             FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/view/employeeManage/EmployeeTile.fxml"));
             Parent tile = loader.load();

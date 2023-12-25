@@ -1,12 +1,13 @@
 package controller;
 
+import bo.BOFactory;
+import bo.ItemBo;
+import bo.SupplierBo;
 import javafx.event.ActionEvent;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import model.ItemModel;
-import model.SupplierModel;
 
 import java.sql.SQLException;
 
@@ -19,6 +20,8 @@ public class SuppliyOrderFormController {
     public DatePicker dpkSelectDate;
     public Label lblIssuedDate;
     public Label lblSupOrderNum;
+    private ItemBo itemBo = (ItemBo) BOFactory.getBOFactory().getBo(BOFactory.BoTypes.ITEM);
+    private SupplierBo sBo = (SupplierBo) BOFactory.getBOFactory().getBo(BOFactory.BoTypes.SUPPLIER);
 
     public void placeOrderOnAction(ActionEvent actionEvent) {
 
@@ -31,11 +34,14 @@ public class SuppliyOrderFormController {
     public void backOnAction(ActionEvent actionEvent) {
 
     }
-    public void loadComboBoxes() throws SQLException {
-        var model = new ItemModel();
-         cmbItemCode.getItems().setAll(model.getItemcodes());
-         var smodel = new SupplierModel();
-         cmbSupplier.getItems().setAll(smodel.getSupplierIds());
+    public void loadComboBoxes() {
+        try {
+            cmbItemCode.getItems().setAll(itemBo.getItemcodes());
+            cmbSupplier.getItems().setAll(sBo.getSupplierIds());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
     }
     public void loadOtherStuff(){
 

@@ -4,17 +4,14 @@ import dao.SQLUtil;
 import dao.custom.AppointmentDao;
 import dto.AppointmentDto;
 import dto.CustomerDto;
-import model.CustomerModel;
 
 import java.sql.*;
 import java.util.ArrayList;
 
 public class AppointmentDAOImpl implements AppointmentDao {
     @Override
-    public boolean save(AppointmentDto dto, CustomerDto cus) throws SQLException {
-        CustomerModel model = new CustomerModel();
-        String cusID = model.getCustomerId(cus);
-        return SQLUtil.execute("INSERT INTO appointment VALUES(?,?,?,?,?)",dto.getAppId(),cusID,dto.getType().toString(),dto.getTime(),dto.getDate());
+    public boolean save(AppointmentDto dto) throws SQLException {
+        return SQLUtil.execute("INSERT INTO appointment VALUES(?,?,?,?,?)",dto.getAppId(),dto.getCustomerName(),dto.getType().toString(),dto.getTime(),dto.getDate());
     }
     @Override
     public String getNextAppid() throws SQLException {
@@ -42,13 +39,11 @@ public class AppointmentDAOImpl implements AppointmentDao {
         ResultSet resultSet = SQLUtil.execute("SELECT * FROM appointment");
         ArrayList<AppointmentDto> dto = new ArrayList<>();
         while (resultSet.next()){
-            String custName = CustomerModel.getCustomerName(resultSet.getString("custId"));
-            String contact = CustomerModel.getContact(resultSet.getString("custId"));
             dto.add(
                     new AppointmentDto(
                             resultSet.getString("appId"),
-                            custName,
-                            contact,
+                            resultSet.getString("custId"),
+                            resultSet.getString("contact"),
                             AppointmentDto.getvalueOf(resultSet.getString("type")),
                             resultSet.getString("time"),
                             resultSet.getString("date")
@@ -60,11 +55,6 @@ public class AppointmentDAOImpl implements AppointmentDao {
 
     @Override
     public boolean delete(String id) throws SQLException, ClassNotFoundException {
-        return false;
-    }
-
-    @Override
-    public boolean save(AppointmentDto dto) throws SQLException, ClassNotFoundException {
         return false;
     }
 

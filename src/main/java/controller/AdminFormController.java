@@ -1,6 +1,6 @@
 package controller;
 
-import bo.AdminBo;
+import bo.LoginBo;
 import bo.BOFactory;
 import bo.EmployeeBo;
 import dto.AdminDto;
@@ -18,8 +18,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import model.EmployeeModel;
-import model.LoginModel;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -64,7 +62,7 @@ public class AdminFormController {
     @FXML
     private JFXButton btnUser;
 //    private LoginModel Lmodel = new LoginModel();
-    private AdminBo adminBo = (AdminBo) BOFactory.getBOFactory().getBo(BOFactory.BoTypes.ADMIN);
+    private LoginBo adminBo = (LoginBo) BOFactory.getBOFactory().getBo(BOFactory.BoTypes.LOGIN);
 //    EmployeeModel model = new EmployeeModel();
     private EmployeeBo bo = (EmployeeBo) BOFactory.getBOFactory().getBo(BOFactory.BoTypes.EMPLOYEE);
     public void initialize() throws SQLException {
@@ -174,7 +172,7 @@ public class AdminFormController {
         try {
             String oldUserName = btnUser.getText();
             String newUserId = txtnewUserId.getText();
-            boolean b = LoginModel.setUpdateUserId(oldUserName,newUserId);
+            boolean b = bo.UpdateUserId(oldUserName,newUserId);
             if (b) {
                 txtnewUserId.setVisible(false);
                 btnNEwUSerId.setVisible(false);

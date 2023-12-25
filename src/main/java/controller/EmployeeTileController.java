@@ -1,10 +1,11 @@
 package controller;
 
+import bo.BOFactory;
+import bo.EmployeeBo;
 import dto.EmployeeDto;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
-import model.EmployeeModel;
 
 import java.sql.SQLException;
 
@@ -18,6 +19,7 @@ public class EmployeeTileController {
     public Label lblSalary;
 
     public Label lblNIC;
+    private EmployeeBo bo = (EmployeeBo) BOFactory.getBOFactory().getBo(BOFactory.BoTypes.EMPLOYEE);
 
     public void setEmployeeData(EmployeeDto employee) {
         //imgEmpImg.setImage(new Image(String.valueOf(employee.getPhoto())));
@@ -33,7 +35,12 @@ public class EmployeeTileController {
 
     public void deleteOnAction(ActionEvent actionEvent) throws SQLException {
         String empId = lblEmpId.getText();
-            boolean b = EmployeeModel.deleteEmployee(empId);
+        boolean b = false;
+        try {
+            b = bo.deleteEmployee(empId);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
         if (b) {
             new Alert(Alert.AlertType.INFORMATION,"Employee Deleted").show();
         }else {

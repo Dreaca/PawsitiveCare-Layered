@@ -1,15 +1,17 @@
 package dao.custom.Impl;
 
+import dao.DaoFactory;
 import dao.SQLUtil;
 import dao.custom.EmployeeDao;
+import dao.custom.LoginDao;
 import db.DbConnection;
 import dto.EmployeeDto;
-import model.LoginModel;
 
 import java.sql.*;
 import java.util.ArrayList;
 
 public class EmployeeDaoImpl implements EmployeeDao {
+    LoginDao loginDao  = (LoginDao) DaoFactory.getInstance().getDAO(DaoFactory.DAOType.LOGIN);
 
     @Override
     public ArrayList<EmployeeDto> getAll() throws SQLException {
@@ -66,7 +68,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
             pstm.setString(1,empId);
             int i = pstm.executeUpdate();
             if(i > 0){
-                boolean b = LoginModel.deleteUser(userId);
+                boolean b = loginDao.delete(userId);
                 if (b) {
                     flag = b;
                     connection.commit();
@@ -74,8 +76,9 @@ public class EmployeeDaoImpl implements EmployeeDao {
             }
         } catch (SQLException e) {
             connection.rollback();
-        }
-        finally {
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } finally {
             connection.setAutoCommit(true);
         }
         return flag;
