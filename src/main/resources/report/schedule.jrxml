@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.6.final using JasperReports Library version 6.20.6-5c96b6aa8a39ac1dc6b6bea4b81168e16dd39231  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="schedule" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="95eaf9a4-856d-4972-9329-94bf927d819e">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter (2)"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<queryString>
+		<![CDATA[SELECT *
+FROM schedule s
+	join vet_schedule vs ON  s.scheduleId = vs.scheduleId 
+	join veterinarian v on vs.vetId = v.vetId ]]>
+	</queryString>
+	<field name="scheduleId" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="scheduleId"/>
+		<property name="com.jaspersoft.studio.field.label" value="scheduleId"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="schedule"/>
+	</field>
+	<field name="date" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="date"/>
+		<property name="com.jaspersoft.studio.field.label" value="date"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="schedule"/>
+	</field>
+	<field name="duration" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="duration"/>
+		<property name="com.jaspersoft.studio.field.label" value="duration"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="schedule"/>
+	</field>
+	<field name="time" class="java.sql.Time">
+		<property name="com.jaspersoft.studio.field.name" value="time"/>
+		<property name="com.jaspersoft.studio.field.label" value="time"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="schedule"/>
+	</field>
+	<field name="COLUMN_5" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="scheduleId"/>
+		<property name="com.jaspersoft.studio.field.label" value="scheduleId"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="vet_schedule"/>
+	</field>
+	<field name="vetId" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="vetId"/>
+		<property name="com.jaspersoft.studio.field.label" value="vetId"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="vet_schedule"/>
+	</field>
+	<field name="COLUMN_7" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="vetId"/>
+		<property name="com.jaspersoft.studio.field.label" value="vetId"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="veterinarian"/>
+	</field>
+	<field name="name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="name"/>
+		<property name="com.jaspersoft.studio.field.label" value="name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="veterinarian"/>
+	</field>
+	<field name="userId" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="userId"/>
+		<property name="com.jaspersoft.studio.field.label" value="userId"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="veterinarian"/>
+	</field>
+	<field name="contact" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="contact"/>
+		<property name="com.jaspersoft.studio.field.label" value="contact"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="veterinarian"/>
+	</field>
+	<field name="email" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="email"/>
+		<property name="com.jaspersoft.studio.field.label" value="email"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="veterinarian"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="43" splitType="Stretch">
+			<staticText>
+				<reportElement x="180" y="0" width="400" height="43" uuid="58fb59af-28e8-4de4-bf4b-6112114c891e"/>
+				<textElement textAlignment="Center">
+					<font size="26" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Schedule This Week]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="49" splitType="Stretch">
+			<staticText>
+				<reportElement x="99" y="0" width="100" height="30" uuid="45f4c34d-3e36-4338-a14e-58261aa67044">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2b916860-4763-46ee-9432-1c8b89a3937b"/>
+				</reportElement>
+				<text><![CDATA[date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="253" y="0" width="100" height="30" uuid="a87b3cd3-3ead-4814-b694-81b39be1dfe2">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ce39ebbb-592b-4726-aa16-e162b985fab0"/>
+				</reportElement>
+				<text><![CDATA[time]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="391" y="0" width="100" height="30" uuid="591e67a8-efc6-43b8-b257-affe99b483ed">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="082ce03c-f5eb-4d4b-883f-0951c03203e4"/>
+				</reportElement>
+				<text><![CDATA[duration]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="534" y="0" width="100" height="30" uuid="f61649ec-98b8-4bc7-99d1-df24f09f6736">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="552174d6-6573-4a28-8325-01bdcbb021d0"/>
+				</reportElement>
+				<text><![CDATA[name]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="99" y="8" width="100" height="30" uuid="b04db5f1-2a06-4fa4-a77c-cabd80d4d5e4">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2b916860-4763-46ee-9432-1c8b89a3937b"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="253" y="8" width="100" height="30" uuid="e01888bd-28b9-4622-8ee0-4428ec85c755">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ce39ebbb-592b-4726-aa16-e162b985fab0"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{time}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="391" y="8" width="100" height="30" uuid="efb6e3b2-3e4a-4ada-bf2c-6820f3c77f60">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="082ce03c-f5eb-4d4b-883f-0951c03203e4"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{duration}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="534" y="8" width="100" height="30" uuid="c2a653ce-06b8-4120-b3eb-629083555cac">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="552174d6-6573-4a28-8325-01bdcbb021d0"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

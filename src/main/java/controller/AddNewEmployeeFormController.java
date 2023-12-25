@@ -22,8 +22,6 @@ public class AddNewEmployeeFormController {
 
     public Label lbluserID;
     public TextField txtEmpNIC;
-    @FXML
-    private JFXButton btnCancel;
 
     @FXML
     private JFXButton btnSave;

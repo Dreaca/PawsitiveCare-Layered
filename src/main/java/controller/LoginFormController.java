@@ -94,4 +94,11 @@ public class LoginFormController {
     }
 
 
+    public void forgotPassOnAction(ActionEvent actionEvent) {
+
+    }
+
+    public void checkNIConAction(ActionEvent actionEvent) {
+
+    }
 }

@@ -62,15 +62,6 @@ public class AddNewPetController {
         }
         loadBreedAndGender();
     }
-
-    public void addRecordOnAction() throws IOException {
-        Stage stage = new Stage();
-        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/dashBoards/pets/addNewRecord.fxml"))));
-        stage.show();
-    }
-    public void uploadOnAction(){
-
-    }
     private void loadBreedAndGender() {
         for (String string : Arrays.asList("Dog", "Cat", "Bird", "other")) {
             cmbBreed.getItems().add(string);
@@ -78,9 +69,5 @@ public class AddNewPetController {
         for(String s : Arrays.asList("Male","Female")){
             cmbGender.getItems().add(s);
         }
-    }
-
-    public void dropOnAction(DragEvent dragEvent) {
-
     }
 }

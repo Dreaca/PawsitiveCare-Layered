@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.6.final using JasperReports Library version 6.20.6-5c96b6aa8a39ac1dc6b6bea4b81168e16dd39231  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="bill" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="36f7cde2-91f5-4ee6-b576-41bfc21932de">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<parameter name="code" class="java.lang.String"/>
+	<parameter name="Qty" class="java.lang.String"/>
+	<parameter name="unitPrice" class="java.lang.String"/>
+	<parameter name="amount" class="java.lang.String"/>
+	<parameter name="OrderId" class="java.lang.String"/>
+	<parameter name="NetTotal" class="java.lang.String"/>
+	<parameter name="name" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="68" splitType="Stretch">
+			<staticText>
+				<reportElement x="155" y="14" width="235" height="46" uuid="a873ee81-f1fb-4d19-9d8a-07b560dcdc6a"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="26"/>
+				</textElement>
+				<text><![CDATA[Blue Husky Pet Clinic]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="400" y="16" width="100" height="52" uuid="42585b55-59ff-40bd-8151-313e51847ea3"/>
+				<text><![CDATA[Kosnathota Godakawela               071 222 3344 ]]></text>
+			</staticText>
+			<image>
+				<reportElement x="91" y="6" width="50" height="50" uuid="b5c13d79-5082-49c0-9f8a-5cd8974b4bbe"/>
+				<imageExpression><![CDATA["/home/buddhika/Desktop/aiml/PawsitiveCare/src/main/resources/view/Assets/image/veterinary.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="41" splitType="Stretch">
+			<staticText>
+				<reportElement x="2" y="2" width="58" height="30" uuid="998f6e2e-e4c7-4db4-a788-b191ab91bc46"/>
+				<text><![CDATA[OrderID]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="80" y="2" width="100" height="30" uuid="adb8f285-8a3d-4a20-b79f-62c8b8ef9528"/>
+				<textFieldExpression><![CDATA[$P{OrderId}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="318" y="2" width="45" height="30" uuid="587e6aeb-780d-4efe-af5b-81c3be82ad35"/>
+				<text><![CDATA[Date :]]></text>
+			</staticText>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="363" y="2" width="100" height="30" uuid="3707923f-baff-40f8-b70c-9514c38b5b1b"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField pattern="HH:mm">
+				<reportElement x="463" y="3" width="100" height="30" uuid="0f2679d7-c320-42b7-9072-48ad30107345"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="47" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="6" width="68" height="30" uuid="31377318-b0ac-4086-a433-e2dd80ad73df"/>
+				<text><![CDATA[Item Code]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="80" y="6" width="100" height="30" uuid="86b881ac-9b09-4232-a3b7-d5a9ef5b1bc9"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Item Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="257" y="5" width="38" height="30" uuid="82868a40-66a6-4ebb-8ea4-48c5b475ef07"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Qty]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="326" y="6" width="69" height="30" uuid="9a8cffe0-389e-4e2c-ba66-674fb740ce1b"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Unit Price]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="446" y="7" width="67" height="30" uuid="cfd0fcf5-e020-4110-999d-9a9c2c8d4648"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Amount]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="31" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="60" height="30" uuid="f927e02e-e385-4ce7-9c89-fd81e13ee2d8"/>
+				<textFieldExpression><![CDATA[$P{code}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="252" y="0" width="60" height="30" uuid="1cc4b7b6-f327-4766-9b87-e47836c5502c"/>
+				<textFieldExpression><![CDATA[$P{Qty}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="320" y="0" width="80" height="30" uuid="45223372-c945-47d2-91d0-cf1ccf8f7aaf"/>
+				<textFieldExpression><![CDATA[$P{unitPrice}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="430" y="0" width="100" height="30" uuid="c75608b4-71de-45e3-87da-076c658e9e0d"/>
+				<textFieldExpression><![CDATA[$P{amount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="80" y="0" width="152" height="30" uuid="3457492d-be29-42e0-9167-7c0aa5a50ebe"/>
+				<textFieldExpression><![CDATA[$P{name}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="56" splitType="Stretch">
+			<staticText>
+				<reportElement x="290" y="20" width="100" height="30" uuid="94ebd5e1-be8b-4f8a-9806-3bddbc72f9a4"/>
+				<text><![CDATA[Net Total]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="428" y="21" width="100" height="30" uuid="3a207c5d-9241-4e9d-8e91-3f49d38caddd"/>
+				<textFieldExpression><![CDATA[$P{NetTotal}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<summary>
+		<band height="46" splitType="Stretch">
+			<staticText>
+				<reportElement x="200" y="0" width="182" height="30" uuid="0f368d0e-c389-4010-bc9e-36b60a6bea61"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Bill by Pawsitive Care ]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

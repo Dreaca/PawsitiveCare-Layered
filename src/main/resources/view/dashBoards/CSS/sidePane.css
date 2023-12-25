@@ -1,0 +1,10 @@
+#sidePane {
+    -fx-background-color: linear-gradient(to top, #f5f5dc, #e6b874);
+    -fx-background-radius: 10;
+    -fx-border-color: linear-gradient(to bottom, #d2a172, #e9e4d7);
+    -fx-border-radius: 10;
+}
+#sidePane.glow-effect {
+    -fx-effect: dropshadow(gaussian, #8a2be2, 10, 0.5, 0, 0);
+
+}

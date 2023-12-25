@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="505.0" prefWidth="707.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RecordsController">
+   <children>
+      <AnchorPane layoutX="14.0" layoutY="11.0" prefHeight="481.0" prefWidth="322.0" style="-fx-background-color: linear-gradient(to bottom, #d2a172, #e9e4d7);;">
+         <children>
+            <Label layoutX="103.0" layoutY="7.0" text="Pet Details">
+               <font>
+                  <Font name="Comic Sans MS" size="21.0" />
+               </font>
+            </Label>
+            <Label layoutX="24.0" layoutY="87.0" text="Name" />
+            <Label layoutX="24.0" layoutY="117.0" text="PetID" />
+            <Label layoutX="24.0" layoutY="178.0" text="Breed" />
+            <Label layoutX="24.0" layoutY="210.0" text="Color" />
+            <Label layoutX="23.0" layoutY="272.0" text="Owner" />
+            <Label layoutX="24.0" layoutY="242.0" text="Gender" />
+            <Label fx:id="lblPetname" layoutX="103.0" layoutY="87.0" text="Name" />
+            <Label fx:id="lblPetId" layoutX="103.0" layoutY="117.0" text="P001" />
+            <Label fx:id="lblPetBreed" layoutX="103.0" layoutY="177.0" text="Dog" />
+            <Label layoutX="25.0" layoutY="148.0" text="Age" />
+            <Label fx:id="lblAge" layoutX="103.0" layoutY="147.0" text="10" />
+            <Label fx:id="lblColor" layoutX="102.0" layoutY="210.0" text="Dog" />
+            <Label fx:id="lblGender" layoutX="102.0" layoutY="241.0" text="Dog" />
+            <Label fx:id="lblOwner" layoutX="103.0" layoutY="271.0" text="Dog" />
+            <JFXButton buttonType="RAISED" layoutX="187.0" layoutY="443.0" onAction="#addNewRecordOnAction" style="-fx-background-color: linear-gradient(to bottom, #d2a172, #e9e4d7);" text="Add New Record" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="370.0" layoutY="12.0" prefHeight="481.0" prefWidth="322.0" style="-fx-background-color: green;">
+         <children>
+            <TableView fx:id="tblRec" prefHeight="481.0" prefWidth="322.0">
+              <columns>
+                <TableColumn fx:id="recId" prefWidth="51.0" text="Rec ID" />
+                <TableColumn fx:id="datecol" prefWidth="99.0" text="Date" />
+                  <TableColumn fx:id="descCol" prefWidth="171.0" text="Description" />
+              </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+      <Separator layoutX="336.0" layoutY="11.0" orientation="VERTICAL" prefHeight="481.0" prefWidth="37.0" />
+   </children>
+</AnchorPane>
