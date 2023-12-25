@@ -1,7 +1,7 @@
 package controller;
 
 import bo.BOFactory;
-import bo.ItemBo;
+import bo.custom.ItemBo;
 import dto.ItemDto;
 import dto.Tm.ItemTm;
 import com.jfoenix.controls.JFXButton;

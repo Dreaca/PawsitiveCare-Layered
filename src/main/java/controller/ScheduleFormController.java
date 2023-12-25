@@ -1,7 +1,7 @@
 package controller;
 
 import bo.BOFactory;
-import bo.ScheduleBo;
+import bo.custom.ScheduleBo;
 import dto.ScheduleDto;
 import dto.Tm.ScheduleTm;
 import com.jfoenix.controls.JFXButton;

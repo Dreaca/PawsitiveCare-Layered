@@ -1,4 +1,4 @@
-package bo;
+package bo.custom;
 
 import dto.AdminDto;
 import dto.LoginFormDto;
@@ -12,7 +12,7 @@ public interface LoginBo extends SuperBO{
 
     boolean updatePassword(String userId, String newpW) throws SQLException;
 
-    AdminDto getUser(String user) throws SQLException;
+    AdminDto getUser(String user) throws SQLException, ClassNotFoundException;
 
     boolean authenticateUser(LoginFormDto loginFormDto) throws SQLException;
 

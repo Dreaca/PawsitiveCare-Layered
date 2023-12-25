@@ -1,6 +1,6 @@
 package controller;
 
-import bo.AppointmentBo;
+import bo.custom.AppointmentBo;
 import bo.BOFactory;
 import dto.AppointmentDto;
 import dto.Tm.AppointmentTm;

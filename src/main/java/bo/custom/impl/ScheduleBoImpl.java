@@ -1,5 +1,6 @@
-package bo;
+package bo.custom.impl;
 
+import bo.custom.ScheduleBo;
 import dao.DaoFactory;
 import dao.custom.ScheduleDao;
 import dao.custom.VetDao;
@@ -13,7 +14,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ScheduleBoImpl implements ScheduleBo{
+public class ScheduleBoImpl implements ScheduleBo {
     private ScheduleDao scheduleDao = (ScheduleDao) DaoFactory.getInstance().getDAO(DaoFactory.DAOType.SCHEDULE);
     private VetDao vetDao = (VetDao) DaoFactory.getInstance().getDAO(DaoFactory.DAOType.VET);
     private VetScheduleDao VSdao = (VetScheduleDao) DaoFactory.getInstance().getDAO(DaoFactory.DAOType.VS);

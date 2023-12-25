@@ -1,8 +1,8 @@
 package controller;
 
-import bo.LoginBo;
+import bo.custom.LoginBo;
 import bo.BOFactory;
-import bo.EmployeeBo;
+import bo.custom.EmployeeBo;
 import dto.AdminDto;
 import dto.EmployeeDto;
 import dto.LoginFormDto;
@@ -238,8 +238,15 @@ public class AdminFormController {
             new Alert(Alert.AlertType.ERROR,"Password Incorrect").show();
         }
     }
-    public void setDashBoard() throws SQLException {
-        AdminDto userAdmin = adminBo.getUser(user);
+    public void setDashBoard() {
+        AdminDto userAdmin = null;
+        try {
+            userAdmin = adminBo.getUser(user);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
         System.out.println(user);
         EmployeeDto dto = userAdmin.getDto();
         System.out.println(dto+"Admin dash");

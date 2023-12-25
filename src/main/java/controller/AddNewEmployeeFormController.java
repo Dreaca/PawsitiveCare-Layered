@@ -1,8 +1,7 @@
 package controller;
 
-import bo.EmployeeBo;
+import bo.custom.EmployeeBo;
 import bo.BOFactory;
-import bo.LoginBo;
 import dto.EmployeeDto;
 import dto.LoginFormDto;
 import com.jfoenix.controls.JFXButton;

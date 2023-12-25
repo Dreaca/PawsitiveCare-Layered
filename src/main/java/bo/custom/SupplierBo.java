@@ -1,4 +1,4 @@
-package bo;
+package bo.custom;
 
 import java.sql.SQLException;
 

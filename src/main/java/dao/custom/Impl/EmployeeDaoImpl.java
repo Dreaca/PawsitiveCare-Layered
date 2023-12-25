@@ -11,7 +11,7 @@ import java.sql.*;
 import java.util.ArrayList;
 
 public class EmployeeDaoImpl implements EmployeeDao {
-    LoginDao loginDao  = (LoginDao) DaoFactory.getInstance().getDAO(DaoFactory.DAOType.LOGIN);
+//    LoginDao loginDao  = (LoginDao) DaoFactory.getInstance().getDAO(DaoFactory.DAOType.LOGIN);
 
     @Override
     public ArrayList<EmployeeDto> getAll() throws SQLException {
@@ -58,30 +58,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
     }
     @Override
     public  boolean  delete(String empId) throws SQLException {
-        boolean flag = false;
-        Connection connection = DbConnection.getInstance().getConnection();;
-        try {
-            connection.setAutoCommit(false);
-
-            String userId = getEmployee(empId);
-            PreparedStatement pstm = connection.prepareStatement("DELETE FROM employee WHERE employeeId = ?");
-            pstm.setString(1,empId);
-            int i = pstm.executeUpdate();
-            if(i > 0){
-                boolean b = loginDao.delete(userId);
-                if (b) {
-                    flag = b;
-                    connection.commit();
-                }
-            }
-        } catch (SQLException e) {
-            connection.rollback();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } finally {
-            connection.setAutoCommit(true);
-        }
-        return flag;
+           return SQLUtil.execute("DELETE FROM employee WHERE employeeId = ?",empId);
     }
 
     @Override

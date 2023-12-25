@@ -1,8 +1,8 @@
 package controller;
 
 import bo.BOFactory;
-import bo.ItemBo;
-import bo.SupplierBo;
+import bo.custom.ItemBo;
+import bo.custom.SupplierBo;
 import javafx.event.ActionEvent;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;

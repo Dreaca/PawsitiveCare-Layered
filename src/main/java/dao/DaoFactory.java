@@ -1,12 +1,11 @@
 package dao;
 
-import bo.SuperBO;
 import dao.custom.Impl.*;
 
 public class DaoFactory {
-    public static DaoFactory daoFactory;
+    static DaoFactory daoFactory;
     public static DaoFactory getInstance(){
-        return daoFactory == null? new DaoFactory() : daoFactory;
+        return (daoFactory == null)? daoFactory =  new DaoFactory() : daoFactory;
     }
     private DaoFactory(){
 

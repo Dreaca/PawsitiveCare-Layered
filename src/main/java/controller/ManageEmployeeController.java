@@ -1,7 +1,7 @@
 package controller;
 
 import bo.BOFactory;
-import bo.EmployeeBo;
+import bo.custom.EmployeeBo;
 import dto.EmployeeDto;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;

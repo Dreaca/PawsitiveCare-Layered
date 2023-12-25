@@ -36,23 +36,10 @@ public class ScheduleDaoImpl implements ScheduleDao {
 
     @Override
     public boolean save(Schedule entity) throws SQLException {
-        Connection connection = DbConnection.getInstance().getConnection();
-        var model = new VetModel();
-        String vetId = model.getVetId(entity.getVetName());
-        PreparedStatement pstm = connection.prepareStatement("INSERT INTO schedule VALUES(?,?,?,?)");
-        pstm.setString(1,entity.getScheduleId());
-        pstm.setDate(2, Date.valueOf(entity.getDate()));
-        pstm.setString(3,entity.getDuration());
-        pstm.setTime(4, Time.valueOf(entity.getTime()));
-        int i = pstm.executeUpdate();
-        if(i>0){
-            PreparedStatement pstm1 = connection.prepareStatement("INSERT INTO vet_schedule VALUES (?,?)");
-            pstm1.setString(1,entity.getScheduleId());
-            pstm1.setString(2,vetId);
-            int i1 = pstm1.executeUpdate();
-            return i1>0;
-        }
-        else return false;
+        return (SQLUtil.execute("INSERT INTO schedule VALUES(?,?,?,?)",entity.getScheduleId(),
+                Date.valueOf(entity.getDate()),
+                entity.getDuration(),
+                Time.valueOf(entity.getTime())));
     }
 
     @Override
@@ -85,7 +72,7 @@ public class ScheduleDaoImpl implements ScheduleDao {
             return "S001";
         }
         else {
-            return "S00"+num;
+            return String.format("S%03d",num);
         }
     }
 }

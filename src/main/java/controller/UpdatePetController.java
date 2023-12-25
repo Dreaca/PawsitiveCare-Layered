@@ -1,7 +1,7 @@
 package controller;
 
 import bo.BOFactory;
-import bo.PetBo;
+import bo.custom.PetBo;
 import dto.PetDto;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;

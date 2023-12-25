@@ -1,4 +1,4 @@
-package bo;
+package bo.custom;
 
 import dto.EmployeeDto;
 import dto.LoginFormDto;

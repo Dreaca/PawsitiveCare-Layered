@@ -1,7 +1,7 @@
 package controller;
 
 import bo.BOFactory;
-import bo.LoginBo;
+import bo.custom.LoginBo;
 import dto.LoginFormDto;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;

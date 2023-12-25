@@ -1,7 +1,7 @@
 package controller;
 
 import bo.BOFactory;
-import bo.VetBo;
+import bo.custom.VetBo;
 import dto.Tm.VetTm;
 import dto.VetDto;
 import com.jfoenix.controls.JFXButton;

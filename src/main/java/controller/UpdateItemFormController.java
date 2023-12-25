@@ -1,7 +1,7 @@
 package controller;
 
 import bo.BOFactory;
-import bo.ItemBo;
+import bo.custom.ItemBo;
 import dto.ItemDto;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;

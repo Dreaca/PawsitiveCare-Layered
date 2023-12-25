@@ -1,15 +1,15 @@
-package bo;
+package bo.custom.impl;
 
+import bo.custom.PetBo;
 import dao.DaoFactory;
 import dao.custom.CustomerDao;
-import dao.custom.Impl.PetDaoImpl;
 import dao.custom.PetDao;
 import dto.PetDto;
 
 import java.sql.SQLException;
 import java.util.List;
 
-public class PetBoImpl implements PetBo{
+public class PetBoImpl implements PetBo {
     private PetDao petDao = (PetDao) DaoFactory.getInstance().getDAO(DaoFactory.DAOType.PET);
     private CustomerDao customerDao = (CustomerDao) DaoFactory.getInstance().getDAO(DaoFactory.DAOType.CUSTOMER);
 

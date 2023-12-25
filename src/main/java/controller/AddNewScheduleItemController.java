@@ -1,7 +1,7 @@
 package controller;
 
 import bo.BOFactory;
-import bo.ScheduleBo;
+import bo.custom.ScheduleBo;
 import dto.ScheduleDto;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;

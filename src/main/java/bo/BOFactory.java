@@ -1,5 +1,8 @@
 package bo;
 
+import bo.custom.SuperBO;
+import bo.custom.impl.*;
+
 public class BOFactory {
     public  static BOFactory boFactory;
     private BOFactory(){}

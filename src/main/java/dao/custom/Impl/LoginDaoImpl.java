@@ -1,22 +1,15 @@
 package dao.custom.Impl;
 
-import dao.DaoFactory;
 import dao.SQLUtil;
-import dao.custom.EmployeeDao;
 import dao.custom.LoginDao;
-import db.DbConnection;
-import dto.AdminDto;
-import dto.EmployeeDto;
 import dto.LoginFormDto;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class LoginDaoImpl implements LoginDao {
-    EmployeeDao dao = (EmployeeDao) DaoFactory.getInstance().getDAO(DaoFactory.DAOType.EMPLOYEE);
+   // private EmployeeDao dao = (EmployeeDao) DaoFactory.getInstance().getDAO(DaoFactory.DAOType.EMPLOYEE);
     @Override
     public  String generateNExtUserID() throws SQLException {
         ResultSet resultSet = SQLUtil.execute("SELECT * FROM user ORDER BY userId DESC LIMIT 1");
@@ -83,28 +76,17 @@ public class LoginDaoImpl implements LoginDao {
     }
 
     @Override
-    public AdminDto getUser(String userName) throws SQLException {
+    public LoginFormDto getUser(String userName) throws SQLException {
         LoginFormDto loginFormDto = new LoginFormDto();
-        Connection connection = DbConnection.getInstance().getConnection();
-        PreparedStatement pstm = connection.prepareStatement("SELECT * FROM user WHERE userName = ?");
-        pstm.setString(1, userName);
-        ResultSet resultSet = pstm.executeQuery();
-        EmployeeDto dto = null;
+        ResultSet resultSet = SQLUtil.execute("SELECT * FROM user WHERE userName = ?",userName);
         if (resultSet.next()) {
-            try {
-                dto = dao.search(resultSet.getString(1));
-            } catch (ClassNotFoundException e) {
-                throw new RuntimeException(e);
-            }
-            System.out.println(dto + "Employee ");
             loginFormDto = new LoginFormDto(
                     resultSet.getString(1),
                     resultSet.getString(2),
                     resultSet.getString(3)
             );
-            System.out.println(loginFormDto+"login");
         }
-        return new AdminDto(dto, loginFormDto);
+        return  loginFormDto;
     }
 
     @Override

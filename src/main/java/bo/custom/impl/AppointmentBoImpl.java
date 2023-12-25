@@ -1,15 +1,13 @@
-package bo;
+package bo.custom.impl;
 
+import bo.custom.AppointmentBo;
 import dao.DaoFactory;
 import dao.custom.AppointmentDao;
 import dao.custom.CustomerDao;
-import dao.custom.Impl.AppointmentDAOImpl;
-import dao.custom.Impl.CustomerDaoImpl;
 import dto.AppointmentDto;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
 public class AppointmentBoImpl implements AppointmentBo {
     private AppointmentDao dao = (AppointmentDao) DaoFactory.getInstance().getDAO(DaoFactory.DAOType.APPOINTMENT);

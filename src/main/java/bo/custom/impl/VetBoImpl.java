@@ -1,5 +1,6 @@
-package bo;
+package bo.custom.impl;
 
+import bo.custom.VetBo;
 import dao.DaoFactory;
 import dao.custom.VetDao;
 import dto.VetDto;
@@ -7,7 +8,7 @@ import dto.VetDto;
 import java.sql.SQLException;
 import java.util.List;
 
-public class VetBoImpl implements VetBo{
+public class VetBoImpl implements VetBo {
     private VetDao dao = (VetDao) DaoFactory.getInstance().getDAO(DaoFactory.DAOType.VET);
     @Override
     public VetDto searchVet(String id) throws SQLException, ClassNotFoundException {

@@ -1,9 +1,8 @@
-package bo;
+package bo.custom.impl;
 
+import bo.custom.EmployeeBo;
 import dao.DaoFactory;
 import dao.custom.EmployeeDao;
-import dao.custom.Impl.EmployeeDaoImpl;
-import dao.custom.Impl.LoginDaoImpl;
 import dao.custom.LoginDao;
 import dto.EmployeeDto;
 import dto.LoginFormDto;
@@ -36,7 +35,12 @@ private EmployeeDao dao = (EmployeeDao) DaoFactory.getInstance().getDAO(DaoFacto
 
     @Override
     public boolean deleteEmployee(String empId) throws SQLException, ClassNotFoundException {
-        return dao.delete(empId);
+        boolean delete = dao.delete(empId);
+        if (delete){
+            String userId = dao.getEmployee(empId);
+            return loginDao.delete(userId);
+        }
+        else return false;
     }
 
     @Override
