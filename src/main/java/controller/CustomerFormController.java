@@ -1,5 +1,7 @@
 package controller;
 
+import bo.BOFactory;
+import bo.CustomerBo;
 import dao.custom.CustomerDao;
 import dao.custom.Impl.CustomerDaoImpl;
 import dto.CustomerDto;
@@ -63,7 +65,8 @@ public class CustomerFormController {
 
     @FXML
     private TextField txtCustomerLname;
-    private CustomerDao dao = new CustomerDaoImpl();
+//    private CustomerDao dao = new CustomerDaoImpl();
+    private CustomerBo bo = (CustomerBo) BOFactory.getBOFactory().getBo(BOFactory.BoTypes.CUSTOMER);
     public void initialize(){
         setCellValueFactory();
         loadAllCustomer();
@@ -75,7 +78,7 @@ public class CustomerFormController {
         ObservableList<CustomerTm> oblist = FXCollections.observableArrayList();
 
         try {
-            List<CustomerDto> list = dao.getAll();
+            List<CustomerDto> list = bo.getAllCustomer();
 
             for (CustomerDto d : list) {
                 oblist.add(
@@ -112,7 +115,7 @@ public class CustomerFormController {
         String address = txtCusAddress.getText();
         String contact = txtContactNo.getText();
         try {
-            if(dao.update(new CustomerDto(id,name,address,contact))){
+            if(bo.updateCustomer(new CustomerDto(id,name,address,contact))){
                 new Alert(Alert.AlertType.CONFIRMATION,"Customer Saved").show();
             }
         } catch (SQLException e) {
@@ -127,7 +130,7 @@ public class CustomerFormController {
     void customerContactSearch(ActionEvent event) {
         String contact = txtCustomerFname.getText();
         try {
-            CustomerDto customerDto = dao.searchCustomerByContact(contact);
+            CustomerDto customerDto = bo.searchCustomerByContact(contact);
             if (customerDto != null){
                 String [] name = customerDto.getCustomerName().split(" ");
                 txtCustomerID.setText(customerDto.getCustomerId());
@@ -149,7 +152,7 @@ public class CustomerFormController {
         String id = txtCustomerID.getText();
         boolean isDeleted = false;
         try {
-            isDeleted = dao.delete(id);
+            isDeleted = bo.deleteCustomer(id);
             if(isDeleted){
                 new Alert(Alert.AlertType.CONFIRMATION,"Customer Deleted !").show();
             }
@@ -169,7 +172,7 @@ public class CustomerFormController {
     void customerLnameSearchOnAction(ActionEvent event) {
         String Lname = txtCustomerLname.getText();
         try {
-            CustomerDto customerDto = dao.searchCustomerByLname(Lname);
+            CustomerDto customerDto = bo.searchCustomerByLastname(Lname);
             if (customerDto != null){
                 String [] name = customerDto.getCustomerName().split(" ");
                 txtCustomerID.setText(customerDto.getCustomerId());
@@ -197,7 +200,7 @@ public class CustomerFormController {
 
         var dto = new CustomerDto(Id,fullname,Address,contact);
         try{
-            boolean isSaved = dao.save(dto);
+            boolean isSaved = bo.saveCustomer(dto);
             tblCustomer.refresh();
             if(isSaved){
                 new Alert(Alert.AlertType.CONFIRMATION,"Customer Saved Successfully").show();
@@ -227,7 +230,7 @@ public class CustomerFormController {
     void customerSearchOnaction(ActionEvent event) {
         String id = txtCustomerID.getText();
         try {
-            CustomerDto customerDto = dao.search(id);
+            CustomerDto customerDto = bo.searchCustomer(id);
             if (customerDto != null){
                 String [] name = customerDto.getCustomerName().split(" ");
                 txtCustomerID.setText(customerDto.getCustomerId());
@@ -250,7 +253,7 @@ public class CustomerFormController {
     void txtCustomerFnameSearch(ActionEvent event) {
         String Fname = txtCustomerFname.getText();
         try {
-            CustomerDto customerDto = dao.searchCustomerByFname(Fname);
+            CustomerDto customerDto = bo.searchCustomerByFirstname(Fname);
             if (customerDto != null){
                 String [] name = customerDto.getCustomerName().split(" ");
                 txtCustomerID.setText(customerDto.getCustomerId());
