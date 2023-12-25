@@ -4,39 +4,29 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="749.0" prefWidth="1035.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ScheduleFormController">
+<AnchorPane prefHeight="615.0" prefWidth="1341.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ScheduleFormController">
    <children>
-      <TableView fx:id="tblSchedule" layoutX="26.0" layoutY="108.0" prefHeight="525.0" prefWidth="979.0" style="-fx-background-color: faa85a;">
+      <TableView fx:id="tblSchedule" layoutX="26.0" layoutY="108.0" prefHeight="479.0" prefWidth="1023.0" style="-fx-background-color: linear-gradient(to bottom, #d2a172, #faa80a);">
         <columns>
           <TableColumn fx:id="colDate" prefWidth="148.3333282470703" text="Date" />
 <!--          <TableColumn fx:id="colDay" prefWidth="119.0" text="Day" />-->
             <TableColumn fx:id="colTime" prefWidth="128.33331298828125" text="Time" />
-            <TableColumn fx:id="colVetName" prefWidth="301.6666259765625" text="VetName" />
-            <TableColumn fx:id="colDuration" prefWidth="218.3333740234375" text="Duration" />
-            <TableColumn fx:id="colMod" prefWidth="60.6666259765625" text=" " />
+            <TableColumn fx:id="colVetName" prefWidth="400.0" text="VetName" />
+            <TableColumn fx:id="colDuration" prefWidth="229.0" text="Duration" />
+            <TableColumn fx:id="colMod" prefWidth="115.0" text=" " />
         </columns>
       </TableView>
-      <JFXButton layoutX="791.0" layoutY="642.0" onAction="#printScheduleOnAction" prefHeight="40.0" prefWidth="199.0" style="-fx-background-color: faa80a; -fx-background-radius: 20;" text="Print Schedule">
+      <JFXButton layoutX="1099.0" layoutY="536.0" onAction="#printScheduleOnAction" prefHeight="40.0" prefWidth="199.0" style="-fx-background-color: linear-gradient(to bottom, #d2a172, #faa80a); -fx-background-radius: 20;" text="Print Schedule">
          <graphic>
             <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../Assets/icon/printer.png" />
-               </image>
-            </ImageView>
-         </graphic>
-         <font>
-            <Font name="Manjari Thin" size="15.0" />
-         </font></JFXButton>
-      <JFXButton layoutX="61.0" layoutY="643.0" onAction="#mailVetsOnAction" prefHeight="48.0" prefWidth="149.0" style="-fx-background-color: faa80a; -fx-background-radius: 20;" text="Mail to vets">
-         <graphic>
-            <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../Assets/icon/medical.png" />
                </image>
             </ImageView>
          </graphic>
@@ -48,7 +38,7 @@
             <Font name="Manjari Thin" size="60.0" />
          </font>
       </Label>
-      <JFXButton layoutX="34.0" layoutY="43.0" onAction="#refreshOnAction" style="-fx-background-color: faa80a; -fx-background-radius: 20; -fx-border-radius: 20;" text="Refresh">
+      <JFXButton layoutX="34.0" layoutY="43.0" onAction="#refreshOnAction" style="-fx-background-color: linear-gradient(to bottom, #d2a172, #faa80a); -fx-background-radius: 20; -fx-border-radius: 20;" text="Refresh">
          <graphic>
             <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -59,7 +49,7 @@
          <font>
             <Font name="Manjari Thin" size="15.0" />
          </font></JFXButton>
-      <JFXButton layoutX="796.0" layoutY="46.0" onAction="#addScheduleOnAction" style="-fx-background-color: faa80a; -fx-background-radius: 20; -fx-border-radius: 20;" text="Add new schdule Item">
+      <JFXButton id="button" layoutX="842.0" layoutY="46.0" onAction="#addScheduleOnAction" style="-fx-background-color: linear-gradient(to bottom, #d2a172, #faa80a); -fx-background-radius: 20; -fx-border-radius: 20;" text="Add new schdule Item">
          <graphic>
             <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -70,5 +60,44 @@
          <font>
             <Font name="Manjari Thin" size="15.0" />
          </font></JFXButton>
+      <AnchorPane fx:id="ball3" layoutX="1075.0" layoutY="46.0" prefHeight="131.0" prefWidth="228.0" style="-fx-background-radius: 180; -fx-border-radius: 180;" stylesheets="@../CSS/balls.css">
+         <effect>
+            <DropShadow />
+         </effect>
+         <children>
+            <Label contentDisplay="CENTER" layoutX="54.0" layoutY="6.0" prefHeight="32.0" prefWidth="142.0" text="Total Vaccinations" textAlignment="CENTER" wrapText="true" />
+            <Label fx:id="vaccineCount" layoutX="78.0" layoutY="39.0" text="00">
+               <font>
+                  <Font size="52.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="ball2" layoutX="1075.0" layoutY="203.0" prefHeight="129.0" prefWidth="229.0" style="-fx-background-radius: 180; -fx-border-radius: 180;" stylesheets="@../CSS/balls.css">
+         <effect>
+            <DropShadow />
+         </effect>
+         <children>
+            <Label layoutX="66.0" layoutY="12.0" text="Total Surgeries" />
+            <Label fx:id="surgCount" layoutX="80.0" layoutY="44.0" text="00">
+               <font>
+                  <Font size="52.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="ball" layoutX="1077.0" layoutY="361.0" prefHeight="139.0" prefWidth="223.0" style="-fx-background-radius: 180; -fx-border-radius: 180;" stylesheets="@../CSS/balls.css">
+         <effect>
+            <DropShadow />
+         </effect>
+         <children>
+            <Label layoutX="66.0" layoutY="24.0" text="Total Checkups" />
+            <Label fx:id="checkupCount" layoutX="77.0" layoutY="46.0" prefHeight="70.0" prefWidth="83.0" text="00">
+               <font>
+                  <Font size="52.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

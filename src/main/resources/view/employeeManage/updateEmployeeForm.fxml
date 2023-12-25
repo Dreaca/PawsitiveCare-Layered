@@ -4,29 +4,25 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="493.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UpdateEmployeeFormController">
+<AnchorPane fx:id="root" prefHeight="364.0" prefWidth="600.0" style="-fx-background-color: linear-gradient(to bottom, #d2a172, #e9e4d7);;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UpdateEmployeeFormController">
    <children>
       <Label layoutX="230.0" layoutY="2.0" text="Update Employee">
          <font>
             <Font name="Manjari Thin" size="20.0" />
          </font></Label>
-      <ComboBox layoutX="28.0" layoutY="229.0" prefHeight="33.0" prefWidth="255.0" promptText="Employee ID" style="-fx-background-color: faa80a;" />
-      <TextField layoutX="316.0" layoutY="229.0" prefHeight="33.0" prefWidth="255.0" promptText="Employee First Name" style="-fx-border-color: faa80a;" />
-      <TextField layoutX="28.0" layoutY="283.0" prefHeight="33.0" prefWidth="255.0" promptText="Employee Last Name" style="-fx-border-color: faa80a;" />
-      <TextField layoutX="316.0" layoutY="283.0" prefHeight="33.0" prefWidth="255.0" promptText="Address" style="-fx-border-color: faa80a;" />
-      <TextField layoutX="29.0" layoutY="336.0" prefHeight="33.0" prefWidth="255.0" promptText="Contact" style="-fx-border-color: faa80a;" />
-      <TextField layoutX="316.0" layoutY="336.0" prefHeight="33.0" prefWidth="255.0" promptText="Salary" style="-fx-border-color: faa80a;" />
-      <TextField layoutX="30.0" layoutY="383.0" prefHeight="33.0" prefWidth="255.0" promptText="User Name" style="-fx-border-color: faa80a;" />
-      <TextField layoutX="316.0" layoutY="383.0" prefHeight="33.0" prefWidth="255.0" promptText="Password" style="-fx-border-color: faa80a;" />
-      <AnchorPane layoutX="236.0" layoutY="52.0" prefHeight="150.0" prefWidth="131.0" style="-fx-border-color: black;">
-         <children>
-            <ImageView fitHeight="150.0" fitWidth="139.0" layoutX="2.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true" />
-         </children></AnchorPane>
-      <JFXButton buttonType="RAISED" layoutX="455.0" layoutY="426.0" prefHeight="33.0" prefWidth="116.0" style="-fx-background-color: faa80a; -fx-background-radius: 20; -fx-border-radius: 20;" text="Update" />
-      <JFXButton buttonType="RAISED" layoutX="328.0" layoutY="426.0" prefHeight="33.0" prefWidth="116.0" style="-fx-background-color: faa80a; -fx-background-radius: 20; -fx-border-radius: 20;" text="Cancel" />
+      <ComboBox fx:id="cmbEmpId" layoutX="28.0" layoutY="63.0" prefHeight="33.0" prefWidth="255.0" promptText="Employee ID" style="-fx-background-color: linear-gradient(to bottom, #d2a172, #faa80a);;" />
+      <TextField fx:id="txtEmpFname" layoutX="316.0" layoutY="63.0" prefHeight="33.0" prefWidth="255.0" promptText="Employee First Name" style="-fx-border-color: faa80a;" />
+      <TextField fx:id="txtEmpLName" layoutX="28.0" layoutY="117.0" prefHeight="33.0" prefWidth="255.0" promptText="Employee Last Name" style="-fx-border-color: faa80a;" />
+      <TextField fx:id="txtAddress" layoutX="316.0" layoutY="117.0" prefHeight="33.0" prefWidth="255.0" promptText="Address" style="-fx-border-color: faa80a;" />
+      <TextField fx:id="txtContact" layoutX="29.0" layoutY="170.0" prefHeight="33.0" prefWidth="255.0" promptText="Contact" style="-fx-border-color: faa80a;" />
+      <TextField fx:id="txtSalary" layoutX="316.0" layoutY="170.0" prefHeight="33.0" prefWidth="255.0" promptText="Salary" style="-fx-border-color: faa80a;" />
+      <TextField fx:id="txtUserName" layoutX="30.0" layoutY="217.0" prefHeight="33.0" prefWidth="255.0" promptText="User Name" style="-fx-border-color: faa80a;" />
+      <TextField fx:id="txtPass" layoutX="316.0" layoutY="217.0" prefHeight="33.0" prefWidth="255.0" promptText="Password" style="-fx-border-color: faa80a;" />
+      <JFXButton buttonType="RAISED" layoutX="455.0" layoutY="305.0" onAction="#updateOnAction" prefHeight="33.0" prefWidth="116.0" style="-fx-background-color: linear-gradient(to bottom, #d2a172, #faa80a); -fx-background-radius: 20; -fx-border-radius: 20;" text="Update" />
+      <JFXButton buttonType="RAISED" layoutX="328.0" layoutY="305.0" onAction="#cancelOnAction" prefHeight="33.0" prefWidth="116.0" style="-fx-background-color: linear-gradient(to bottom, #d2a172, #faa80a); -fx-background-radius: 20; -fx-border-radius: 20;" text="Cancel" />
+      <TextField fx:id="txtNic" layoutX="31.0" layoutY="261.0" prefHeight="33.0" prefWidth="255.0" promptText="NIC" style="-fx-border-color: faa80a;" />
    </children>
 </AnchorPane>

@@ -12,30 +12,31 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" prefHeight="749.0" prefWidth="1035.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SupplierFormController">
+<AnchorPane fx:id="sidePane" prefHeight="615.0" prefWidth="1341.0" stylesheets="@../CSS/sidePane.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SupplierFormController">
    <children>
-      <Label layoutX="464.0" layoutY="3.0" text="Supplier">
+      <Label layoutX="633.0" layoutY="10.0" prefHeight="55.0" prefWidth="133.0" text="Supplier">
          <font>
             <Font name="Manjari Thin" size="37.0" />
          </font>
       </Label>
-      <TableView fx:id="tblSupplier" layoutX="27.0" layoutY="319.0" prefHeight="385.0" prefWidth="980.0" style="-fx-background-color: faa85a;">
+      <TableView fx:id="tblSupplier" layoutX="25.0" layoutY="259.0" prefHeight="324.0" prefWidth="1299.0" style="-fx-background-color: faa85a;">
         <columns>
-          <TableColumn fx:id="colSupplierId" prefWidth="95.0" text="SupplierID" />
-          <TableColumn fx:id="colSupName" prefWidth="155.0" text="Name" />
-            <TableColumn fx:id="coltype" prefWidth="221.0" text="type" />
-            <TableColumn fx:id="colContact" prefWidth="198.6666717529297" text="Contact" />
-            <TableColumn fx:id="colLocation" prefWidth="180.66665649414062" text="Location" />
-            <TableColumn fx:id="colInvoice" prefWidth="132.3333740234375" text="Invoice" />
+          <TableColumn fx:id="colSupplierId" prefWidth="113.66666412353516" text="SupplierID" />
+          <TableColumn fx:id="colSupName" prefWidth="415.33333587646484" text="Name" />
+            <TableColumn fx:id="coltype" prefWidth="134.33334350585938" text="type" />
+            <TableColumn fx:id="colContact" prefWidth="234.00003051757812" text="Contact" />
+            <TableColumn fx:id="colLocation" prefWidth="211.3333740234375" text="Location" />
+            <TableColumn fx:id="colInvoice" prefWidth="113.33331298828125" text="Invoice" />
+            <TableColumn fx:id="colDel" prefWidth="70.6666259765625" text=" " />
         </columns>
       </TableView>
-      <TextField fx:id="txtSearch" layoutX="96.0" layoutY="79.0" prefHeight="46.0" prefWidth="893.0" promptText="Search" style="-fx-border-color: faa80a; -fx-background-radius: 20; -fx-border-radius: 20;">
+      <TextField fx:id="txtSearch" layoutX="96.0" layoutY="79.0" onAction="#searchSupplier" prefHeight="46.0" prefWidth="1229.0" promptText="Search" style="-fx-border-color: faa80a; -fx-background-radius: 20; -fx-border-radius: 20;">
          <font>
             <Font name="Manjari Regular" size="20.0" />
          </font></TextField>
-      <JFXButton buttonType="RAISED" layoutX="587.0" layoutY="258.0" onAction="#addsupplierONAction" prefHeight="50.0" prefWidth="192.0" style="-fx-background-color: lime; -fx-background-radius: 20;" text="Add new supplier ">
+      <JFXButton buttonType="RAISED" layoutX="1134.0" layoutY="138.0" onAction="#addsupplierONAction" onMouseEntered="#generateSupplierId" prefHeight="14.0" prefWidth="192.0" style="-fx-background-color: lime; -fx-background-radius: 20;" text="Add new supplier ">
          <graphic>
-            <ImageView fitHeight="42.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="26.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../Assets/icon/add.png" />
                </image>
@@ -44,9 +45,9 @@
          <font>
             <Font name="Manjari Thin" size="15.0" />
          </font></JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="798.0" layoutY="259.0" onAction="#updateSupplierOnAction" prefHeight="50.0" prefWidth="189.0" style="-fx-background-color: yellow; -fx-background-radius: 20;" text="Update Supplier">
+      <JFXButton buttonType="RAISED" layoutX="1137.0" layoutY="197.0" onAction="#updateSupplierOnAction" prefHeight="2.0" prefWidth="189.0" style="-fx-background-color: yellow; -fx-background-radius: 20;" text="Update Supplier">
          <graphic>
-            <ImageView fitHeight="42.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="27.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../Assets/icon/refresh.png" />
                </image>
@@ -66,10 +67,19 @@
                </image>
             </ImageView>
          </graphic></JFXButton>
-      <TextField fx:id="txtSupplierId" layoutX="25.0" layoutY="135.0" onAction="#searchSupplier" prefHeight="41.0" prefWidth="196.0" promptText="Supplier Id" style="-fx-border-color: faa80a; -fx-background-radius: 20; -fx-border-radius: 20;" />
-      <TextField fx:id="txtSupplierNAme" layoutX="255.0" layoutY="135.0" prefHeight="41.0" prefWidth="735.0" promptText="Name " style="-fx-border-color: faa80a; -fx-background-radius: 20; -fx-border-radius: 20;" />
-      <ComboBox fx:id="cmbType" layoutX="25.0" layoutY="196.0" prefHeight="43.0" prefWidth="198.0" promptText="Type" style="-fx-background-color: faa80a; -fx-background-radius: 20; -fx-border-radius: 20;" />
-      <TextField fx:id="txtLocation" layoutX="256.0" layoutY="198.0" prefHeight="41.0" prefWidth="475.0" promptText="Location" style="-fx-border-color: faa80a; -fx-background-radius: 20; -fx-border-radius: 20;" />
-      <TextField fx:id="txtContact" layoutX="753.0" layoutY="197.0" prefHeight="41.0" prefWidth="236.0" promptText="Contact" style="-fx-border-color: faa80a; -fx-background-radius: 20; -fx-border-radius: 20;" />
+      <TextField fx:id="txtSupplierNAme" layoutX="255.0" layoutY="135.0" prefHeight="41.0" prefWidth="871.0" promptText="Name " style="-fx-border-color: faa80a; -fx-background-radius: 20; -fx-border-radius: 20;" />
+      <ComboBox fx:id="cmbType" layoutX="27.0" layoutY="189.0" prefHeight="43.0" prefWidth="217.0" promptText="Type" style="-fx-background-color: faa80a; -fx-background-radius: 20; -fx-border-radius: 20;" />
+      <TextField fx:id="txtLocation" layoutX="256.0" layoutY="193.0" prefHeight="41.0" prefWidth="622.0" promptText="Location" style="-fx-border-color: faa80a; -fx-background-radius: 20; -fx-border-radius: 20;" />
+      <TextField fx:id="txtContact" layoutX="891.0" layoutY="193.0" prefHeight="41.0" prefWidth="236.0" promptText="Contact" style="-fx-border-color: faa80a; -fx-background-radius: 20; -fx-border-radius: 20;" />
+      <Label layoutX="34.0" layoutY="145.0" text="Supplier ID :">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblSupId" layoutX="155.0" layoutY="143.0" text="Sup01">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

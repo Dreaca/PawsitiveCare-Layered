@@ -2,18 +2,17 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="341.0" prefWidth="531.0" style="-fx-border-color: faa80a; -fx-background-color: white;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AddNewPetController">
+<AnchorPane prefHeight="459.0" prefWidth="308.0" style="-fx-border-color: linear-gradient(to bottom, #d2a172, #faa80a);; -fx-background-color: linear-gradient(to bottom, #d2a172, #faa80a);;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AddNewPetController">
    <children>
       <TextField fx:id="txtPetName" layoutX="47.0" layoutY="59.0" prefHeight="31.0" prefWidth="215.0" promptText="Pet Name" style="-fx-border-color: faa80a; -fx-background-radius: 20; -fx-border-radius: 20;" />
-      <ComboBox fx:id="cmbBreed" layoutX="48.0" layoutY="101.0" prefHeight="31.0" prefWidth="215.0" promptText="Breed" style="-fx-background-color: faa80a; -fx-background-radius: 20; -fx-border-radius: 20;" />
-      <ComboBox fx:id="cmbGender" layoutX="49.0" layoutY="144.0" prefHeight="31.0" prefWidth="215.0" promptText="Gender" style="-fx-background-radius: 20; -fx-border-radius: 20; -fx-background-color: faa80a;" />
-      <TextField fx:id="txtOwner" layoutX="49.0" layoutY="189.0" prefHeight="31.0" prefWidth="215.0" promptText="Owner" style="-fx-background-radius: 20; -fx-border-radius: 20; -fx-border-color: faa80a;" />
+      <ComboBox fx:id="cmbBreed" layoutX="47.0" layoutY="133.0" prefHeight="31.0" prefWidth="215.0" promptText="Breed" style="-fx-background-color: linear-gradient(to bottom, #d2a172, #e9e4d7);; -fx-background-radius: 20; -fx-border-radius: 20;" />
+      <ComboBox fx:id="cmbGender" layoutX="47.0" layoutY="174.0" prefHeight="31.0" prefWidth="215.0" promptText="Gender" style="-fx-background-radius: 20; -fx-border-radius: 20; -fx-background-color: linear-gradient(to bottom, #d2a172, #e9e4d7);;" />
+      <TextField fx:id="txtOwner" layoutX="47.0" layoutY="219.0" prefHeight="31.0" prefWidth="215.0" promptText="Owner" style="-fx-background-radius: 20; -fx-border-radius: 20; -fx-border-color: faa80a;" />
       <Label layoutX="48.0" layoutY="29.0" text="Pet Id : ">
          <font>
             <Font name="Manjari Thin" size="15.0" />
@@ -22,17 +21,9 @@
          <font>
             <Font name="System Bold" size="13.0" />
          </font></Label>
-      <TextField fx:id="txtColor" layoutX="50.0" layoutY="228.0" prefHeight="31.0" prefWidth="215.0" promptText="Color" style="-fx-background-radius: 20; -fx-border-radius: 20; -fx-border-color: faa80a;" />
-      <JFXButton buttonType="RAISED" layoutX="176.0" layoutY="290.0" onAction="#savePetOnAction" prefHeight="24.0" prefWidth="183.0" style="-fx-background-color: faa80a; -fx-background-radius: 20; -fx-border-radius: 20;" text="save" />
-      <AnchorPane fx:id="recordsPane" layoutX="299.0" layoutY="60.0" onDragDropped="#dropOnAction" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black; -fx-background-color: white; -fx-border-radius: 20; -fx-background-radius: 20;">
-         <children>
-            <Label layoutX="20.0" layoutY="28.0" opacity="0.34" prefHeight="52.0" prefWidth="160.0" text="Drag and Drop records here...." textAlignment="CENTER" wrapText="true" />
-            <Hyperlink fx:id="uploadLink" layoutX="72.0" layoutY="100.0" onAction="#uploadOnAction" opacity="0.34" text="Upload" />
-         </children>
-      </AnchorPane>
-      <Label alignment="CENTER" layoutX="339.0" layoutY="26.0" prefHeight="30.0" prefWidth="114.0" text="Records" textAlignment="CENTER">
-         <font>
-            <Font name="Manjari Thin" size="20.0" />
-         </font></Label>
+      <TextField fx:id="txtColor" layoutX="47.0" layoutY="258.0" prefHeight="31.0" prefWidth="215.0" promptText="Color" style="-fx-background-radius: 20; -fx-border-radius: 20; -fx-border-color: faa80a;" />
+      <JFXButton buttonType="RAISED" layoutX="63.0" layoutY="355.0" onAction="#savePetOnAction" prefHeight="24.0" prefWidth="183.0" style="-fx-background-color: linear-gradient(to bottom, #d2a172, #e9e4d7);; -fx-background-radius: 20; -fx-border-radius: 20;" text="save" />
+      <TextField fx:id="txtPetAge" layoutX="47.0" layoutY="95.0" prefHeight="31.0" prefWidth="215.0" promptText="Pet Age" style="-fx-border-color: faa80a; -fx-background-radius: 20; -fx-border-radius: 20;" />
+      <JFXButton buttonType="RAISED" layoutX="65.0" layoutY="388.0" onAction="#cancelPetOnAction" prefHeight="24.0" prefWidth="183.0" style="-fx-background-color: linear-gradient(to bottom, #d2a172, red); -fx-background-radius: 20; -fx-border-radius: 20;" text="Cancel" />
    </children>
 </AnchorPane>

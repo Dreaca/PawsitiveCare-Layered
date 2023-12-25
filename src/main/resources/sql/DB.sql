@@ -36,21 +36,27 @@ create table vet_schedule(
 create table customer(
 	custId varchar(10) primary key not null,
 	name varchar(45) not null,
-	address varchar(50) not null,
-	contact varchar(50)
+	address varchar(50) not null
 	);
-
+create table contact(
+	custId varchar(10) not null,
+	contId varchar(10) primary key not null,
+	contact varchar(25) not null,
+	foreign key (custId) references customer(custId) on update cascade on delete cascade
+	);
 create table appointment(
 	appId varchar(10) primary key not null,
 	custId varchar(10) not null,
 	type ENUM('Checkup','Surgery','Vaccination') not null,
 	time time(2),
-	date varchar,
+	date varchar(20),
+	price double,
 	constraint foreign key (custId) references customer(custId) on update cascade on delete cascade
 	);
 create table pet(
 	petId varchar(10) primary key not null,
 	name varchar(20) not null,
+	age int not null,
 	breed varchar(10) not null,
 	gender ENUM('Male','Female') not null,
 	color varchar (20) not null,
@@ -60,8 +66,7 @@ create table pet(
 create table record(
 	petId varchar(10),
 	recordId varchar(10) primary key not null,
-	description varchar(20),
-	detail blob,
+	description varchar(50),
 	date date,
 	constraint foreign key(petId) references pet(petId) on update cascade on delete cascade
 	);
@@ -110,5 +115,6 @@ create table employee(
     salary double,
     userId varchar(10),
     NIC varchar (50),
+    image mediumblob,
     constraint foreign key (userId) references user(userId) on update cascade on delete cascade
 );

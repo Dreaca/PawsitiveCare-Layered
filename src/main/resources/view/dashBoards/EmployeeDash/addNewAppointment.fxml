@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" prefHeight="361.0" prefWidth="381.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AddNewAppointmentController">
+<AnchorPane fx:id="root" prefHeight="361.0" prefWidth="381.0" style="-fx-background-color: linear-gradient(to bottom, #d2a172, #e9e4d7);;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AddNewAppointmentController">
    <children>
       <Label layoutX="137.0" layoutY="1.0" text="Add Appointment">
          <font>
@@ -24,11 +24,11 @@
          <font>
             <Font name="Manjari Thin" size="17.0" />
          </font></Label>
-      <DatePicker fx:id="dpkDate" layoutX="37.0" layoutY="65.0" prefHeight="24.0" prefWidth="316.0" promptText="Select a date" style="-fx-border-color: faa80a;" />
-      <TextField fx:id="txtTime" layoutX="38.0" layoutY="98.0" prefHeight="24.0" prefWidth="316.0" promptText="Enter Time" style="-fx-border-color: faa80a;" />
-      <TextField fx:id="txtCustomer" layoutX="39.0" layoutY="135.0" prefHeight="24.0" prefWidth="214.0" promptText="Customer" style="-fx-border-color: faa80a;" />
-      <TextField fx:id="txtCustomerContact" layoutX="39.0" layoutY="173.0" prefHeight="24.0" prefWidth="214.0" promptText="Contact" style="-fx-border-color: faa80a;" />
-      <ComboBox fx:id="cmbApType" layoutX="38.0" layoutY="213.0" prefHeight="24.0" prefWidth="214.0" promptText="Select Type" style="-fx-background-color: faa80a;" />
+      <DatePicker fx:id="dpkDate" layoutX="37.0" layoutY="65.0" prefHeight="24.0" prefWidth="316.0" promptText="Select a date" style="-fx-border-color: linear-gradient(to bottom, #d2a172, #faa80a);" />
+      <TextField fx:id="txtTime" layoutX="38.0" layoutY="98.0" prefHeight="24.0" prefWidth="316.0" promptText="Enter Time" style="-fx-border-color: linear-gradient(to bottom, #d2a172, #faa80a);" />
+      <TextField fx:id="txtCustomer" layoutX="39.0" layoutY="135.0" prefHeight="24.0" prefWidth="214.0" promptText="Customer" style="-fx-border-color: linear-gradient(to bottom, #d2a172, #faa80a);" />
+      <TextField fx:id="txtCustomerContact" layoutX="39.0" layoutY="173.0" prefHeight="24.0" prefWidth="214.0" promptText="Contact" style="-fx-border-color: linear-gradient(to bottom, #d2a172, #faa80a);" />
+      <ComboBox fx:id="cmbApType" layoutX="38.0" layoutY="213.0" prefHeight="24.0" prefWidth="214.0" promptText="Select Type" style="-fx-background-color: linear-gradient(to bottom, #d2a172, #faa80a);;" />
       <JFXButton buttonType="RAISED" layoutX="262.0" layoutY="135.0" onAction="#AddCustomerOnACtion" prefHeight="24.0" prefWidth="91.0" text=" ">
          <graphic>
             <ImageView fitHeight="51.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
@@ -45,17 +45,17 @@
          <font>
             <Font name="Manjari Thin" size="20.0" />
          </font></Label>
-      <JFXButton buttonType="RAISED" layoutX="299.0" layoutY="294.0" onAction="#AddAppointmentOnAction" prefHeight="59.0" prefWidth="0.0" text=" ">
+      <JFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="318.0" layoutY="309.0" onAction="#AddAppointmentOnAction" prefHeight="44.0" prefWidth="46.0">
          <graphic>
-            <ImageView fitHeight="51.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="34.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../Assets/icon/add.png" />
                </image>
             </ImageView>
          </graphic></JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="226.0" layoutY="294.0" onAction="#cancelOnAction" prefHeight="59.0" prefWidth="9.0" text=" ">
+      <JFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="275.0" layoutY="301.0" onAction="#cancelOnAction" prefHeight="59.0" prefWidth="9.0">
          <graphic>
-            <ImageView fitHeight="51.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="31.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../Assets/icon/multiply.png" />
                </image>

@@ -1,275 +1,305 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: faa80a;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminFormController">
+<AnchorPane fx:id="root" prefHeight="725.0" prefWidth="1366.0" stylesheets="@../CSS/root.CSS" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminFormController">
    <children>
-      <AnchorPane layoutX="12.0" layoutY="11.0" prefHeight="747.0" prefWidth="290.0" style="-fx-background-color: white; -fx-background-radius: 20;">
+      <AnchorPane fx:id="sidePane" layoutX="12.0" layoutY="17.0" prefHeight="615.0" prefWidth="1341.0" stylesheets="@../CSS/sidePane.css">
          <children>
-            <JFXButton fx:id="btnUser" layoutX="33.0" layoutY="11.0" onAction="#userBtnOnAction" prefHeight="65.0" prefWidth="220.0" style="-fx-background-color: white; -fx-background-radius: 15;" text="      Admin">
+            <Label layoutX="529.0" layoutY="121.0" text="Welcome ">
+               <font>
+                  <Font name="Manjari Thin" size="40.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblUser" layoutX="706.0" layoutY="122.0" text="Admin" textFill="#f50a0a">
+               <font>
+                  <Font name="Manjari Thin" size="40.0" />
+               </font>
+            </Label>
+            <Label layoutX="458.0" layoutY="191.0" text="Your User ID ">
+               <font>
+                  <Font name="Liberation Sans Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="720.0" layoutY="285.0" text="Your Name ">
+               <font>
+                  <Font name="Liberation Sans Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="69.0" layoutY="383.0" text="Your NIC">
+               <font>
+                  <Font name="Liberation Sans Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="716.0" layoutY="378.0" text="Admin Password">
+               <font>
+                  <Font name="Liberation Sans Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="adminName" layoutX="921.0" layoutY="280.0" text="Your User ID " wrapText="true">
+               <font>
+                  <Font name="KacstLetter" size="28.0" />
+               </font>
+            </Label>
+            <Label fx:id="adminUserId" layoutX="645.0" layoutY="184.0" text="Your User ID " wrapText="true">
+               <font>
+                  <Font name="KacstLetter" size="28.0" />
+               </font>
+            </Label>
+            <Label fx:id="adminNIC" layoutX="269.0" layoutY="374.0" text="Your User ID " wrapText="true">
+               <font>
+                  <Font name="KacstLetter" size="28.0" />
+               </font>
+            </Label>
+            <Label fx:id="adminPass" layoutX="924.0" layoutY="380.0" text="***********" wrapText="true">
+               <font>
+                  <Font name="KacstLetter" size="28.0" />
+               </font>
+            </Label>
+            <JFXButton layoutX="883.0" layoutY="185.0" onAction="#updateUSerIdonAction" prefHeight="43.0" prefWidth="12.0" text=" ">
+               <graphic>
+                  <ImageView fitHeight="35.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Assets/icon/refresh.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+
+            </JFXButton>
+            <JFXButton layoutX="1237.0" layoutY="274.0" onAction="#updateNameOnAction" prefHeight="43.0" prefWidth="12.0" text=" ">
+               <graphic>
+                  <ImageView fitHeight="35.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Assets/icon/refresh.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton layoutX="586.0" layoutY="367.0" onAction="#updateNIConAction" prefHeight="43.0" prefWidth="12.0" text=" ">
+               <graphic>
+                  <ImageView fitHeight="35.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Assets/icon/refresh.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton layoutX="1237.0" layoutY="368.0" onAction="#updatePassOnAction" prefHeight="43.0" prefWidth="12.0" text=" ">
+               <graphic>
+                  <ImageView fitHeight="35.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Assets/icon/refresh.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <TextField fx:id="txtnewUserId" layoutX="546.0" layoutY="235.0" prefHeight="36.0" prefWidth="220.0" promptText="New User Id" visible="false" />
+            <TextField fx:id="txtNewUSerName" layoutX="827.0" layoutY="329.0" prefHeight="36.0" prefWidth="220.0" promptText="New Name" visible="false" />
+            <TextField fx:id="txtnewNIc" layoutX="138.0" layoutY="419.0" prefHeight="36.0" prefWidth="220.0" promptText="New NIC" visible="false" />
+            <TextField fx:id="txtOldPassword" layoutX="662.0" layoutY="419.0" prefHeight="36.0" prefWidth="220.0" promptText="Old Password" visible="false" />
+            <TextField fx:id="txtNewPassWord" layoutX="919.0" layoutY="419.0" prefHeight="36.0" prefWidth="220.0" promptText="New Password" visible="false" />
+            <TextField fx:id="txtConfirmPAss" layoutX="763.0" layoutY="472.0" prefHeight="36.0" prefWidth="220.0" promptText="Confirm New Password" visible="false" />
+            <JFXButton fx:id="btnNEwUSerId" layoutX="776.0" layoutY="232.0" onAction="#onAddNewUsrId" prefHeight="36.0" prefWidth="33.0" text=" " visible="false" wrapText="true">
+               <graphic>
+                  <ImageView fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Assets/icon/add.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="btnUserName" layoutX="1049.0" layoutY="329.0" onAction="#addNewNameOnAction" prefHeight="36.0" prefWidth="33.0" text=" " visible="false">
+               <graphic>
+                  <ImageView fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Assets/icon/add.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="btnNic" layoutX="360.0" layoutY="418.0" onAction="#addNewNIC" prefHeight="36.0" prefWidth="33.0" text=" " visible="false">
+               <graphic>
+                  <ImageView fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Assets/icon/add.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="btnPass" layoutX="983.0" layoutY="472.0" onAction="#addNewPassWordOnAction" prefHeight="36.0" prefWidth="33.0" text=" " visible="false">
+               <graphic>
+                  <ImageView fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Assets/icon/add.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <Label layoutX="72.0" layoutY="285.0" text="Your User Name">
+               <font>
+                  <Font name="Liberation Sans Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="adminUserId1" layoutX="276.0" layoutY="280.0" prefHeight="36.0" prefWidth="194.0" text="Your User ID " wrapText="true">
+               <font>
+                  <Font name="KacstLetter" size="28.0" />
+               </font>
+            </Label>
+            <JFXButton layoutX="582.0" layoutY="275.0" onAction="#updateUSerNameonAction" prefHeight="43.0" prefWidth="12.0" text=" ">
+               <graphic>
+                  <ImageView fitHeight="35.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Assets/icon/refresh.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <TextField fx:id="txtName" layoutX="142.0" layoutY="325.0" prefHeight="36.0" prefWidth="220.0" promptText="New User Name" visible="false" />
+            <JFXButton fx:id="btnUserName1" layoutX="364.0" layoutY="325.0" onAction="#addNewUserName" prefHeight="36.0" prefWidth="33.0" text=" " visible="false">
+               <graphic>
+                  <ImageView fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Assets/icon/add.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <Label fx:id="lblUserNameSuccess" layoutX="746.0" layoutY="311.0" prefHeight="16.0" prefWidth="252.0" text="UserName Updated Successfully !!!" textAlignment="CENTER" textFill="#0aee0a" underline="true" visible="false" />
+            <Label fx:id="lblNameSuccess" layoutX="747.0" layoutY="361.0" prefHeight="16.0" prefWidth="252.0" text="Name updated successfully !!!!" textAlignment="CENTER" textFill="#0aee0a" underline="true" visible="false" />
+            <Label fx:id="lblUserIdSuccess" layoutX="748.0" layoutY="260.0" text="User Id changed Successfully !!!" textFill="#0eff06" underline="true" visible="false" />
+            <Label fx:id="lblPasswordSucess" layoutX="745.0" layoutY="472.0" text="Password changed Successfully !!!!" textFill="#11e81f" visible="false" />
+            <Label fx:id="lblUpdateNICSuccess" layoutX="748.0" layoutY="421.0" text="NIC updated Sucessfully !!!" textFill="#07ee50" visible="false" />
+            <JFXButton fx:id="btnUser" buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="625.0" layoutY="32.0" onAction="#userBtnOnAction" prefHeight="79.0" prefWidth="68.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-background-radius: 180; -fx-border-radius: 180;" text="      Admin">
                <font>
                   <Font name="Manjari Thin" size="30.0" />
-               </font></JFXButton>
-            <JFXButton fx:id="btnEmployee" layoutX="3.0" layoutY="118.0" onAction="#employeeOnAction" prefHeight="65.0" prefWidth="284.0" style="-fx-background-color: white; -fx-background-radius: 11; -fx-border-color: black; -fx-border-radius: 11;" text="Manage Users and Employees" wrapText="true">
-               <font>
-                  <Font name="Manjari Thin" size="14.0" />
                </font>
                <graphic>
-                  <ImageView fitHeight="41.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="59.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../Assets/image/employees.png" />
-                     </image>
-                  </ImageView>
-               </graphic></JFXButton>
-            <JFXButton fx:id="btnVet" layoutX="3.0" layoutY="258.0" onAction="#vetOnAction" prefHeight="67.0" prefWidth="284.0" style="-fx-background-color: white; -fx-background-radius: 11; -fx-border-radius: 11; -fx-border-color: black;" text="Veterinaries">
-               <graphic>
-                  <ImageView fitHeight="53.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../Assets/image/veterinarian.png" />
+                        <Image url="@../../Assets/icon/admin.png" />
                      </image>
                   </ImageView>
                </graphic>
+            </JFXButton>
+            <ImageView fitHeight="31.0" fitWidth="41.0" layoutX="634.0" layoutY="547.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Assets/icon/paw.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="578.0" layoutY="573.0" prefHeight="41.0" prefWidth="153.0" text="Pawistive Care">
                <font>
-                  <Font name="Manjari Thin" size="23.0" />
-               </font></JFXButton>
-            <JFXButton fx:id="btnCustomer" layoutX="3.0" layoutY="329.0" onAction="#customerOnAction" prefHeight="67.0" prefWidth="284.0" style="-fx-background-color: white; -fx-background-radius: 11; -fx-border-radius: 11; -fx-border-color: black;" text="Customer">
-               <font>
-                  <Font name="Manjari Thin" size="23.0" />
+                  <Font name="Manjari Thin" size="20.0" />
                </font>
+            </Label>
+         </children></AnchorPane>
+      <JFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="135.0" layoutY="649.0" onAction="#logoutOnAction" prefHeight="56.0" prefWidth="54.0" style="-fx-background-color: transparent; -fx-border-color: faa80a; -fx-background-radius: 180; -fx-border-radius: 180;">
+         <graphic>
+            <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Assets/icon/logout.png" />
+               </image></ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="1272.0" layoutY="653.0" onAction="#exitOnAction" prefHeight="54.0" prefWidth="52.0" style="-fx-background-color: transparent; -fx-border-color: red; -fx-background-radius: 180; -fx-border-radius: 180;">
+         <graphic>
+            <ImageView fitHeight="20.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Assets/icon/turn-off.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="51.0" layoutY="647.0" onAction="#homeOnAction" prefHeight="58.0" prefWidth="61.0" style="-fx-background-color: transparent; -fx-border-color: faa80a; -fx-background-radius: 180; -fx-border-radius: 180;">
+         <graphic>
+            <ImageView fitHeight="33.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Assets/icon/home-button.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color red="0.9803921580314636" green="0.658823549747467" blue="0.03921568766236305" />
+               </color>
+            </DropShadow>
+         </effect>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <AnchorPane layoutX="208.0" layoutY="652.0" prefHeight="51.0" prefWidth="1049.0" style="-fx-background-color: transparent; -fx-background-radius: 50; -fx-border-radius: 50;">
+         <children>
+            <JFXButton fx:id="btnStock" layoutX="3.0" layoutY="5.0" onAction="#manageStockOnAction" prefHeight="43.0" prefWidth="188.0" style="-fx-background-color: transparent; -fx-background-radius: 50; -fx-border-radius: 50;" text="Manage Stock" textAlignment="JUSTIFY" underline="true">
                <graphic>
-                  <ImageView fitHeight="53.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../Assets/image/costumer.png" />
-                     </image>
-                  </ImageView>
-               </graphic></JFXButton>
-            <JFXButton fx:id="btnReport" layoutX="3.0" layoutY="398.0" onAction="#reportOnAction" prefHeight="67.0" prefWidth="284.0" style="-fx-background-color: white; -fx-background-radius: 11; -fx-border-radius: 11; -fx-border-color: black;" text="Reports">
-               <graphic>
-                  <ImageView fitHeight="53.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../Assets/image/report.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <font>
-                  <Font name="Manjari Thin" size="23.0" />
-               </font></JFXButton>
-            <JFXButton fx:id="btnSupplier" layoutX="3.0" layoutY="469.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#supplierOnAction" prefHeight="67.0" prefWidth="284.0" style="-fx-background-color: white; -fx-background-radius: 11; -fx-border-color: black; -fx-border-radius: 11;" text="Supplier">
-               <graphic>
-                  <ImageView fitHeight="53.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../Assets/image/agreement.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <font>
-                  <Font name="Manjari Thin" size="23.0" />
-               </font></JFXButton>
-            <JFXButton fx:id="btnStock" layoutX="3.0" layoutY="187.0" onAction="#manageStockOnAction" prefHeight="67.0" prefWidth="284.0" style="-fx-background-color: white; -fx-background-radius: 11; -fx-border-radius: 11; -fx-border-color: black;" text="Manage Stock">
-               <graphic>
-                  <ImageView fitHeight="53.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="30.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../Assets/image/order-delivery.png" />
                      </image>
                   </ImageView>
                </graphic>
                <font>
-                  <Font name="Manjari Thin" size="23.0" />
-               </font></JFXButton>
-            <ImageView fitHeight="59.0" fitWidth="61.0" layoutX="40.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../Assets/icon/admin.png" />
-               </image>
-            </ImageView>
-            <Separator layoutX="14.0" layoutY="103.0" prefHeight="5.0" prefWidth="264.0" style="-fx-background-color: white; -fx-border-color: black;" />
-            <ImageView fitHeight="113.0" fitWidth="131.0" layoutX="85.0" layoutY="548.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../Assets/icon/paw.png" />
-               </image>
-            </ImageView>
-            <Label layoutX="55.0" layoutY="652.0" text="Pawistive Care">
-               <font>
-                  <Font name="Manjari Thin" size="27.0" />
+                  <Font name="Comic Sans MS" size="15.0" />
                </font>
-            </Label>
+            </JFXButton>
+            <JFXButton fx:id="btnEmployee" layoutX="218.0" layoutY="5.0" onAction="#employeeOnAction" prefHeight="43.0" prefWidth="240.0" style="-fx-background-color: transparent; -fx-background-radius: 50; -fx-border-radius: 50;" text="Manage Users and Employees" underline="true" wrapText="true">
+               <font>
+                  <Font name="Comic Sans MS" size="13.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Assets/image/employees.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="btnVet" layoutX="490.0" layoutY="5.0" onAction="#vetOnAction" prefHeight="41.0" prefWidth="143.0" style="-fx-background-color: transparent; -fx-background-radius: 50; -fx-border-radius: 50;" text="Veterinaries" underline="true">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Assets/image/veterinarian.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font name="Comic Sans MS" size="15.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="btnCustomer" layoutX="694.0" layoutY="5.0" onAction="#customerOnAction" prefHeight="42.0" prefWidth="150.0" style="-fx-background-color: transparent; -fx-background-radius: 50; -fx-border-radius: 50;" text="Customer">
+               <font>
+                  <Font name="Comic Sans MS" size="15.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Assets/image/costumer.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="btnSupplier" layoutX="886.0" layoutY="5.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#supplierOnAction" prefHeight="43.0" prefWidth="135.0" style="-fx-background-color: transparent; -fx-background-radius: 50; -fx-border-radius: 50;" text="Supplier" underline="true">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Assets/image/agreement.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font name="Comic Sans MS" size="15.0" />
+               </font>
+            </JFXButton>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="sidePane" layoutX="315.0" layoutY="10.0" prefHeight="749.0" prefWidth="1035.0" style="-fx-background-color: white; -fx-background-radius: 20;">
-         <children>
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="425.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../Assets/icon/admin.png" />
-               </image>
-            </ImageView>
-            <Label layoutX="343.0" layoutY="209.0" text="Welcome ">
-               <font>
-                  <Font name="Manjari Thin" size="40.0" />
-               </font>
-            </Label>
-            <Label fx:id="lblUser" layoutX="520.0" layoutY="210.0" text="Admin" textFill="#f50a0a">
-               <font>
-                  <Font name="Manjari Thin" size="40.0" />
-               </font>
-            </Label>
-            <Label layoutX="120.0" layoutY="310.0" text="Your User ID ">
-               <font>
-                  <Font name="Manjari Thin" size="24.0" />
-               </font>
-            </Label>
-            <Label layoutX="122.0" layoutY="415.0" text="Your Name ">
-               <font>
-                  <Font name="Manjari Thin" size="24.0" />
-               </font>
-            </Label>
-            <Label layoutX="123.0" layoutY="472.0" text="Your NIC">
-               <font>
-                  <Font name="Manjari Thin" size="24.0" />
-               </font>
-            </Label>
-            <Label layoutX="121.0" layoutY="530.0" text="Admin Password">
-               <font>
-                  <Font name="Manjari Thin" size="24.0" />
-               </font>
-            </Label>
-            <Label fx:id="adminName" layoutX="323.0" layoutY="416.0" text="Your User ID ">
-               <font>
-                  <Font name="KacstLetter" size="28.0" />
-               </font>
-            </Label>
-            <Label fx:id="adminUserId" layoutX="324.0" layoutY="311.0" text="Your User ID ">
-               <font>
-                  <Font name="KacstLetter" size="28.0" />
-               </font>
-            </Label>
-            <Label fx:id="adminNIC" layoutX="323.0" layoutY="476.0" text="Your User ID ">
-               <font>
-                  <Font name="KacstLetter" size="28.0" />
-               </font>
-            </Label>
-            <Label fx:id="adminPass" layoutX="329.0" layoutY="532.0" text="***********">
-               <font>
-                  <Font name="KacstLetter" size="28.0" />
-               </font>
-            </Label>
-            <JFXButton layoutX="637.0" layoutY="308.0" onAction="#updateUSerIdonAction" prefHeight="43.0" prefWidth="12.0" text=" ">
-               <graphic>
-                  <ImageView fitHeight="35.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../Assets/icon/refresh.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </JFXButton>
-            <JFXButton layoutX="639.0" layoutY="416.0" onAction="#updateNameOnAction" prefHeight="43.0" prefWidth="12.0" text=" ">
-               <graphic>
-                  <ImageView fitHeight="35.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../Assets/icon/refresh.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </JFXButton>
-            <JFXButton layoutX="640.0" layoutY="471.0" onAction="#updateNIConAction" prefHeight="43.0" prefWidth="12.0" text=" ">
-               <graphic>
-                  <ImageView fitHeight="35.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../Assets/icon/refresh.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </JFXButton>
-            <JFXButton layoutX="642.0" layoutY="520.0" onAction="#updatePassOnAction" prefHeight="43.0" prefWidth="12.0" text=" ">
-               <graphic>
-                  <ImageView fitHeight="35.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../Assets/icon/refresh.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </JFXButton>
-            <TextField fx:id="txtnewUserId" layoutX="745.0" layoutY="309.0" prefHeight="36.0" prefWidth="220.0" promptText="New User Id" visible="false" />
-            <TextField fx:id="txtNewUSerName" layoutX="745.0" layoutY="417.0" prefHeight="36.0" prefWidth="220.0" promptText="New Name" visible="false" />
-            <TextField fx:id="txtnewNIc" layoutX="748.0" layoutY="480.0" prefHeight="36.0" prefWidth="220.0" promptText="New NIC" visible="false" />
-            <TextField fx:id="txtOldPassword" layoutX="748.0" layoutY="535.0" prefHeight="36.0" prefWidth="220.0" promptText="Old Password" visible="false" />
-            <TextField fx:id="txtNewPassWord" layoutX="748.0" layoutY="589.0" prefHeight="36.0" prefWidth="220.0" promptText="New Password" visible="false" />
-            <TextField fx:id="txtConfirmPAss" layoutX="748.0" layoutY="639.0" prefHeight="36.0" prefWidth="220.0" promptText="Confirm New Password" visible="false" />
-            <JFXButton fx:id="btnNEwUSerId" layoutX="965.0" layoutY="308.0" onAction="#onAddNewUsrId" prefHeight="36.0" prefWidth="33.0" text=" " visible="false">
-               <graphic>
-                  <ImageView fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../Assets/icon/add.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </JFXButton>
-            <JFXButton fx:id="btnUserName" layoutX="967.0" layoutY="417.0" onAction="#addNewNameOnAction" prefHeight="36.0" prefWidth="33.0" text=" " visible="false">
-               <graphic>
-                  <ImageView fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../Assets/icon/add.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </JFXButton>
-            <JFXButton fx:id="btnNic" layoutX="970.0" layoutY="479.0" onAction="#addNewNIC" prefHeight="36.0" prefWidth="33.0" text=" " visible="false">
-               <graphic>
-                  <ImageView fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../Assets/icon/add.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </JFXButton>
-            <JFXButton fx:id="btnPass" layoutX="968.0" layoutY="639.0" onAction="#addNewPassWordOnAction" prefHeight="36.0" prefWidth="33.0" text=" " visible="false">
-               <graphic>
-                  <ImageView fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../Assets/icon/add.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </JFXButton>
-            <Label layoutX="117.0" layoutY="361.0" text="Your User Name">
-               <font>
-                  <Font name="Manjari Thin" size="24.0" />
-               </font>
-            </Label>
-            <Label fx:id="adminUserId1" layoutX="321.0" layoutY="364.0" text="Your User ID ">
-               <font>
-                  <Font name="KacstLetter" size="28.0" />
-               </font>
-            </Label>
-            <JFXButton layoutX="640.0" layoutY="359.0" onAction="#updateUSerNameonAction" prefHeight="43.0" prefWidth="12.0" text=" ">
-               <graphic>
-                  <ImageView fitHeight="35.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../Assets/icon/refresh.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </JFXButton>
-            <TextField fx:id="txtName" layoutX="745.0" layoutY="363.0" prefHeight="36.0" prefWidth="220.0" promptText="New User Name" visible="false" />
-            <JFXButton fx:id="btnUserName1" layoutX="967.0" layoutY="363.0" onAction="#addNewUserName" prefHeight="36.0" prefWidth="33.0" text=" " visible="false">
-               <graphic>
-                  <ImageView fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../Assets/icon/add.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </JFXButton>
-            <Label fx:id="lblUserNameSuccess" layoutX="749.0" layoutY="373.0" prefHeight="16.0" prefWidth="252.0" text="UserName Updated Successfully !!!" textAlignment="CENTER" textFill="#0aee0a" underline="true" visible="false" />
-            <Label fx:id="lblNameSuccess" layoutX="750.0" layoutY="423.0" prefHeight="16.0" prefWidth="252.0" text="Name updated successfully !!!!" textAlignment="CENTER" textFill="#0aee0a" underline="true" visible="false" />
-            <Label fx:id="lblUserIdSuccess" layoutX="751.0" layoutY="322.0" text="User Id changed Successfully !!!" textFill="#0eff06" underline="true" visible="false" />
-            <Label fx:id="lblPasswordSucess" layoutX="748.0" layoutY="534.0" text="Password changed Successfully !!!!" textFill="#11e81f" visible="false" />
-            <Label fx:id="lblUpdateNICSuccess" layoutX="751.0" layoutY="483.0" text="NIC updated Sucessfully !!!" textFill="#07ee50" visible="false" />
-         </children></AnchorPane>
    </children>
 </AnchorPane>

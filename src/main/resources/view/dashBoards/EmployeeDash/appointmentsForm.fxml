@@ -9,14 +9,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="749.0" prefWidth="1035.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AppointmentsFormController">
+<AnchorPane prefHeight="615.0" prefWidth="1341.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AppointmentsFormController">
    <children>
-      <Label layoutX="401.0" layoutY="3.0" text="Appointments">
+      <Label layoutX="514.0" layoutY="3.0" text="Appointments">
          <font>
             <Font name="Manjari Thin" size="39.0" />
          </font>
       </Label>
-      <TableView fx:id="tblAppointment" layoutX="31.0" layoutY="154.0" prefHeight="445.0" prefWidth="973.0" style="-fx-border-color: faa80a;">
+      <TableView fx:id="tblAppointment" layoutX="31.0" layoutY="154.0" prefHeight="431.0" prefWidth="973.0" style="-fx-border-color: faa80a;">
         <columns>
           <TableColumn fx:id="colDate" prefWidth="168.3333282470703" text="Date" />
           <TableColumn fx:id="colTime" prefWidth="110.66665649414062" text="Time " />
@@ -26,7 +26,7 @@
             <TableColumn fx:id="colPrice" prefWidth="128.66668701171875" text="Price" />
         </columns>
       </TableView>
-      <JFXButton buttonType="RAISED" layoutX="825.0" layoutY="83.0" onAction="#addNewAppointmentONAction" prefHeight="51.0" prefWidth="175.0" style="-fx-background-color: faa80a;" text="Add new appointment">
+      <JFXButton buttonType="RAISED" layoutX="1085.0" layoutY="78.0" onAction="#addNewAppointmentONAction" prefHeight="59.0" prefWidth="228.0" style="-fx-background-color: faa80a; -fx-border-radius: 40; -fx-background-radius: 40;" text="Add new appointment">
          <graphic>
             <ImageView fitHeight="51.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -34,7 +34,7 @@
                </image>
             </ImageView>
          </graphic></JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="629.0" layoutY="83.0" onAction="#clearTable" prefHeight="51.0" prefWidth="175.0" style="-fx-background-color: faa80a;" text="Clear Table">
+      <JFXButton buttonType="RAISED" layoutX="32.0" layoutY="84.0" onAction="#clearTable" prefHeight="51.0" prefWidth="175.0" style="-fx-background-color: faa80a; -fx-background-radius: 40; -fx-border-radius: 40;" text="Clear Table">
          <graphic>
             <ImageView fitHeight="51.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -42,5 +42,33 @@
                </image>
             </ImageView>
          </graphic></JFXButton>
+      <AnchorPane fx:id="stuff" layoutX="1018.0" layoutY="152.0" prefHeight="434.0" prefWidth="302.0"  stylesheets="@../CSS/style.css">
+         <children>
+            <Label layoutX="68.0" layoutY="11.0" text="Total No if Appointments" />
+            <Label fx:id="appointmentCount" layoutX="109.0" layoutY="33.0" text="00">
+               <font>
+                  <Font size="64.0" />
+               </font>
+            </Label>
+            <Label layoutX="85.0" layoutY="112.0" text="Total No of Vacines" />
+            <Label fx:id="vaccineCount" layoutX="109.0" layoutY="133.0" text="00">
+               <font>
+                  <Font size="64.0" />
+               </font>
+            </Label>
+            <Label layoutX="81.0" layoutY="210.0" text="Total No of Surgeries" />
+            <Label fx:id="surgeryCount" layoutX="109.0" layoutY="230.0" text="00">
+               <font>
+                  <Font size="64.0" />
+               </font>
+            </Label>
+            <Label layoutX="82.0" layoutY="307.0" text="Total No of Checkups" />
+            <Label fx:id="checkupCount" layoutX="109.0" layoutY="337.0" text="00">
+               <font>
+                  <Font size="64.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

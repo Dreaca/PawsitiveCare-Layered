@@ -7,23 +7,23 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: ffbe4f;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EmployeeDashController">
+<AnchorPane fx:id="root" prefHeight="725.0" prefWidth="1366.0" stylesheets="@../CSS/root.CSS" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EmployeeDashController">
    <children>
-      <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="741.0" prefWidth="295.0" style="-fx-background-color: ffffff; -fx-background-radius: 20;">
+      <AnchorPane focusTraversable="true" layoutX="13.0" layoutY="639.0" prefHeight="60.0" prefWidth="1177.0" style="-fx-background-color: transparent; -fx-background-radius: 20;">
          <children>
-            <JFXButton fx:id="btnUser" layoutX="12.0" layoutY="14.0" onAction="#logoutOnAction" prefHeight="55.0" prefWidth="272.0" ripplerFill="#e80000" style="-fx-background-color: white; -fx-background-radius: 11;" text="user">
+            <JFXButton fx:id="btnUser" layoutX="9.0" layoutY="4.0" onAction="#logoutOnAction" prefHeight="52.0" prefWidth="198.0" ripplerFill="#e80000" style="-fx-background-radius: 20; -fx-border-radius: 20; -fx-background-color: transparent;" text="user">
                <font>
-                  <Font name="Dyuthi Regular" size="31.0" />
+                  <Font name="Dyuthi Regular" size="22.0" />
                </font>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></JFXButton>
-            <JFXButton fx:id="btnAppointments" layoutX="3.0" layoutY="115.0" onAction="#appointmentsOnAction" prefHeight="72.0" prefWidth="283.0" style="-fx-background-color: white;" text="Appointments">
+            <JFXButton fx:id="btnAppointments" layoutX="417.0" layoutY="7.0" onAction="#appointmentsOnAction" prefHeight="47.0" prefWidth="213.0" style="-fx-background-radius: 20; -fx-border-radius: 20; -fx-background-color: transparent;" text="Appointments">
                <font>
-                  <Font name="Manjari Thin" size="30.0" />
+                  <Font name="Manjari Thin" size="22.0" />
                </font>
                <graphic>
-                  <ImageView fitHeight="55.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="33.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../Assets/image/veterinary.png" />
                      </image>
@@ -32,12 +32,12 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></JFXButton>
-            <JFXButton fx:id="btnCustomer" layoutX="3.0" layoutY="187.0" onAction="#customerOnAction" prefHeight="72.0" prefWidth="283.0" style="-fx-background-color: white;" text="Customer">
+            <JFXButton fx:id="btnCustomer" layoutX="212.0" layoutY="5.0" onAction="#customerOnAction" prefHeight="51.0" prefWidth="199.0" style="-fx-background-radius: 20; -fx-border-radius: 20; -fx-background-color: transparent;" text="Customer">
                <font>
-                  <Font name="Manjari Thin" size="31.0" />
+                  <Font name="Manjari Thin" size="22.0" />
                </font>
                <graphic>
-                  <ImageView fitHeight="55.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="39.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../Assets/image/costumer.png" />
                      </image>
@@ -46,12 +46,12 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></JFXButton>
-            <JFXButton fx:id="btnPets" layoutX="7.0" layoutY="403.0" onAction="#petOnAction" prefHeight="72.0" prefWidth="283.0" style="-fx-background-color: white;" text="Pets">
+            <JFXButton fx:id="btnPets" layoutX="1020.0" layoutY="6.0" onAction="#petOnAction" prefHeight="47.0" prefWidth="153.0" style="-fx-background-radius: 20; -fx-border-radius: 20; -fx-background-color: transparent;" text="Pets">
                <font>
-                  <Font name="Manjari Thin" size="31.0" />
+                  <Font name="Manjari Thin" size="22.0" />
                </font>
                <graphic>
-                  <ImageView fitHeight="55.0" fitWidth="51.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="31.0" fitWidth="35.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../Assets/image/dog.png" />
                      </image>
@@ -60,34 +60,38 @@
                      </cursor>
                   </ImageView>
                </graphic></JFXButton>
-            <JFXButton fx:id="btnSchedule" layoutX="7.0" layoutY="259.0" onAction="#scheduleOnAction" prefHeight="72.0" prefWidth="283.0" style="-fx-background-color: white;" text="Schedule">
+            <JFXButton fx:id="btnSchedule" layoutX="821.0" layoutY="7.0" onAction="#scheduleOnAction" prefHeight="47.0" prefWidth="197.0" style="-fx-background-radius: 20; -fx-border-radius: 20; -fx-background-color: transparent;" text="Schedule">
                <font>
-                  <Font name="Manjari Thin" size="31.0" />
+                  <Font name="Manjari Thin" size="22.0" />
                </font>
                <graphic>
-                  <ImageView fitHeight="55.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="37.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../Assets/image/calendar.png" />
                      </image>
                   </ImageView>
                </graphic></JFXButton>
-            <JFXButton fx:id="btnOrders" layoutX="3.0" layoutY="331.0" onAction="#ordersOnAction" prefHeight="72.0" prefWidth="283.0" style="-fx-background-color: white;" text="Orders">
+            <JFXButton fx:id="btnOrders" layoutX="636.0" layoutY="6.0" onAction="#ordersOnAction" prefHeight="49.0" prefWidth="181.0" style="-fx-background-radius: 20; -fx-border-radius: 20; -fx-background-color: transparent;" text="Orders">
                <font>
-                  <Font name="Manjari Thin" size="31.0" />
+                  <Font name="Manjari Thin" size="22.0" />
                </font>
                <graphic>
-                  <ImageView fitHeight="55.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="35.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../Assets/image/order-delivery.png" />
                      </image>
                   </ImageView>
                </graphic></JFXButton>
-            <ImageView fitHeight="71.0" fitWidth="75.0" layoutX="21.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+         </children></AnchorPane>
+      <AnchorPane fx:id="sidePane" layoutX="11.0" layoutY="12.0" prefHeight="615.0" prefWidth="1341.0" stylesheets="@../CSS/sidePane.css" />
+      <JFXButton contentDisplay="GRAPHIC_ONLY" layoutX="1232.0" layoutY="629.0" onAction="#exitOnAction" prefHeight="80.0" prefWidth="69.0" style="-fx-background-color: transparent; -fx-border-color: red; -fx-background-radius: 180; -fx-border-radius: 180;">
+         <graphic>
+            <ImageView fitHeight="128.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../Assets/icon/employee.png" />
+                  <Image url="@../../Assets/icon/turn-off.png" />
                </image>
             </ImageView>
-         </children></AnchorPane>
-      <AnchorPane fx:id="sidePane" layoutX="322.0" layoutY="13.0" prefHeight="740.0" prefWidth="1035.0" style="-fx-background-color: white; -fx-background-radius: 20;" />
+         </graphic>
+      </JFXButton>
    </children>
 </AnchorPane>

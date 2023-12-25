@@ -11,9 +11,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="employeeAnchor" prefHeight="749.0" prefWidth="1035.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ManageEmployeeController">
+<AnchorPane fx:id="employeeAnchor" prefHeight="749.0" prefWidth="1341.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ManageEmployeeController">
     <children>
-        <JFXButton fx:id="btnAddEmployee" buttonType="RAISED" layoutX="682.0" layoutY="34.0" onAction="#addnewEmployee" prefHeight="52.0" prefWidth="194.0" style="-fx-background-color: faa80a;" text="Add new Employee" textFill="#f5eded">
+        <JFXButton fx:id="btnAddEmployee" buttonType="RAISED" layoutX="961.0" layoutY="36.0" onAction="#addnewEmployee" prefHeight="52.0" prefWidth="194.0" style="-fx-background-color: linear-gradient(to bottom, #d2a172, #faa80a);;" text="Add new Employee" textFill="#f5eded">
          <graphic>
             <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -21,7 +21,7 @@
                </image>
             </ImageView>
          </graphic></JFXButton>
-        <JFXButton fx:id="btnUpdateEmployee" buttonType="RAISED" layoutX="892.0" layoutY="36.0" onAction="#updateOnAction" prefHeight="51.0" prefWidth="113.0" style="-fx-background-color: faa80a;" text="Update" textFill="#fcf3f3">
+        <JFXButton fx:id="btnUpdateEmployee" buttonType="RAISED" layoutX="1169.0" layoutY="36.0" onAction="#updateOnAction" prefHeight="51.0" prefWidth="113.0" style="-fx-background-color: linear-gradient(to bottom, #d2a172, #faa80a);;" text="Update" textFill="#fcf3f3">
          <graphic>
             <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -29,18 +29,26 @@
                </image>
             </ImageView>
          </graphic></JFXButton>
-      <VBox layoutX="19.0" layoutY="108.0" prefHeight="546.0" prefWidth="992.0">
+      <VBox layoutX="41.0" layoutY="108.0" prefHeight="546.0" prefWidth="1261.0">
          <children>
-            <HBox fx:id="employeeHbox" alignment="CENTER" prefHeight="300.0" prefWidth="992.0" spacing="30.0" style="-fx-background-color: faa85a;">
+            <HBox fx:id="employeeHbox" alignment="CENTER" prefHeight="300.0" prefWidth="1153.0" spacing="30.0" style="-fx-border-color: faa80a;">
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
                <effect>
                   <DropShadow />
                </effect></HBox>
+            <HBox prefHeight="265.0" prefWidth="1305.0">
+               <effect>
+                  <DropShadow />
+               </effect>
+            </HBox>
          </children>
+         <effect>
+            <DropShadow />
+         </effect>
       </VBox>
-      <Label layoutX="426.0" layoutY="-2.0" text="Employees">
+      <Label layoutX="571.0" layoutY="-3.0" text="Employees">
          <font>
             <Font name="Manjari Thin" size="40.0" />
          </font>

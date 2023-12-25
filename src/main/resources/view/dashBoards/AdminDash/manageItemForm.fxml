@@ -8,19 +8,19 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="749.0" prefWidth="1035.0" style="-fx-background-radius: 20; -fx-border-radius: 20; -fx-background-color: re;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ManageItemFormController">
+<AnchorPane prefHeight="615.0" prefWidth="1340.0" style="-fx-background-radius: 20; -fx-border-radius: 20; -fx-background-color: re;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ManageItemFormController">
    <children>
-      <TableView fx:id="tblItem" layoutX="23.0" layoutY="79.0" prefHeight="644.0" prefWidth="986.0" style="-fx-border-color: faa80a;">
+      <TableView fx:id="tblItem" layoutX="23.0" layoutY="79.0" prefHeight="504.0" prefWidth="1294.0" style="-fx-border-color: faa80a;">
         <columns>
           <TableColumn fx:id="colItemCode" prefWidth="137.0" text="ItemCode" />
-          <TableColumn fx:id="colDescription" prefWidth="474.33331298828125" text="Description" />
-            <TableColumn fx:id="colQTO" prefWidth="127.0" text="QtyOnHand" />
-            <TableColumn fx:id="colUnitPrice" prefWidth="173.3333740234375" text="UnitPrice" />
-            <TableColumn fx:id="colDel" prefWidth="71.6666259765625" text="del" />
+          <TableColumn fx:id="colDescription" prefWidth="545.0" text="Description" />
+            <TableColumn fx:id="colQTO" prefWidth="291.0" text="QtyOnHand" />
+            <TableColumn fx:id="colUnitPrice" prefWidth="226.0" text="UnitPrice" />
+            <TableColumn fx:id="colDel" prefWidth="90.0" text="del" />
         </columns>
       </TableView>
-      <TextField fx:id="txtSearch" layoutX="76.0" layoutY="30.0" onAction="#searchItemOnAction" prefHeight="40.0" prefWidth="451.0" promptText="Search Item" style="-fx-background-radius: 11; -fx-border-radius: 11\;" />
-      <JFXButton fx:id="btnAdd" layoutX="899.0" layoutY="27.0" onAction="#addItemOnAction" prefHeight="43.0" prefWidth="42.0" style="-fx-background-color: transparent;" text=" " wrapText="true">
+      <TextField fx:id="txtSearch" layoutX="76.0" layoutY="30.0" onAction="#searchItemOnAction" prefHeight="40.0" prefWidth="1007.0" promptText="Search Item" style="-fx-background-radius: 11; -fx-border-radius: 11\;" />
+      <JFXButton fx:id="btnAdd" layoutX="1244.0" layoutY="33.0" onAction="#addItemOnAction" prefHeight="43.0" prefWidth="42.0" style="-fx-background-color: transparent;" text=" " wrapText="true">
          <graphic>
             <ImageView fitHeight="35.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -28,7 +28,7 @@
                </image>
             </ImageView>
          </graphic></JFXButton>
-      <JFXButton fx:id="btnUpdate" layoutX="820.0" layoutY="27.0" onAction="#updateItemOnAction" prefHeight="43.0" prefWidth="62.0" style="-fx-background-color: transparent;" text=" ">
+      <JFXButton fx:id="btnUpdate" layoutX="1170.0" layoutY="32.0" onAction="#updateItemOnAction" prefHeight="43.0" prefWidth="62.0" style="-fx-background-color: transparent;" text=" ">
          <graphic>
             <ImageView fitHeight="35.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -36,7 +36,7 @@
                </image>
             </ImageView>
          </graphic></JFXButton>
-      <JFXButton fx:id="btnSupplyOrder" buttonType="RAISED" layoutX="741.0" layoutY="27.0" onAction="#addSpplyOrderOnAction" prefHeight="43.0" prefWidth="29.0" style="-fx-background-color: transparent;" text=" ">
+      <JFXButton fx:id="btnSupplyOrder" buttonType="RAISED" layoutX="1091.0" layoutY="34.0" onAction="#addSpplyOrderOnAction" prefHeight="43.0" prefWidth="29.0" style="-fx-background-color: transparent;" text=" ">
          <graphic>
             <ImageView fitHeight="35.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                <image>

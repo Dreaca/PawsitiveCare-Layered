@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" prefHeight="117.0" prefWidth="776.0" style="-fx-border-color: faa80a;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AddNewItemController">
+<AnchorPane fx:id="root" prefHeight="117.0" prefWidth="776.0" style="-fx-border-color: faa80a; -fx-background-color: linear-gradient(to bottom, #d2a172, #faa80a);" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AddNewItemController">
    <children>
       <Label layoutX="24.0" layoutY="21.0" text="Item Id : ">
          <font>

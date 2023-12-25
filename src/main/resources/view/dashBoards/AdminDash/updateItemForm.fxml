@@ -8,9 +8,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" prefHeight="181.0" prefWidth="600.0" style="-fx-border-color: faa80a;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UpdateItemFormController">
+<AnchorPane fx:id="root" prefHeight="181.0" prefWidth="600.0" style="-fx-border-color: faa80a; -fx-background-color: linear-gradient(to bottom, #d2a172, #faa80a);" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UpdateItemFormController">
    <children>
-      <ComboBox fx:id="cmbItemCode" layoutX="14.0" layoutY="34.0" prefHeight="31.0" prefWidth="222.0" promptText="Item Code" />
+      <ComboBox fx:id="cmbItemCode" layoutX="14.0" layoutY="34.0" prefHeight="31.0" prefWidth="222.0" promptText="Item Code" style="-fx-background-color: linear-gradient(to bottom, #d2a172, #e9e4d7);;" />
       <TextField fx:id="description" layoutX="278.0" layoutY="34.0" prefHeight="31.0" prefWidth="296.0" promptText="Description">
          <font>
             <Font name="Manjari Thin" size="13.0" />
