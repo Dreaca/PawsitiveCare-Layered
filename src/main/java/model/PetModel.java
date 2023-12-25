@@ -1,7 +1,7 @@
 package model;
 
-import Db.DbConnection;
-import Dto.PetDto;
+import db.DbConnection;
+import dto.PetDto;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

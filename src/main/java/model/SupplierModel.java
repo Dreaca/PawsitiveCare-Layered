@@ -1,6 +1,6 @@
 package model;
 
-import Db.DbConnection;
+import db.DbConnection;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

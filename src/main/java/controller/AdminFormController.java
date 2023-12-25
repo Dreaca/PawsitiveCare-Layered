@@ -1,8 +1,8 @@
 package controller;
 
-import Dto.AdminDto;
-import Dto.EmployeeDto;
-import Dto.LoginFormDto;
+import dto.AdminDto;
+import dto.EmployeeDto;
+import dto.LoginFormDto;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

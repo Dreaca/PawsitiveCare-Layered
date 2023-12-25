@@ -1,7 +1,7 @@
 package model;
 
-import Db.DbConnection;
-import Dto.EmployeeDto;
+import db.DbConnection;
+import dto.EmployeeDto;
 import javafx.scene.image.Image;
 
 import java.sql.*;

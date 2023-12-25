@@ -1,7 +1,7 @@
 package model;
 
-import Db.DbConnection;
-import Dto.ScheduleDto;
+import db.DbConnection;
+import dto.ScheduleDto;
 
 import java.sql.*;
 import java.util.ArrayList;

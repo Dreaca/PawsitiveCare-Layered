@@ -1,13 +1,10 @@
 package controller;
 
-import Dto.EmployeeDto;
+import dto.EmployeeDto;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import model.EmployeeModel;
-import model.LoginModel;
 
 import java.sql.SQLException;
 

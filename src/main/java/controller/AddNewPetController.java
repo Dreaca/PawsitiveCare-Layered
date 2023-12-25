@@ -1,6 +1,6 @@
 package controller;
 
-import Dto.PetDto;
+import dto.PetDto;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;

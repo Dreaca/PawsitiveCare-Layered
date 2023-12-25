@@ -1,6 +1,6 @@
 package controller;
 
-import Dto.LoginFormDto;
+import dto.LoginFormDto;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;

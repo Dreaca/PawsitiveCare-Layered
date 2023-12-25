@@ -1,16 +1,14 @@
 package controller;
 
-import Dto.ScheduleDto;
+import dto.ScheduleDto;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import javafx.stage.Window;
 import model.ScheduleModel;
 import model.VetModel;
 

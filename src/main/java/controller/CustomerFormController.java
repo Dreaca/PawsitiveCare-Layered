@@ -1,7 +1,9 @@
 package controller;
 
-import Dto.CustomerDto;
-import Dto.Tm.CustomerTm;
+import dao.custom.CustomerDao;
+import dao.custom.Impl.CustomerDaoImpl;
+import dto.CustomerDto;
+import dto.Tm.CustomerTm;
 import com.jfoenix.controls.JFXButton;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -61,20 +63,19 @@ public class CustomerFormController {
 
     @FXML
     private TextField txtCustomerLname;
-
-    private CustomerModel customerModel = new CustomerModel();
+    private CustomerDao dao = new CustomerDaoImpl();
     public void initialize(){
         setCellValueFactory();
         loadAllCustomer();
     }
 
     private void loadAllCustomer() {
-        var model = new CustomerModel();
+
 
         ObservableList<CustomerTm> oblist = FXCollections.observableArrayList();
 
         try {
-            List<CustomerDto> list = model.getAllCustomer();
+            List<CustomerDto> list = dao.getAll();
 
             for (CustomerDto d : list) {
                 oblist.add(
@@ -83,13 +84,14 @@ public class CustomerFormController {
                           d.getCustomerName(),
                           d.getCustomerAddress(),
                           d.getCustomerContact(),
-                          d.getCustomerContact2(),
                           d.getCustomerPet()
                   )
                 );
             }
             tblCustomer.setItems(oblist);
         } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
 
@@ -109,6 +111,15 @@ public class CustomerFormController {
         String name = txtCustomerFname.getText()+txtCustomerLname.getText();
         String address = txtCusAddress.getText();
         String contact = txtContactNo.getText();
+        try {
+            if(dao.update(new CustomerDto(id,name,address,contact))){
+                new Alert(Alert.AlertType.CONFIRMATION,"Customer Saved").show();
+            }
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 
@@ -116,7 +127,7 @@ public class CustomerFormController {
     void customerContactSearch(ActionEvent event) {
         String contact = txtCustomerFname.getText();
         try {
-            CustomerDto customerDto = customerModel.searchCustomerByContact(contact);
+            CustomerDto customerDto = dao.searchCustomerByContact(contact);
             if (customerDto != null){
                 String [] name = customerDto.getCustomerName().split(" ");
                 txtCustomerID.setText(customerDto.getCustomerId());
@@ -138,7 +149,7 @@ public class CustomerFormController {
         String id = txtCustomerID.getText();
         boolean isDeleted = false;
         try {
-            isDeleted = customerModel.deleteCustomer(id);
+            isDeleted = dao.delete(id);
             if(isDeleted){
                 new Alert(Alert.AlertType.CONFIRMATION,"Customer Deleted !").show();
             }
@@ -148,6 +159,8 @@ public class CustomerFormController {
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
 
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
         }
 
     }
@@ -156,7 +169,7 @@ public class CustomerFormController {
     void customerLnameSearchOnAction(ActionEvent event) {
         String Lname = txtCustomerLname.getText();
         try {
-            CustomerDto customerDto = customerModel.searchCustomerByLname(Lname);
+            CustomerDto customerDto = dao.searchCustomerByLname(Lname);
             if (customerDto != null){
                 String [] name = customerDto.getCustomerName().split(" ");
                 txtCustomerID.setText(customerDto.getCustomerId());
@@ -184,7 +197,7 @@ public class CustomerFormController {
 
         var dto = new CustomerDto(Id,fullname,Address,contact);
         try{
-            boolean isSaved = customerModel.saveCustomer(dto);
+            boolean isSaved = dao.save(dto);
             tblCustomer.refresh();
             if(isSaved){
                 new Alert(Alert.AlertType.CONFIRMATION,"Customer Saved Successfully").show();
@@ -193,6 +206,8 @@ public class CustomerFormController {
         }
         catch (SQLException e){
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();;
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
         }
 
     }
@@ -212,7 +227,7 @@ public class CustomerFormController {
     void customerSearchOnaction(ActionEvent event) {
         String id = txtCustomerID.getText();
         try {
-            CustomerDto customerDto = customerModel.searchCustomer(id);
+            CustomerDto customerDto = dao.search(id);
             if (customerDto != null){
                 String [] name = customerDto.getCustomerName().split(" ");
                 txtCustomerID.setText(customerDto.getCustomerId());
@@ -225,6 +240,8 @@ public class CustomerFormController {
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
         }
 
     }
@@ -233,7 +250,7 @@ public class CustomerFormController {
     void txtCustomerFnameSearch(ActionEvent event) {
         String Fname = txtCustomerFname.getText();
         try {
-            CustomerDto customerDto = customerModel.searchCustomerByFname(Fname);
+            CustomerDto customerDto = dao.searchCustomerByFname(Fname);
             if (customerDto != null){
                 String [] name = customerDto.getCustomerName().split(" ");
                 txtCustomerID.setText(customerDto.getCustomerId());

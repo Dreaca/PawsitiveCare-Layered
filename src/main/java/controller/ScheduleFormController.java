@@ -1,7 +1,7 @@
 package controller;
 
-import Dto.ScheduleDto;
-import Dto.Tm.ScheduleTm;
+import dto.ScheduleDto;
+import dto.Tm.ScheduleTm;
 import com.jfoenix.controls.JFXButton;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

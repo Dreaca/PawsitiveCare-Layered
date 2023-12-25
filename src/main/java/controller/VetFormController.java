@@ -1,7 +1,7 @@
 package controller;
 
-import Dto.Tm.VetTm;
-import Dto.VetDto;
+import dto.Tm.VetTm;
+import dto.VetDto;
 import com.jfoenix.controls.JFXButton;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

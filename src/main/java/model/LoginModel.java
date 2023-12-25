@@ -1,9 +1,9 @@
 package model;
 
-import Db.DbConnection;
-import Dto.AdminDto;
-import Dto.EmployeeDto;
-import Dto.LoginFormDto;
+import db.DbConnection;
+import dto.AdminDto;
+import dto.EmployeeDto;
+import dto.LoginFormDto;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

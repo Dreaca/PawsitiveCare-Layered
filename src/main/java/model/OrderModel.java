@@ -1,7 +1,6 @@
 package model;
 
-import Db.DbConnection;
-import Dto.CustomerDto;
+import db.DbConnection;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

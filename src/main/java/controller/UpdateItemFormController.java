@@ -1,18 +1,15 @@
 package controller;
 
-import Dto.ItemDto;
+import dto.ItemDto;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import javafx.stage.Window;
 import model.ItemModel;
 
-import java.lang.reflect.Array;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class UpdateItemFormController {

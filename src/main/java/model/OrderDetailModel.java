@@ -1,7 +1,7 @@
 package model;
 
-import Db.DbConnection;
-import Dto.Tm.OrderTm;
+import db.DbConnection;
+import dto.Tm.OrderTm;
 
 import java.sql.Connection;
 import java.sql.Date;

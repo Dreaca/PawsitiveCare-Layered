@@ -1,7 +1,14 @@
 package controller;
 
-import Dto.EmployeeDto;
-import Dto.LoginFormDto;
+import bo.AddNewEmployeeFormBO;
+import bo.AddNewEmployeeFormBoImpl;
+import bo.BOFactory;
+import dao.custom.EmployeeDao;
+import dao.custom.Impl.EmployeeDaoImpl;
+import dao.custom.Impl.LoginDaoImpl;
+import dao.custom.LoginDao;
+import dto.EmployeeDto;
+import dto.LoginFormDto;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -69,9 +76,10 @@ public class AddNewEmployeeFormController {
     public void setStage(Stage stage){
         this.stage = stage;
     }
+    AddNewEmployeeFormBO bo = (AddNewEmployeeFormBO) BOFactory.getBOFactory().getBo(BOFactory.BoTypes.ADDEMPLOYEE);
 
-    private EmployeeModel employeeModel = new EmployeeModel();
-    private LoginModel logModel = new LoginModel();
+//    private EmployeeModel employeeModel = new EmployeeModel();
+//    private LoginModel logModel = new LoginModel();
     public void initialize() throws SQLException {
         lblEmployeeID.setText(EmployeeModel.generateNextEmpId());
         lbluserID.setText(LoginModel.generateNExtUserID());
@@ -102,10 +110,10 @@ public class AddNewEmployeeFormController {
             boolean con = confirmPass(newPw, confPw);
             if(con){
                 var LDto = new LoginFormDto(userId,userName,newPw);
-                boolean userSaved = logModel.saveUser(LDto);
+                boolean userSaved = bo.saveUser(LDto);
 
                 if(userSaved) {
-                    boolean isSaved = employeeModel.saveEmployee(dto);
+                    boolean isSaved = bo.saveEmployee(dto);
 
                     if (isSaved) {
                         savedEmployee = isSaved;
@@ -115,6 +123,8 @@ public class AddNewEmployeeFormController {
             }
         } catch (SQLException e) {
              new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
         }
 
     }

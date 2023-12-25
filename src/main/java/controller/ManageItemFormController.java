@@ -1,9 +1,8 @@
 package controller;
 
-import Dto.ItemDto;
-import Dto.Tm.ItemTm;
+import dto.ItemDto;
+import dto.Tm.ItemTm;
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXTooltip;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -18,7 +17,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import model.ItemModel;
 
 import java.io.IOException;

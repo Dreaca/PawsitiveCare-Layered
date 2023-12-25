@@ -1,12 +1,10 @@
 package controller;
 
-import Dto.AppointmentDto;
-import Dto.AppointmentDto.AppType;
-import Dto.Tm.AppointmentTm;
+import dto.AppointmentDto;
+import dto.Tm.AppointmentTm;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;

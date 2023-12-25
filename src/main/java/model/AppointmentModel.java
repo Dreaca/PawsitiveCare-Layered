@@ -1,14 +1,14 @@
 package model;
 
-import Db.DbConnection;
-import Dto.AppointmentDto;
-import Dto.CustomerDto;
+import db.DbConnection;
+import dto.AppointmentDto;
+import dto.CustomerDto;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import static Db.DbConnection.getInstance;
+import static db.DbConnection.getInstance;
 
 public class AppointmentModel {
     public boolean addAppointment(AppointmentDto dto, CustomerDto cus) throws SQLException {

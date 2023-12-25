@@ -1,7 +1,7 @@
 package controller;
 
-import Dto.PetDto;
-import Dto.Tm.PetTm;
+import dto.PetDto;
+import dto.Tm.PetTm;
 import com.jfoenix.controls.JFXButton;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -13,7 +13,6 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import model.CustomerModel;
 import model.PetModel;
@@ -22,7 +21,6 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.List;
-import java.util.ResourceBundle;
 
 public class PetFormController {
     public ComboBox cbmFilter;

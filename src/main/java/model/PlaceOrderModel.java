@@ -1,8 +1,7 @@
 package model;
 
-import Db.DbConnection;
-import Dto.OrderDto;
-import Dto.PlaceOrderDto;
+import db.DbConnection;
+import dto.PlaceOrderDto;
 
 import java.sql.Connection;
 import java.sql.SQLException;

@@ -1,15 +1,13 @@
 package controller;
 
-import Dto.PetDto;
+import dto.PetDto;
 import javafx.fxml.Initializable;
-import javafx.scene.LightBase;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import javafx.stage.Window;
 import lombok.NoArgsConstructor;
 import model.CustomerModel;
 import model.PetModel;

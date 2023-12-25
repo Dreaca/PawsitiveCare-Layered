@@ -1,10 +1,8 @@
 package controller;
 
-import Dto.CustomerDto;
-import Dto.ItemDto;
-import Dto.OrderDto;
-import Dto.PlaceOrderDto;
-import Dto.Tm.OrderTm;
+import dto.CustomerDto;
+import dto.PlaceOrderDto;
+import dto.Tm.OrderTm;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;

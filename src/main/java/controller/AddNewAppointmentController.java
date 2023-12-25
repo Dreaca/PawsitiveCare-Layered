@@ -1,7 +1,11 @@
 package controller;
 
-import Dto.AppointmentDto;
-import Dto.CustomerDto;
+import bo.AddNewAppointmentBo;
+import bo.BOFactory;
+import dao.custom.AppointmentDao;
+import dao.custom.Impl.AppointmentDAOImpl;
+import dto.AppointmentDto;
+import dto.CustomerDto;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -23,8 +27,7 @@ public class AddNewAppointmentController {
     public TextField txtCustomer;
     public TextField txtCustomerContact;
     public ComboBox cmbApType;
-
-    private AppointmentModel model = new AppointmentModel();
+    private AddNewAppointmentBo bo = (AddNewAppointmentBo) BOFactory.getBOFactory().getBo(BOFactory.BoTypes.ADDAPPOINTMENT);
 
     public void cancelOnAction(ActionEvent actionEvent) {
         Stage stage = (Stage) root.getScene().getWindow();
@@ -33,7 +36,7 @@ public class AddNewAppointmentController {
 
     public void initialize() throws SQLException {
         loadData();
-        lblAppId.setText(model.getNextAppid());
+        lblAppId.setText(bo.getNextAppid());
         cmbApType.setOnAction(event -> {
             lblPrice.setText(getPriceFor(AppointmentDto.AppType.valueOf(((AppointmentDto.AppType) cmbApType.getValue()).name())));
         });
@@ -52,16 +55,19 @@ public class AddNewAppointmentController {
         String time = txtTime.getText();
         String contact = txtCustomerContact.getText();
         String date = String.valueOf(dpkDate.getValue());
+
         if (checkValidity()) {
-            var dto = new AppointmentDto(appId,customer,type,time,date);
-            CustomerDto cus = new CustomerDto(customer,contact);
+            var dto = new AppointmentDto(appId,customer,contact,type,time,date);
+
             try {
-                boolean isSaved = model.addAppointment(dto,cus);
+                boolean isSaved = bo.saveAppointment(dto);
                 if (isSaved) {
                     new Alert(Alert.AlertType.CONFIRMATION,"Appointment Saved").show();
                 }
             } catch (SQLException e) {
                 new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
+            } catch (ClassNotFoundException e) {
+                throw new RuntimeException(e);
             }
         }
 
