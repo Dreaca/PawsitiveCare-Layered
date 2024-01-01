@@ -11,7 +11,7 @@ public class DaoFactory {
 
     }
     public enum DAOType{
-        APPOINTMENT,CUSTOMER,EMPLOYEE,ITEM,LOGIN,ORDER,ORDER_DETAIL,PET,SCHEDULE,SUPPLIER,VET,VS
+        APPOINTMENT,CUSTOMER,EMPLOYEE,ITEM,LOGIN,ORDER,ORDER_DETAIL,PET,SCHEDULE,SUPPLIER,VET,VS,RECORD
     }
     public SuperDao getDAO(DAOType type){
         switch (type){
@@ -39,6 +39,8 @@ public class DaoFactory {
                 return new AppointmentDAOImpl();
             case VS:
                 return new VetScheduleDaoImpl();
+            case RECORD:
+                return new RecordDaoImpl();
             default:
                 return null;
         }

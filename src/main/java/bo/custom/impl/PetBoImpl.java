@@ -62,4 +62,16 @@ public class PetBoImpl implements PetBo {
     public String getCustomerName(String ownerId) throws SQLException {
         return customerDao.getCustomerName(ownerId);
     }
+
+    @Override
+    public PetDto searchPet(String petId) throws SQLException, ClassNotFoundException {
+        Pet search = petDao.search(petId);
+        return new PetDto(search.getPetId(),
+                search.getName(),
+                search.getAge(),
+                search.getBreed(),
+                search.getGender(),
+                search.getColor(),
+                search.getCustId());
+    }
 }

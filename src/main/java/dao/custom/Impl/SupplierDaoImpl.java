@@ -3,6 +3,7 @@ package dao.custom.Impl;
 import dao.custom.SupplierDao;
 import db.DbConnection;
 import dto.SupplierDto;
+import entity.Supplier;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -27,7 +28,7 @@ public class SupplierDaoImpl implements SupplierDao {
     }
 
     @Override
-    public ArrayList<SupplierDto> getAll() throws SQLException, ClassNotFoundException {
+    public ArrayList<Supplier> getAll() throws SQLException, ClassNotFoundException {
         return null;
     }
 
@@ -37,17 +38,17 @@ public class SupplierDaoImpl implements SupplierDao {
     }
 
     @Override
-    public boolean save(SupplierDto dto) throws SQLException, ClassNotFoundException {
+    public boolean save(Supplier dto) throws SQLException, ClassNotFoundException {
         return false;
     }
 
     @Override
-    public boolean update(SupplierDto dto) throws SQLException, ClassNotFoundException {
+    public boolean update(Supplier dto) throws SQLException, ClassNotFoundException {
         return false;
     }
 
     @Override
-    public SupplierDto search(String id) throws SQLException, ClassNotFoundException {
+    public Supplier search(String id) throws SQLException, ClassNotFoundException {
         return null;
     }
 }

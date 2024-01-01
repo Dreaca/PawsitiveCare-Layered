@@ -3,6 +3,7 @@ package dao.custom.Impl;
 import dao.SQLUtil;
 import dao.custom.CustomerDao;
 import dto.CustomerDto;
+import entity.Customer;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,7 +11,7 @@ import java.util.ArrayList;
 
 public class CustomerDaoImpl implements CustomerDao {
     @Override
-    public String getCustomerId(CustomerDto cus) throws SQLException {
+    public String getCustomerId(Customer cus) throws SQLException {
         ResultSet resultSet = SQLUtil.execute("SELECT custId FROM customer WHERE name = ?",cus);
         if (resultSet.next()){
             return resultSet.getString("custId");
@@ -35,12 +36,12 @@ public class CustomerDaoImpl implements CustomerDao {
     }
 
     @Override
-    public boolean save(CustomerDto dto) throws SQLException {
-        return SQLUtil.execute("INSERT INTO customer VALUES(?,?,?,?)",dto);
+    public boolean save(Customer entity) throws SQLException {
+        return SQLUtil.execute("INSERT INTO customer VALUES(?,?,?,?)",entity);
     }
 
     @Override
-    public boolean update(CustomerDto dto) throws SQLException, ClassNotFoundException {
+    public boolean update(Customer entity) throws SQLException, ClassNotFoundException {
         return false;
     }
 
@@ -49,68 +50,68 @@ public class CustomerDaoImpl implements CustomerDao {
         return SQLUtil.execute("DELETE FROM customer WHERE custId = ?",id);
     }
     @Override
-    public CustomerDto search(String id) throws SQLException {
+    public Customer search(String id) throws SQLException {
         ResultSet resultSet = SQLUtil.execute("SELECT * FROM customer WHERE custId = ?",id);
-        CustomerDto dto = null;
+        Customer entity = null;
         if(resultSet.next()){
             String custId = resultSet.getNString("custId");
             String name = resultSet.getString("name");
             String address = resultSet.getString("Address");
             String contact = resultSet.getString("contact");
 
-            dto = new CustomerDto(custId,name,address,contact);
+            entity = new Customer(custId,name,address,contact);
         }
-        return dto;
+        return entity;
 
     }
     @Override
-    public CustomerDto searchCustomerByFname(String fname) throws SQLException {
+    public Customer searchCustomerByFname(String fname) throws SQLException {
         ResultSet resultSet = SQLUtil.execute("SELECT * FROM customer WHERE name LIKE ? %",fname);
-        CustomerDto dto = null;
+        Customer entity = null;
         if(resultSet.next()){
             String custId = resultSet.getNString("custId");
             String name = resultSet.getString("name");
             String address = resultSet.getString("Address");
             String contact = resultSet.getString("contact");
 
-            dto = new CustomerDto(custId,name,address,contact);
+            entity = new Customer(custId,name,address,contact);
         }
-        return dto;
+        return entity;
     }
     @Override
-    public CustomerDto searchCustomerByLname(String Lname) throws SQLException {
+    public Customer searchCustomerByLname(String Lname) throws SQLException {
         ResultSet resultSet = SQLUtil.execute("SELECT * FROM customer WHERE name LIKE %?",Lname);
-        CustomerDto dto = null;
+        Customer entity = null;
         if(resultSet.next()){
             String custId = resultSet.getNString("custId");
             String name = resultSet.getString("name");
             String address = resultSet.getString("Address");
             String contact = resultSet.getString("contact");
 
-            dto = new CustomerDto(custId,name,address,contact);
+            entity = new Customer(custId,name,address,contact);
         }
-        return dto;
+        return entity;
     }
     @Override
-    public CustomerDto searchCustomerByContact(String contact) throws SQLException {
+    public Customer searchCustomerByContact(String contact) throws SQLException {
         ResultSet resultSet = SQLUtil.execute("SELECT * FROM customer WHERE contact = ?",contact);
-        CustomerDto dto = null;
+        Customer en = null;
         if(resultSet.next()){
             String cusId = resultSet.getString("custId");
             String name = resultSet.getString("name");
             String address = resultSet.getString("Address");
-            dto = new CustomerDto(cusId,name,address,contact);
+            en = new Customer(cusId,name,address,contact);
         }
-        return dto;
+        return en;
 
     }
     @Override
-    public ArrayList<CustomerDto> getAll() throws SQLException {
+    public ArrayList<Customer> getAll() throws SQLException {
         ResultSet resultSet = SQLUtil.execute("SELECT * FROM customer");
-        ArrayList<CustomerDto> dto = new ArrayList<>();
+        ArrayList<Customer> dto = new ArrayList<>();
         while (resultSet.next()){
             dto.add(
-                    new CustomerDto(
+                    new Customer(
                             resultSet.getString(1),
                             resultSet.getString(2),
                             resultSet.getString(3),

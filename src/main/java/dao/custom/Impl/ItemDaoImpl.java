@@ -4,6 +4,7 @@ import dao.SQLUtil;
 import dao.custom.ItemDao;
 import dto.ItemDto;
 import dto.Tm.OrderTm;
+import entity.Item;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,12 +13,12 @@ import java.util.List;
 
 public class ItemDaoImpl implements ItemDao {
     @Override
-    public ArrayList<ItemDto> getAll() throws SQLException {
+    public ArrayList<Item> getAll() throws SQLException {
         ResultSet resultSet = SQLUtil.execute("SELECT * FROM item");
-        List<ItemDto> list = new ArrayList<>();
+        ArrayList<Item> list = new ArrayList<>();
         while (resultSet.next()){
             list.add(
-                    new ItemDto(
+                    new Item(
                             resultSet.getString(1),
                             resultSet.getString(2),
                             resultSet.getInt(3),
@@ -25,7 +26,7 @@ public class ItemDaoImpl implements ItemDao {
                     )
             );
         }
-        return (ArrayList<ItemDto>) list;
+        return list;
     }
 
     @Override
@@ -46,15 +47,15 @@ public class ItemDaoImpl implements ItemDao {
     }
 
     @Override
-    public boolean update(ItemDto dto) throws SQLException {
-        return SQLUtil.execute("UPDATE item SET description = ?, qtyOnHand = ?, unitPrice = ? WHERE itemId = ?",dto.getDescription(),
-                dto.getQtyOnHand(),
-                dto.getUnitPrice(),
-                dto.getItemId());
+    public boolean update(Item entity) throws SQLException {
+        return SQLUtil.execute("UPDATE item SET description = ?, qtyOnHand = ?, unitPrice = ? WHERE itemId = ?",entity.getDescription(),
+                entity.getQtyOnHand(),
+                entity.getUnitPrice(),
+                entity.getItemId());
     }
 
     @Override
-    public ItemDto search(String id) throws SQLException, ClassNotFoundException {
+    public Item search(String id) throws SQLException, ClassNotFoundException {
         return null;
     }
 
@@ -79,8 +80,8 @@ public class ItemDaoImpl implements ItemDao {
     }
 
     @Override
-    public boolean save(ItemDto dto) throws SQLException {
-        return SQLUtil.execute("INSERT INTO item VALUES(?,?,?,?)",dto.getItemId(),dto.getDescription(),dto.getQtyOnHand(),dto.getUnitPrice());
+    public boolean save(Item entity) throws SQLException {
+        return SQLUtil.execute("INSERT INTO item VALUES(?,?,?,?)",entity.getItemId(),entity.getDescription(),entity.getQtyOnHand(),entity.getUnitPrice());
     }
 
     @Override

@@ -43,7 +43,7 @@ public class UpdatePetController implements Initializable {
         String ownerid = bo.getCustomerId(txtOwner.getText());
         String color = txtColor.getText();
 
-        var dto = new PetDto(id,name,breed,gender,ownerid,color);
+        var dto = new PetDto(id,name,0,breed,gender,ownerid,color);
         try {
             if (bo.updatePet(dto)) {
                 new Alert(Alert.AlertType.CONFIRMATION,"Pet updated").show();

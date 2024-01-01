@@ -13,7 +13,7 @@ public interface LoginDao extends CrudDao<User> {
     String getUser(LoginFormDto login) throws SQLException;
 
     boolean setUpdateUserId(String oldUserId, String newUserId) throws SQLException;
-    LoginFormDto getUser(String userName) throws SQLException;
+    User getUser(String userName) throws SQLException;
 
     boolean updateUserName(String userName, String userIdText) throws SQLException;
     boolean checkPass(String userId, String oldPasswordText) throws SQLException;

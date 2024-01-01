@@ -4,6 +4,7 @@ import dao.SQLUtil;
 import dao.custom.OrderDetailDao;
 import dto.OrderDetailDto;
 import dto.Tm.OrderTm;
+import entity.OrderDetail;
 
 import java.sql.Date;
 import java.sql.SQLException;
@@ -33,7 +34,7 @@ public class OrderDetailDaoImpl implements OrderDetailDao {
     }
 
     @Override
-    public ArrayList<OrderDetailDto> getAll() throws SQLException, ClassNotFoundException {
+    public ArrayList<OrderDetail> getAll() throws SQLException, ClassNotFoundException {
         return null;
     }
 
@@ -43,17 +44,17 @@ public class OrderDetailDaoImpl implements OrderDetailDao {
     }
 
     @Override
-    public boolean save(OrderDetailDto dto) throws SQLException, ClassNotFoundException {
+    public boolean save(OrderDetail dto) throws SQLException, ClassNotFoundException {
         return false;
     }
 
     @Override
-    public boolean update(OrderDetailDto dto) throws SQLException, ClassNotFoundException {
+    public boolean update(OrderDetail dto) throws SQLException, ClassNotFoundException {
         return false;
     }
 
     @Override
-    public OrderDetailDto search(String id) throws SQLException, ClassNotFoundException {
+    public OrderDetail search(String id) throws SQLException, ClassNotFoundException {
         return null;
     }
 }

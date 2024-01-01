@@ -6,6 +6,7 @@ import dao.custom.EmployeeDao;
 import dao.custom.LoginDao;
 import db.DbConnection;
 import dto.EmployeeDto;
+import entity.Employee;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -14,12 +15,12 @@ public class EmployeeDaoImpl implements EmployeeDao {
 //    LoginDao loginDao  = (LoginDao) DaoFactory.getInstance().getDAO(DaoFactory.DAOType.LOGIN);
 
     @Override
-    public ArrayList<EmployeeDto> getAll() throws SQLException {
+    public ArrayList<Employee> getAll() throws SQLException {
         ResultSet resultSet = SQLUtil.execute("SELECT * FROM employee");
-        ArrayList<EmployeeDto> employeeDtos = new ArrayList<>();
+        ArrayList<Employee> list = new ArrayList<>();
         while (resultSet.next()){
-            employeeDtos.add(
-                    new EmployeeDto(
+            list.add(
+                    new Employee(
                             resultSet.getString("employeeId"),
                             resultSet.getString("address"),
                             resultSet.getString("name"),
@@ -31,7 +32,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
             );
 
         }
-        return employeeDtos;
+        return list;
     }
 
     @Override
@@ -71,32 +72,31 @@ public class EmployeeDaoImpl implements EmployeeDao {
         }
     }
     @Override
-    public boolean save(EmployeeDto dto) throws SQLException {
+    public boolean save(Employee entity) throws SQLException {
         String sql = "INSERT INTO employee VALUES(?,?,?,?,?,?,?,?)";
 
         Connection connection = DbConnection.getInstance().getConnection();
         PreparedStatement pstm = connection.prepareStatement(sql);
 
-        pstm.setString(1,dto.getEmpId());
-        pstm.setString(2,dto.getName());
-        pstm.setString(3,dto.getAddress());
-        pstm.setString(4,dto.getContact());
-        pstm.setDouble(5,dto.getSalary());
-        pstm.setString(6,dto.getUserId());
-        pstm.setBlob(7, (Blob) null);
-        pstm.setString(8,dto.getNIC());
+        pstm.setString(1,entity.getEmployeeId());
+        pstm.setString(2,entity.getName());
+        pstm.setString(3,entity.getAddress());
+        pstm.setString(4,entity.getContact());
+        pstm.setDouble(5,entity.getSalary());
+        pstm.setString(6,entity.getUserId());
+        pstm.setString(8,entity.getNIC());
 
         int i = pstm.executeUpdate();
         return i > 0;
     }
 
     @Override
-    public boolean update(EmployeeDto dto) throws SQLException, ClassNotFoundException {
+    public boolean update(Employee dto) throws SQLException, ClassNotFoundException {
         return false;
     }
 
     @Override
-    public EmployeeDto search(String id) throws SQLException, ClassNotFoundException {
+    public Employee search(String id) throws SQLException, ClassNotFoundException {
         return null;
     }
 

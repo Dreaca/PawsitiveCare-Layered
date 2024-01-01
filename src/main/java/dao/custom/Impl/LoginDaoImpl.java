@@ -3,6 +3,7 @@ package dao.custom.Impl;
 import dao.SQLUtil;
 import dao.custom.LoginDao;
 import dto.LoginFormDto;
+import entity.User;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -61,7 +62,7 @@ public class LoginDaoImpl implements LoginDao {
     }
 
     @Override
-    public ArrayList<LoginFormDto> getAll() throws SQLException, ClassNotFoundException {
+    public ArrayList<User> getAll() throws SQLException, ClassNotFoundException {
         return null;
     }
 
@@ -76,34 +77,34 @@ public class LoginDaoImpl implements LoginDao {
     }
 
     @Override
-    public LoginFormDto getUser(String userName) throws SQLException {
-        LoginFormDto loginFormDto = new LoginFormDto();
+    public User getUser(String userName) throws SQLException {
         ResultSet resultSet = SQLUtil.execute("SELECT * FROM user WHERE userName = ?",userName);
         if (resultSet.next()) {
-            loginFormDto = new LoginFormDto(
+            return new User(
                     resultSet.getString(1),
                     resultSet.getString(2),
                     resultSet.getString(3)
             );
         }
-        return  loginFormDto;
+        else return null;
     }
 
     @Override
-    public boolean save(LoginFormDto LDto) throws SQLException {
-        return SQLUtil.execute("INSERT INTO user VALUES (?,?,?)",LDto.getUserID(),
-                LDto.getUserName(),
-                LDto.getPassword()
+    public boolean save(User en) throws SQLException {
+        return SQLUtil.execute("INSERT INTO user VALUES (?,?,?)",
+                en.getUserId(),
+                en.getUserName(),
+                en.getPassWord()
         );
     }
 
     @Override
-    public boolean update(LoginFormDto dto) throws SQLException, ClassNotFoundException {
+    public boolean update(User user ) throws SQLException, ClassNotFoundException {
         return false;
     }
 
     @Override
-    public LoginFormDto search(String id) throws SQLException, ClassNotFoundException {
+    public User search(String id) throws SQLException, ClassNotFoundException {
         return null;
     }
 

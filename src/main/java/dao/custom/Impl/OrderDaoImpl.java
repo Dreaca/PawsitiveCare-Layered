@@ -3,6 +3,7 @@ package dao.custom.Impl;
 import dao.custom.OrderDao;
 import db.DbConnection;
 import dto.OrderDto;
+import entity.Orders;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -34,7 +35,7 @@ public class OrderDaoImpl implements OrderDao {
     }
 
     @Override
-    public ArrayList<OrderDto> getAll() throws SQLException, ClassNotFoundException {
+    public ArrayList<Orders> getAll() throws SQLException, ClassNotFoundException {
         return null;
     }
 
@@ -44,17 +45,17 @@ public class OrderDaoImpl implements OrderDao {
     }
 
     @Override
-    public boolean save(OrderDto dto) throws SQLException, ClassNotFoundException {
+    public boolean save(Orders dto) throws SQLException, ClassNotFoundException {
         return false;
     }
 
     @Override
-    public boolean update(OrderDto dto) throws SQLException, ClassNotFoundException {
+    public boolean update(Orders dto) throws SQLException, ClassNotFoundException {
         return false;
     }
 
     @Override
-    public OrderDto search(String id) throws SQLException, ClassNotFoundException {
+    public Orders search(String id) throws SQLException, ClassNotFoundException {
         return null;
     }
 }

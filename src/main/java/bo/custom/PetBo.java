@@ -19,4 +19,6 @@ public interface PetBo extends SuperBO{
     String getCustomerId(String text) throws SQLException;
 
     String getCustomerName(String ownerId) throws SQLException;
+
+    PetDto searchPet(String petId) throws SQLException,ClassNotFoundException;
 }

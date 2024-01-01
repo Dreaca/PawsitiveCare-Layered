@@ -38,7 +38,7 @@ public class AddNewPetController {
 
                 String color = txtColor.getText();
 
-                var dto = new PetDto(petId,petName,petBreed,gender,ownerId,color);
+                var dto = new PetDto(petId,petName,0,petBreed,gender,color,ownerId);
                 boolean
                     isSaved = bo.savePet(dto);
 
