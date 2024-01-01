@@ -2,11 +2,8 @@ package dao.custom.Impl;
 
 import dao.SQLUtil;
 import dao.custom.RecordDao;
-import db.DbConnection;
 import dto.RecordDto;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
