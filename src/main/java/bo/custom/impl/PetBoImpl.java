@@ -5,8 +5,10 @@ import dao.DaoFactory;
 import dao.custom.CustomerDao;
 import dao.custom.PetDao;
 import dto.PetDto;
+import entity.Pet;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class PetBoImpl implements PetBo {
@@ -15,7 +17,7 @@ public class PetBoImpl implements PetBo {
 
     @Override
     public boolean savePet(PetDto dto) throws SQLException, ClassNotFoundException {
-        return petDao.save(dto);
+        return petDao.save(new Pet(dto.getPetId(),dto.getPetName(),dto.getAge(),dto.getPetBreed(),dto.getPetGender(),dto.getColor(),dto.getOwnerId()));
     }
 
     @Override
@@ -25,7 +27,20 @@ public class PetBoImpl implements PetBo {
 
     @Override
     public List<PetDto> getAllPets() throws SQLException, ClassNotFoundException {
-        return petDao.getAll();
+        ArrayList<Pet> all = petDao.getAll();
+        ArrayList<PetDto> list = new ArrayList<>();
+        for (Pet p: all) {
+            list.add(new PetDto(
+               p.getPetId(),
+               p.getName(),
+               p.getAge(),
+               p.getBreed(),
+               p.getGender(),
+               p.getColor(),
+                    p.getCustId()
+            ));
+        }
+        return list;
     }
 
     @Override
@@ -35,7 +50,7 @@ public class PetBoImpl implements PetBo {
 
     @Override
     public boolean updatePet(PetDto dto) throws SQLException, ClassNotFoundException {
-        return petDao.update(dto);
+        return petDao.update(new Pet(dto.getPetId(),dto.getPetName(),dto.getAge(),dto.getPetBreed(),dto.getPetGender(),dto.getColor(),dto.getOwnerId()));
     }
 
     @Override

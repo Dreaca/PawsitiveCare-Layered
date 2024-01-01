@@ -11,5 +11,5 @@ public class Appointment {
     private String custId;
     private String type;
     private String time;
-    private LocalDate date;
+    private String  date;
 }

@@ -2,11 +2,12 @@ package dao.custom;
 
 import dao.CrudDao;
 import dto.EmployeeDto;
+import entity.Employee;
 
 import java.sql.SQLException;
 import java.util.List;
 
-public interface EmployeeDao extends CrudDao<EmployeeDto> {
+public interface EmployeeDao extends CrudDao<Employee> {
      String generateNextEmpId() throws SQLException;
      String splitEmpID(String empId);
     String getEmployee(String empId) throws SQLException;

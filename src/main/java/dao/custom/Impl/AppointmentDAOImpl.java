@@ -4,15 +4,27 @@ import dao.SQLUtil;
 import dao.custom.AppointmentDao;
 import dto.AppointmentDto;
 import dto.CustomerDto;
+import entity.Appointment;
 
 import java.sql.*;
 import java.util.ArrayList;
 
 public class AppointmentDAOImpl implements AppointmentDao {
     @Override
-    public boolean save(AppointmentDto dto) throws SQLException {
-        return SQLUtil.execute("INSERT INTO appointment VALUES(?,?,?,?,?)",dto.getAppId(),dto.getCustomerName(),dto.getType().toString(),dto.getTime(),dto.getDate());
+    public boolean save(Appointment entity) throws SQLException {
+        return SQLUtil.execute("INSERT INTO appointment VALUES(?,?,?,?,?)",entity.getAppId(),entity.getCustId(), entity.getType(),entity.getTime(),entity.getDate());
     }
+
+    @Override
+    public boolean update(Appointment dto) throws SQLException, ClassNotFoundException {
+        return false;
+    }
+
+    @Override
+    public Appointment search(String id) throws SQLException, ClassNotFoundException {
+        return null;
+    }
+
     @Override
     public String getNextAppid() throws SQLException {
         ResultSet resultSet = SQLUtil.execute("SELECT appId FROM appointment ORDER BY appId DESC LIMIT 1");
@@ -35,16 +47,15 @@ public class AppointmentDAOImpl implements AppointmentDao {
         }
     }
     @Override
-    public ArrayList<AppointmentDto> getAll() throws SQLException {
+    public ArrayList<Appointment> getAll() throws SQLException {
         ResultSet resultSet = SQLUtil.execute("SELECT * FROM appointment");
-        ArrayList<AppointmentDto> dto = new ArrayList<>();
+        ArrayList<Appointment> dto = new ArrayList<>();
         while (resultSet.next()){
             dto.add(
-                    new AppointmentDto(
+                    new Appointment(
                             resultSet.getString("appId"),
                             resultSet.getString("custId"),
-                            resultSet.getString("contact"),
-                            AppointmentDto.getvalueOf(resultSet.getString("type")),
+                            resultSet.getString("type"),
                             resultSet.getString("time"),
                             resultSet.getString("date")
                     )
@@ -58,13 +69,7 @@ public class AppointmentDAOImpl implements AppointmentDao {
         return false;
     }
 
-    @Override
-    public boolean update(AppointmentDto dto) throws SQLException, ClassNotFoundException {
-        return false;
-    }
 
-    @Override
-    public AppointmentDto search(String id) throws SQLException, ClassNotFoundException {
-        return null;
-    }
+
+
 }

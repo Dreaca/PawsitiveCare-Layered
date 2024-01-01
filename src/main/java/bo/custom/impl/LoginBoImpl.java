@@ -3,10 +3,12 @@ package bo.custom.impl;
 import bo.custom.LoginBo;
 import dao.DaoFactory;
 import dao.custom.EmployeeDao;
+import dao.custom.Impl.EmployeeDaoImpl;
 import dao.custom.LoginDao;
 import dto.AdminDto;
 import dto.EmployeeDto;
 import dto.LoginFormDto;
+import entity.Employee;
 
 import java.sql.SQLException;
 
@@ -31,8 +33,9 @@ public class LoginBoImpl implements LoginBo {
     @Override
     public AdminDto getUser(String user) throws SQLException, ClassNotFoundException {
         LoginFormDto user1 = loginDao.getUser(user);
-        EmployeeDto search = eDao.search(user1.getUserID());
-        return new AdminDto(search, user1);
+        Employee search = eDao.search(user1.getUserID());
+        EmployeeDto employeeDto = new EmployeeDto(search.getEmployeeId(), search.getName(), search.getAddress(), search.getContact(), search.getSalary(), search.getUserId(), search.getNIC());
+        return new AdminDto(employeeDto, user1);
     }
 
     @Override

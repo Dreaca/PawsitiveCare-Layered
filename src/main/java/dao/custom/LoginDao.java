@@ -2,10 +2,11 @@ package dao.custom;
 
 import dao.CrudDao;
 import dto.LoginFormDto;
+import entity.User;
 
 import java.sql.SQLException;
 
-public interface LoginDao extends CrudDao<LoginFormDto> {
+public interface LoginDao extends CrudDao<User> {
      String generateNExtUserID() throws SQLException;
     String splitUserID(String userId);
     boolean authenticate(LoginFormDto login) throws SQLException;

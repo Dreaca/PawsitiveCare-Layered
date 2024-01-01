@@ -6,8 +6,11 @@ import dao.custom.EmployeeDao;
 import dao.custom.LoginDao;
 import dto.EmployeeDto;
 import dto.LoginFormDto;
+import entity.Employee;
+import entity.User;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class EmployeeBoImpl implements EmployeeBo {
@@ -15,12 +18,12 @@ private EmployeeDao dao = (EmployeeDao) DaoFactory.getInstance().getDAO(DaoFacto
     private LoginDao loginDao = (LoginDao) DaoFactory.getInstance().getDAO(DaoFactory.DAOType.LOGIN);
     @Override
     public boolean saveUser(LoginFormDto dto) throws SQLException, ClassNotFoundException {
-       return loginDao.save(dto);
+       return loginDao.save(new User(dto.getUserID(),dto.getUserName(),dto.getPassword()));
     }
 
     @Override
     public boolean saveEmployee(EmployeeDto dto) throws SQLException, ClassNotFoundException {
-        return dao.save(dto);
+        return dao.save(new Employee(dto.getEmpId(),dto.getName(),dto.getAddress(),dto.getContact(),dto.getSalary(),dto.getUserId(),dto.getNIC()));
     }
 
     @Override
@@ -45,7 +48,20 @@ private EmployeeDao dao = (EmployeeDao) DaoFactory.getInstance().getDAO(DaoFacto
 
     @Override
     public List<EmployeeDto> getEmployees() throws SQLException, ClassNotFoundException {
-        return dao.getAll();
+        ArrayList<Employee> all = dao.getAll();
+        ArrayList<EmployeeDto> list = new ArrayList<>();
+        for (Employee e: all) {
+            list.add(new EmployeeDto(
+               e.getEmployeeId(),
+               e.getName(),
+               e.getAddress(),
+                    e.getContact(),
+                    e.getSalary(),
+                    e.getUserId(),
+                    e.getNIC()
+            ));
+        }
+        return list;
     }
 
     @Override

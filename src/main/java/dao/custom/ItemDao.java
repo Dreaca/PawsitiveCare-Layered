@@ -3,11 +3,12 @@ package dao.custom;
 import dao.CrudDao;
 import dto.ItemDto;
 import dto.Tm.OrderTm;
+import entity.Item;
 
 import java.sql.SQLException;
 import java.util.List;
 
-public interface ItemDao extends CrudDao<ItemDto> {
+public interface ItemDao extends CrudDao<Item> {
     List<String> getItemCodes() throws SQLException;
     String getNextItemCode() throws SQLException;
     String splitID(String string);

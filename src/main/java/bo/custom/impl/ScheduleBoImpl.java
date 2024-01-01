@@ -9,6 +9,7 @@ import dto.ScheduleDto;
 import dto.VetDto;
 import entity.Schedule;
 import entity.VetSchedule;
+import entity.Veterinarian;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -41,7 +42,7 @@ public class ScheduleBoImpl implements ScheduleBo {
         ArrayList<ScheduleDto> list = new ArrayList<>();
 
         for (VetSchedule v: vetSchedules) {
-            VetDto search = vetDao.search(v.getVetid());
+            Veterinarian search = vetDao.search(v.getVetid());
         for (Schedule a: all) {
             list.add(
                     new ScheduleDto(
@@ -49,7 +50,7 @@ public class ScheduleBoImpl implements ScheduleBo {
                             a.getDate(),
                             a.getDuration(),
                             a.getTime(),
-                            search.getVetName()
+                            search.getName()
                     )
             );
             }
@@ -59,11 +60,11 @@ public class ScheduleBoImpl implements ScheduleBo {
 
     @Override
     public ArrayList<String> getAllVetNames() throws SQLException, ClassNotFoundException {
-        List<VetDto> list = vetDao.getAll();
+        List<Veterinarian> list = vetDao.getAll();
         ArrayList<String> names = new ArrayList<>();
-        for (VetDto a: list) {
+        for (Veterinarian a: list) {
             names.add(
-                    a.getVetName()
+                    a.getName()
             );
         }
         return names ;
