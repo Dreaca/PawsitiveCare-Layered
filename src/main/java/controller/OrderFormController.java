@@ -1,7 +1,11 @@
-/*
 package controller;
 
+import bo.BOFactory;
+import bo.custom.CustomerBo;
+import bo.custom.ItemBo;
+import bo.custom.OrdersBO;
 import dto.CustomerDto;
+import dto.ItemDto;
 import dto.PlaceOrderDto;
 import dto.Tm.OrderTm;
 import javafx.collections.FXCollections;
@@ -37,13 +41,19 @@ public class OrderFormController {
     public TextField txtCustomerContact;
     public Label lblDate;
 
-    private OrderModel model = new OrderModel();
-
-    private PlaceOrderModel placeOrderModel = new PlaceOrderModel();
-    private ItemModel itemModel = new ItemModel();
+    private OrdersBO bo = (OrdersBO) BOFactory.getBOFactory().getBo(BOFactory.BoTypes.ORDERS);
+    private ItemBo item = (ItemBo) BOFactory.getBOFactory().getBo(BOFactory.BoTypes.ITEM);
+    private CustomerBo customerBo = (CustomerBo) BOFactory.getBOFactory().getBo(BOFactory.BoTypes.CUSTOMER);
     private ObservableList<OrderTm> oblist = FXCollections.observableArrayList();
-    public void itemCodeOnAction() throws SQLException {
-        var dto = itemModel.getItemDesc((String) cmbItemCode.getValue());
+    public void itemCodeOnAction() {
+        ItemDto dto = null;
+        try {
+            dto = item.searchItem((String) cmbItemCode.getValue());
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         txtDescription.setText(dto.getDescription());
         txtUnitPrice.setText(String.valueOf(dto.getUnitPrice()));
     }
@@ -104,19 +114,25 @@ public class OrderFormController {
         }
         var placeOrderDto = new PlaceOrderDto(orderId,custId,date,orderList);
         try {
-            if(placeOrderModel.placeOrder(placeOrderDto)){
+            if(bo.saveOrder(placeOrderDto)){
                 new Alert(Alert.AlertType.CONFIRMATION, "Order Saved").show();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
         }
     }
     public void cancelOnAction(){
 
     }
-    public void customerOnAction() throws SQLException {
-        var cus = new CustomerModel();
-        CustomerDto dt = cus.getCustomerDetail(txtCustomerName.getText());
+    public void customerOnAction() {
+        CustomerDto dt = null;
+        try {
+            dt = customerBo.searchCustomerByname(txtCustomerName.getText());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         txtCustomerId.setText(dt.getCustomerId());
         txtCustomerContact.setText(dt.getCustomerContact());
     }
@@ -130,10 +146,15 @@ public class OrderFormController {
         loadAllData();
     }
 
-    private void loadAllData() throws SQLException {
+    private void loadAllData() {
 
-        lblOrderId.setText(model.generateNextOrderId());
-        cmbItemCode.getItems().setAll(itemModel.getItemCodes());
+        try {
+            lblOrderId.setText(bo.generateNextOrderId());
+            cmbItemCode.getItems().setAll(item.getItemcodes());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
         lblDate.setText(String.valueOf(LocalDate.now()));
     }
 
@@ -145,4 +166,3 @@ public class OrderFormController {
         colAmount.setCellValueFactory(new PropertyValueFactory<>("amount"));
     }
 }
-*/

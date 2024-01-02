@@ -9,7 +9,9 @@ import dto.AdminDto;
 import dto.EmployeeDto;
 import dto.LoginFormDto;
 import entity.Employee;
+import entity.User;
 
+import java.net.UnknownServiceException;
 import java.sql.SQLException;
 
 public class LoginBoImpl implements LoginBo {
@@ -32,10 +34,11 @@ public class LoginBoImpl implements LoginBo {
 
     @Override
     public AdminDto getUser(String user) throws SQLException, ClassNotFoundException {
-        LoginFormDto user1 = loginDao.getUser(user);
-        Employee search = eDao.search(user1.getUserID());
+        User user1 = loginDao.getUser(user);
+        LoginFormDto log = new LoginFormDto(user1.getUserId(),user1.getUserName(),user1.getPassWord());
+        Employee search = eDao.search(user1.getUserId());
         EmployeeDto employeeDto = new EmployeeDto(search.getEmployeeId(), search.getName(), search.getAddress(), search.getContact(), search.getSalary(), search.getUserId(), search.getNIC());
-        return new AdminDto(employeeDto, user1);
+        return new AdminDto(employeeDto, log);
     }
 
     @Override

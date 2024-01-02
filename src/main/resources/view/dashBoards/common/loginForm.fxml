@@ -15,7 +15,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" prefHeight="600.0" prefWidth="791.0" style="-fx-background-image: url(&quot;view/Assets/image/puppy.jpg&quot;);" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginFormController">
+<AnchorPane fx:id="root" prefHeight="600.0" prefWidth="791.0" style="-fx-background-image: url(&quot;view/Assets/image/puppy.jpg&quot;);" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginFormController">
    <children>
       <Hyperlink fx:id="hyperForgotPass" layoutX="328.0" layoutY="404.0" onAction="#forgotPassOnAction" prefHeight="22.0" prefWidth="168.0" text="Forgot Password?" visible="false" />
       <Label fx:id="lblEnterNIC" layoutX="210.0" layoutY="432.0" text="Enter the last 4 digits for your NIC number" textFill="WHITE" visible="false">
@@ -58,7 +58,7 @@
       </Label>
       <Label layoutX="254.0" layoutY="67.0" prefHeight="100.0" prefWidth="287.0" text="Pawsitive Care" textAlignment="CENTER" textFill="#faa80a" wrapText="true">
          <font>
-            <Font name="NATS" size="53.0" />
+            <Font size="43.0" />
          </font>
       </Label>
       <Label fx:id="incorrect" disable="true" layoutX="193.0" layoutY="178.0" prefHeight="29.0" prefWidth="392.0" text="* Password or Username is Incorrect" textFill="#eb0808" underline="true">

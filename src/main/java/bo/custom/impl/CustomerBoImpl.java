@@ -35,7 +35,8 @@ public class CustomerBoImpl implements CustomerBo {
 
     @Override
     public CustomerDto searchCustomerByContact(String contact) throws SQLException {
-        return dao.searchCustomerByContact(contact);
+        Customer customer = dao.searchCustomerByContact(contact);
+        return new CustomerDto(customer.getCustId(),customer.getName(),customer.getAddress(),customer.getContact());
     }
 
     @Override
@@ -45,7 +46,8 @@ public class CustomerBoImpl implements CustomerBo {
 
     @Override
     public CustomerDto searchCustomerByLastname(String lname) throws SQLException {
-        return dao.searchCustomerByLname(lname);
+        Customer customer = dao.searchCustomerByContact(lname);
+        return new CustomerDto(customer.getCustId(),customer.getName(),customer.getAddress(),customer.getContact());
     }
 
     @Override
@@ -61,6 +63,13 @@ public class CustomerBoImpl implements CustomerBo {
 
     @Override
     public CustomerDto searchCustomerByFirstname(String fname) throws SQLException {
-        return dao.searchCustomerByFname(fname);
+        Customer customer = dao.searchCustomerByContact(fname);
+        return new CustomerDto(customer.getCustId(),customer.getName(),customer.getAddress(),customer.getContact());
+    }
+
+    @Override
+    public CustomerDto searchCustomerByname(String name) throws SQLException {
+        Customer customer = dao.searchCustomerByName(name);
+        return new CustomerDto(customer.getCustId(),customer.getName(),customer.getAddress(),customer.getContact());
     }
 }

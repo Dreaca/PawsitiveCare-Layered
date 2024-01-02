@@ -20,4 +20,5 @@ public interface CustomerDao extends CrudDao<Customer> {
     Customer searchCustomerByContact(String contact) throws SQLException;
 
 
+    Customer searchCustomerByName(String name) throws SQLException;
 }

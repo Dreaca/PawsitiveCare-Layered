@@ -2,7 +2,6 @@ package dao.custom.Impl;
 
 import dao.SQLUtil;
 import dao.custom.CustomerDao;
-import dto.CustomerDto;
 import entity.Customer;
 
 import java.sql.ResultSet;
@@ -105,6 +104,19 @@ public class CustomerDaoImpl implements CustomerDao {
         return en;
 
     }
+
+    @Override
+    public Customer searchCustomerByName(String name) throws SQLException {
+        ResultSet rst = SQLUtil.execute("SELECT * from customer where name = ?", name);
+        if (rst.next()) {
+            return new Customer(rst.getString(1),
+                    rst.getString(2),
+                    rst.getString(3),
+                    rst.getString(4));
+        }
+        else return null;
+    }
+
     @Override
     public ArrayList<Customer> getAll() throws SQLException {
         ResultSet resultSet = SQLUtil.execute("SELECT * FROM customer");
