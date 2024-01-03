@@ -1,5 +1,6 @@
 package dto.Tm;
 
+import com.jfoenix.controls.JFXButton;
 import javafx.scene.control.Hyperlink;
 import lombok.*;
 
@@ -15,4 +16,5 @@ public class SupplierTm {
     private String location;
     private String contact;
     private Hyperlink invoice;
+    private JFXButton delButton;
 }

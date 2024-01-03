@@ -97,7 +97,17 @@ public class EmployeeDaoImpl implements EmployeeDao {
 
     @Override
     public Employee search(String id) throws SQLException, ClassNotFoundException {
-        return null;
+        ResultSet rst =  SQLUtil.execute("SELECT * FROM employee where userId = ?",id);
+        rst.next();
+        return new Employee(
+          rst.getString(1),
+          rst.getString(2),
+          rst.getString(3),
+          rst.getString(4),
+          rst.getDouble(5),
+          rst.getString(6),
+          rst.getString(7)
+        );
     }
 
     @Override

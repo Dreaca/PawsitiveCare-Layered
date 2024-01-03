@@ -37,7 +37,13 @@ public class LoginBoImpl implements LoginBo {
         User user1 = loginDao.getUser(user);
         LoginFormDto log = new LoginFormDto(user1.getUserId(),user1.getUserName(),user1.getPassWord());
         Employee search = eDao.search(user1.getUserId());
-        EmployeeDto employeeDto = new EmployeeDto(search.getEmployeeId(), search.getName(), search.getAddress(), search.getContact(), search.getSalary(), search.getUserId(), search.getNIC());
+        EmployeeDto employeeDto = new EmployeeDto(search.getEmployeeId(),
+                search.getName(),
+                search.getAddress(),
+                search.getContact(),
+                search.getSalary(),
+                search.getUserId(),
+                search.getNIC());
         return new AdminDto(employeeDto, log);
     }
 

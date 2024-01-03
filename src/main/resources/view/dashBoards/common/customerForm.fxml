@@ -54,14 +54,7 @@
          <effect>
             <DropShadow />
          </effect></TextField>
-      <RadioButton fx:id="rdbtnCustomer2ndNum" layoutX="459.0" layoutY="173.0" mnemonicParsing="false" onAction="#clickOnAction" prefHeight="31.0" prefWidth="287.0" text="Have a 2nd Number">
-         <font>
-            <Font name="Manjari Thin" size="15.0" />
-         </font>
-         <effect>
-            <DropShadow />
-         </effect>
-      </RadioButton>
+
       <TableView fx:id="tblCustomer" layoutX="216.0" layoutY="277.0" prefHeight="296.0" prefWidth="811.0" style="-fx-background-color: lightblue;">
         <columns>
           <TableColumn fx:id="colCustomerID" prefWidth="97.0" text="CustomerID" />

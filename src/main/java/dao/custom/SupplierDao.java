@@ -10,4 +10,6 @@ import java.util.List;
 
 public interface SupplierDao extends CrudDao<Supplier> {
     List<String> getSupplierIds() throws SQLException;
+
+    String generateSupplierId() throws SQLException;
 }

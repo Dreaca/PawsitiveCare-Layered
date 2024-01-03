@@ -66,7 +66,6 @@ public class AdminFormController {
 //    EmployeeModel model = new EmployeeModel();
     private EmployeeBo bo = (EmployeeBo) BOFactory.getBOFactory().getBo(BOFactory.BoTypes.EMPLOYEE);
     public void initialize() throws SQLException {
-
     }
 
     @FXML
@@ -150,11 +149,11 @@ public class AdminFormController {
         setDashBoard();
     }
     public void changeColor(JFXButton btn){
-        JFXButton btns[] = {btnReport,btnStock,btnSupplier,btnCustomer,btnEmployee,btnVet};
+        JFXButton btns[] = {btnStock,btnSupplier,btnCustomer,btnEmployee,btnVet};
         for (int i = 0; i < btns.length; i++) {
-            btn.setStyle("-fx-background-color : faa80a ;");
+            btn.setStyle("-fx-background-color : transparent ;"+"-fx-border-color : faa80a ;"+"-fx-border-radius : 40;"+"-fx-background-radius : 40;");
             if(!btn.equals(btns[i])){
-                btns[i].setStyle("-fx-background-color : white; ");
+                btns[i].setStyle("-fx-background-color : transparent; "+"-fx-border-color : transparent;"+"-fx-border-radius : 40;"+"-fx-background-radius : 40;");
             }
         }
     }
@@ -281,10 +280,31 @@ public class AdminFormController {
     public void updateUSerNameonAction(ActionEvent event) {
         txtName.setVisible(true);
         btnUserName1.setVisible(true);
+        setDashBoard();
     }
 
     public void updateNameOnAction(ActionEvent event) {
         txtNewUSerName.setVisible(true);
         btnUserName.setVisible(true);
+        setDashBoard();
+    }
+
+    public void logoutOnAction(ActionEvent actionEvent) {
+        try {
+            userBtnOnAction(actionEvent);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void exitOnAction(ActionEvent actionEvent) {
+        Stage stage = (Stage) root.getScene().getWindow();
+        stage.close();
+    }
+
+    public void homeOnAction(ActionEvent actionEvent) throws IOException {
+        Stage window = (Stage) root.getScene().getWindow();
+        Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/view/dashBoards/AdminDash/adminDash.fxml")));
+        window.setScene(scene);
     }
 }
