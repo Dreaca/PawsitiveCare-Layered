@@ -72,6 +72,11 @@ public class SupplierFormController {
         setCellValueFactory();
         loadCmboBox();
         loadAllData();
+        try {
+            lblSupId.setText(bo.generateSupplierId());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     private void setCellValueFactory() {

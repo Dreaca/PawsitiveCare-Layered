@@ -86,15 +86,6 @@ public class AdminFormController {
     }
 
     @FXML
-    void reportOnAction() throws IOException {
-        changeColor(btnReport);
-        Parent root = FXMLLoader.load(this.getClass().getResource("/view/dashBoards/AdminDash/reportForm.fxml"));
-        this.sidePane.getChildren().clear();
-        this.sidePane.getChildren().add(root);
-
-    }
-
-    @FXML
     void supplierOnAction(ActionEvent event) throws IOException {
         changeColor(btnSupplier);
         Parent root = FXMLLoader.load(this.getClass().getResource("/view/dashBoards/AdminDash/supplierForm.fxml"));

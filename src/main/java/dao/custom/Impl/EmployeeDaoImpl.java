@@ -48,12 +48,14 @@ public class EmployeeDaoImpl implements EmployeeDao {
         }
     }
     public String splitEmpID(String empId) {
-        if( empId != null ){
+        if(empId != null && !empId.equals("Manager")){
+            System.out.println(empId);
             String [] id = empId.split("E");
             int num = Integer.parseInt(id[1]);
             num++;
             return String.format("E%03d",num);
-        }else {
+        }
+        else {
             return "E001";
         }
     }
@@ -73,21 +75,13 @@ public class EmployeeDaoImpl implements EmployeeDao {
     }
     @Override
     public boolean save(Employee entity) throws SQLException {
-        String sql = "INSERT INTO employee VALUES(?,?,?,?,?,?,?,?)";
-
-        Connection connection = DbConnection.getInstance().getConnection();
-        PreparedStatement pstm = connection.prepareStatement(sql);
-
-        pstm.setString(1,entity.getEmployeeId());
-        pstm.setString(2,entity.getName());
-        pstm.setString(3,entity.getAddress());
-        pstm.setString(4,entity.getContact());
-        pstm.setDouble(5,entity.getSalary());
-        pstm.setString(6,entity.getUserId());
-        pstm.setString(8,entity.getNIC());
-
-        int i = pstm.executeUpdate();
-        return i > 0;
+        return SQLUtil.execute("INSERT INTO employee VALUES(?,?,?,?,?,?,?)",entity.getEmployeeId(),
+                entity.getName(),
+                entity.getAddress(),
+                entity.getContact(),
+                entity.getSalary(),
+                entity.getUserId(),
+                entity.getNIC());
     }
 
     @Override

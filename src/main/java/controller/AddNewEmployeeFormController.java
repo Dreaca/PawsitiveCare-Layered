@@ -2,6 +2,7 @@ package controller;
 
 import bo.custom.EmployeeBo;
 import bo.BOFactory;
+import bo.custom.AddEmployeeBo;
 import dto.EmployeeDto;
 import dto.LoginFormDto;
 import com.jfoenix.controls.JFXButton;
@@ -68,9 +69,7 @@ public class AddNewEmployeeFormController {
         this.stage = stage;
     }
     EmployeeBo bo = (EmployeeBo) BOFactory.getBOFactory().getBo(BOFactory.BoTypes.EMPLOYEE);
-//     loginBo = (LoginBo) BOFactory.getBOFactory().getBo(BOFactory.BoTypes.LOGIN);
-//    private EmployeeModel employeeModel = new EmployeeModel();
-//    private LoginModel logModel = new LoginModel();
+    AddEmployeeBo newBo = (AddEmployeeBo) BOFactory.getBOFactory().getBo(BOFactory.BoTypes.NE);
     public void initialize() {
         try {
             lblEmployeeID.setText(bo.generateNextEmpId());
@@ -104,16 +103,12 @@ public class AddNewEmployeeFormController {
         try {
             boolean con = confirmPass(newPw, confPw);
             if(con){
+
                 var LDto = new LoginFormDto(userId,userName,newPw);
-                boolean userSaved = bo.saveUser(LDto);
+               boolean saved =  newBo.saveData(LDto,dto);
 
-                if(userSaved) {
-                    boolean isSaved = bo.saveEmployee(dto);
-
-                    if (isSaved) {
-                        savedEmployee = isSaved;
+                if(saved) {
                         new Alert(Alert.AlertType.CONFIRMATION, "User Saved !").show();
-                    }
                 }
             }
         } catch (SQLException e) {

@@ -22,13 +22,13 @@ public class LoginDaoImpl implements LoginDao {
     }
     @Override
     public String splitUserID(String userId) {
-        if(userId != null){
-            String [] newUser = userId.split("E");
+        if(userId != null && !userId.equals("Admin")){
+            String [] newUser = userId.split("U");
             int num = Integer.parseInt(newUser[1]);
             num++;
-            return "E00"+num;
+            return String.format("U%03d",num);
         }else {
-            return "E001";
+            return "U001";
         }
     }
 

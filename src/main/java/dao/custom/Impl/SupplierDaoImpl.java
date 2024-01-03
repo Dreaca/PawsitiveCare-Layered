@@ -40,7 +40,7 @@ public class SupplierDaoImpl implements SupplierDao {
     }
 
     private String getNext(String string) {
-        if (!string.equals(null )){
+        if (string!=(null)){
             String[] id = string.split("SUP");
             int id1 = Integer.parseInt(id[1]);
             id1++;
