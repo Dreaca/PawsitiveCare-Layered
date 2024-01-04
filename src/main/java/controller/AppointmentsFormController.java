@@ -9,9 +9,11 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -26,9 +28,15 @@ public class AppointmentsFormController {
     public TableColumn colContact;
     public TableColumn colType;
     public TableColumn colPrice;
+    public AnchorPane stuff;
+    public Label appointmentCount;
+    public Label vaccineCount;
+    public Label surgeryCount;
+    public Label checkupCount;
 
     private AppointmentBo bo = (AppointmentBo) BOFactory.getBOFactory().getBo(BOFactory.BoTypes.APPOINTMENT);
     public void initialize(){
+        loadCounters();
         setCellValueFactory();
         loadAllAppointments();
     }
@@ -77,5 +85,16 @@ public class AppointmentsFormController {
         oblist.add(null);
         tblAppointment.setItems(oblist);
         tblAppointment.refresh();
+    }
+    private void loadCounters(){
+        try {
+            checkupCount.setText(bo.count(AppointmentDto.AppType.CHECKUP));
+            vaccineCount.setText(bo.count(AppointmentDto.AppType.VACCINATION));
+            surgeryCount.setText(bo.count(AppointmentDto.AppType.SURGERY));
+            appointmentCount.setText(bo.countAll());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
     }
 }

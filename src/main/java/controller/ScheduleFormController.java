@@ -2,9 +2,10 @@ package controller;
 
 import bo.BOFactory;
 import bo.custom.ScheduleBo;
+import com.jfoenix.controls.JFXButton;
+import db.DbConnection;
 import dto.ScheduleDto;
 import dto.Tm.ScheduleTm;
-import com.jfoenix.controls.JFXButton;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -16,8 +17,13 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -33,6 +39,7 @@ public class ScheduleFormController {
     private ScheduleBo bo = (ScheduleBo) BOFactory.getBOFactory().getBo(BOFactory.BoTypes.SCHEDULE);
     private Image image = new Image("/view/Assets/icon/settings.png");
     private ImageView imageView = new ImageView(image);
+    ObservableList<ScheduleTm> oblist = FXCollections.observableArrayList();
     public void initialize() throws SQLException {
         setCellValueFactory();
         loadData();
@@ -40,11 +47,23 @@ public class ScheduleFormController {
 
 
     public void printScheduleOnAction(ActionEvent event) {
+            createJasperReport(oblist);
+    }
+    private void createJasperReport(ObservableList<ScheduleTm> oblist) {
+
+        try {
+            InputStream stream = getClass().getResourceAsStream("/report/schedule.jrxml");
+            JasperDesign load = JRXmlLoader.load(stream);
+            JasperReport report = JasperCompileManager.compileReport(load);
+            JasperPrint print = JasperFillManager.fillReport(report,null, DbConnection.getInstance().getConnection());
+
+            JasperViewer.viewReport(print);
+        } catch (JRException | SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
-    public void mailVetsOnAction(ActionEvent event) {
 
-    }
 
     public void refreshOnAction(ActionEvent event) {
         loadData();

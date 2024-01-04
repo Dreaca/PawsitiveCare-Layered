@@ -13,11 +13,17 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class CustomerFormController {
     public TextField txtCusAddress;
     public JFXButton btnClear;
+    public Label customerCount;
+    public Label lblDate;
+    public Label lblTime;
     @FXML
     private JFXButton btnDeleteCustomer;
 
@@ -67,6 +73,13 @@ public class CustomerFormController {
     public void initialize(){
         setCellValueFactory();
         loadAllCustomer();
+        lblTime.setText(String.valueOf(LocalDate.now()));
+        lblDate.setText(LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm")));
+        try {
+            customerCount.setText(String.valueOf(bo.getCount()));
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private void loadAllCustomer() {
@@ -108,12 +121,14 @@ public class CustomerFormController {
     @FXML
     void btnUpdateOnAction(ActionEvent event) {
         String id = txtCustomerID.getText();
-        String name = txtCustomerFname.getText()+txtCustomerLname.getText();
+        String name = txtCustomerFname.getText()+"  "+txtCustomerLname.getText();
         String address = txtCusAddress.getText();
         String contact = txtContactNo.getText();
         try {
             if(bo.updateCustomer(new CustomerDto(id,name,address,contact))){
-                new Alert(Alert.AlertType.CONFIRMATION,"Customer Saved").show();
+                new Alert(Alert.AlertType.CONFIRMATION,"Updated Successfully").show();
+                loadAllCustomer();
+                clearFields();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
@@ -129,7 +144,7 @@ public class CustomerFormController {
         try {
             CustomerDto customerDto = bo.searchCustomerByContact(contact);
             if (customerDto != null){
-                String [] name = customerDto.getCustomerName().split(" ");
+                String [] name = customerDto.getCustomerName().split("  ");
                 txtCustomerID.setText(customerDto.getCustomerId());
                 txtCustomerFname.setText(name[0]);
                 txtCustomerLname.setText(name[1]);
@@ -171,7 +186,7 @@ public class CustomerFormController {
         try {
             CustomerDto customerDto = bo.searchCustomerByLastname(Lname);
             if (customerDto != null){
-                String [] name = customerDto.getCustomerName().split(" ");
+                String [] name = customerDto.getCustomerName().split("  ");
                 txtCustomerID.setText(customerDto.getCustomerId());
                 txtCustomerFname.setText(name[0]);
                 txtCustomerLname.setText(name[1]);
@@ -202,12 +217,14 @@ public class CustomerFormController {
             if(isSaved){
                 new Alert(Alert.AlertType.CONFIRMATION,"Customer Saved Successfully").show();
                 clearFields();
+                loadAllCustomer();
             }
         }
         catch (SQLException e){
-            new Alert(Alert.AlertType.ERROR,e.getMessage()).show();;
+            new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
+            e.printStackTrace();
         } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
 
     }
@@ -229,7 +246,8 @@ public class CustomerFormController {
         try {
             CustomerDto customerDto = bo.searchCustomer(id);
             if (customerDto != null){
-                String [] name = customerDto.getCustomerName().split(" ");
+                String [] name = customerDto.getCustomerName().split("  ");
+                System.out.println(customerDto.getCustomerName());
                 txtCustomerID.setText(customerDto.getCustomerId());
                 txtCustomerFname.setText(name[0]);
                 txtCustomerLname.setText(name[1]);
@@ -252,7 +270,7 @@ public class CustomerFormController {
         try {
             CustomerDto customerDto = bo.searchCustomerByFirstname(Fname);
             if (customerDto != null){
-                String [] name = customerDto.getCustomerName().split(" ");
+                String [] name = customerDto.getCustomerName().split("  ");
                 txtCustomerID.setText(customerDto.getCustomerId());
                 txtCustomerFname.setText(name[0]);
                 txtCustomerLname.setText(name[1]);

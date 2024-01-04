@@ -72,4 +72,9 @@ public class CustomerBoImpl implements CustomerBo {
         Customer customer = dao.searchCustomerByName(name);
         return new CustomerDto(customer.getCustId(),customer.getName(),customer.getAddress(),customer.getContact());
     }
+
+    @Override
+    public String getCount() throws SQLException {
+       return dao.getCount();
+    }
 }

@@ -8,15 +8,16 @@ import com.jfoenix.controls.JFXButton;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class VetFormController {
     public AnchorPane root;
@@ -32,8 +33,16 @@ public class VetFormController {
     public TableColumn colEmail;
     public TextField txtEmail;
     public TableView tblVet;
+    public AnchorPane sidepane;
+    public Label idnotValid;
+    public Label fnameNotValid;
+    public Label lastNameNotValid;
+    public Label contactNotValid;
+    public Label emailNotValid;
+    public Label datelbl;
+    public Label timelbl;
 
-//    private VetModel model = new VetModel();
+    //    private VetModel model = new VetModel();
     private VetBo bo = (VetBo) BOFactory.getBOFactory().getBo(BOFactory.BoTypes.VET);
     public void clearOnAction(ActionEvent actionEvent) {
         txtEmail.clear();
@@ -78,21 +87,41 @@ public class VetFormController {
         String fullname = txtFirstName.getText() +" "+ txtLastName.getText();
         String contact = txtContact.getText();
         String email = txtEmail.getText();
-
-        var dto = new VetDto(vetId,fullname,contact,email);
-        try {
-            if(bo.saveVeterinarian(dto)){
-                new Alert(Alert.AlertType.CONFIRMATION,"Veterinarian Saved !!").show();
-                loadAllData();
+        if(!txtID.getText().isEmpty()||!txtFirstName.getText().isEmpty()||!txtEmail.getText().isEmpty()|!txtLastName.getText().isEmpty()||!txtContact.getText().isEmpty()) {
+            if(checkReg()) {
+                var dto = new VetDto(vetId, fullname, contact, email);
+                try {
+                    if (bo.saveVeterinarian(dto)) {
+                        new Alert(Alert.AlertType.CONFIRMATION, "Veterinarian Saved !!").show();
+                        loadAllData();
+                    }
+                } catch (SQLException e) {
+                    new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+                } catch (ClassNotFoundException e) {
+                    throw new RuntimeException(e);
+                }
             }
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
         }
 
     }
+    private boolean checkReg() {
+        if (Pattern.matches("!|@|#|\'$\'|%|^|_|\'*\'|",txtFirstName.getText())){
+            fnameNotValid.setVisible(true);
+            return false;
+        } else if (Pattern.matches("!|@|#|\'$\'|%|^|_|\'*\'|", txtLastName.getText())) {
+            lastNameNotValid.setVisible(true);
+            return false;
+        } else if (!Pattern.matches("(0|94|\\+94)([1-7]([0-9]))[0-9]{7}",txtContact.getText())) {
+            contactNotValid.setVisible(true);
+            return false;
+        } else if (!Pattern.matches("^(?=.{1,256}$)[a-zA-Z0-9._%+-]+@[A-Za-z0-9.-]+\\.[a-zA-Z]{2,}$", txtEmail.getText())) {
+            emailNotValid.setVisible(true);
+            return false;
+        } else return true;
+    }
     public void initialize(){
+        timelbl.setText((LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm"))));
+        datelbl.setText(String.valueOf(LocalDate.now()));
         setValueCellFactory();
         loadAllData();
     }

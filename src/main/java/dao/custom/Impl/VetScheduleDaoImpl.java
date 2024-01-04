@@ -1,5 +1,6 @@
 package dao.custom.Impl;
 
+import dao.SQLUtil;
 import dao.custom.VetScheduleDao;
 import db.DbConnection;
 import dto.VetScheduleDto;
@@ -14,7 +15,15 @@ import java.util.ArrayList;
 public class VetScheduleDaoImpl implements VetScheduleDao {
     @Override
     public ArrayList<VetSchedule> getAll() throws SQLException, ClassNotFoundException {
-        return null;
+        ArrayList<VetSchedule> list = new ArrayList<>();
+        ResultSet rst = SQLUtil.execute("SELECT * FROM vet_schedule");
+        while (rst.next()){
+            list.add(new VetSchedule(
+                    rst.getString(1),
+                    rst.getString(2)
+            ));
+        }
+        return list;
     }
 
     @Override

@@ -41,4 +41,14 @@ public class AppointmentBoImpl implements AppointmentBo {
         }
         return dtos;
     }
+
+    @Override
+    public String count(AppointmentDto.AppType appType) throws SQLException {
+        return dao.count(String.valueOf(appType));
+    }
+
+    @Override
+    public String countAll() throws SQLException {
+        return dao.countAl();
+    }
 }

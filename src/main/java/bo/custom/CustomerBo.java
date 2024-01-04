@@ -23,4 +23,6 @@ public interface CustomerBo extends SuperBO{
     CustomerDto searchCustomerByFirstname(String fname) throws SQLException;
 
     CustomerDto searchCustomerByname(String name) throws SQLException;
+
+    String getCount() throws SQLException;
 }

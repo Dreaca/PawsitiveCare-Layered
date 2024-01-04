@@ -36,12 +36,16 @@ public class CustomerDaoImpl implements CustomerDao {
 
     @Override
     public boolean save(Customer entity) throws SQLException {
-        return SQLUtil.execute("INSERT INTO customer VALUES(?,?,?,?)",entity);
+        return SQLUtil.execute("INSERT INTO customer VALUES(?,?,?,?)",entity.getCustId(),
+                entity.getName(),
+                entity.getAddress(),
+                entity.getContact());
     }
 
     @Override
     public boolean update(Customer entity) throws SQLException, ClassNotFoundException {
-        return false;
+        Boolean execute = SQLUtil.execute("UPDATE customer SET name = ?,address = ?, contact = ? WHERE custId = ?", entity.getName(), entity.getAddress(), entity.getContact(), entity.getCustId());
+        return execute;
     }
 
     @Override
@@ -115,6 +119,13 @@ public class CustomerDaoImpl implements CustomerDao {
                     rst.getString(4));
         }
         else return null;
+    }
+
+    @Override
+    public String getCount() throws SQLException {
+        ResultSet rst = SQLUtil.execute("SELECT COUNT(*) as count FROM customer ");
+        rst.next();
+        return rst.getString(1);
     }
 
     @Override

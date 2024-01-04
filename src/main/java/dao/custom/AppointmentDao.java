@@ -12,4 +12,7 @@ public interface AppointmentDao extends CrudDao<Appointment> {
     String getNextAppid() throws SQLException;
     String splitAppId(String nextId);
 
+    String count(String appType) throws SQLException;
+
+    String countAl() throws SQLException;
 }

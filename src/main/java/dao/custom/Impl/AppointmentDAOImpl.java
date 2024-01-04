@@ -46,6 +46,21 @@ public class AppointmentDAOImpl implements AppointmentDao {
             return "App1";
         }
     }
+
+    @Override
+    public String count(String appType) throws SQLException {
+        ResultSet rst =  SQLUtil.execute("SELECT COUNT(*) FROM appointment WHERE type = ?",appType);
+        rst.next();
+        return rst.getString(1);
+    }
+
+    @Override
+    public String countAl() throws SQLException {
+        ResultSet rst =  SQLUtil.execute("SELECT COUNT(*) FROM appointment");
+        rst.next();
+        return rst.getString(1);
+    }
+
     @Override
     public ArrayList<Appointment> getAll() throws SQLException {
         ResultSet resultSet = SQLUtil.execute("SELECT * FROM appointment");

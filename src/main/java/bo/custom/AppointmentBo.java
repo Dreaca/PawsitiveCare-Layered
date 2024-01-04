@@ -11,4 +11,8 @@ public interface AppointmentBo extends SuperBO{
     boolean saveAppointment(AppointmentDto dto) throws SQLException, ClassNotFoundException;
 
     List<AppointmentDto> getAllAppointments() throws SQLException, ClassNotFoundException;
+
+    String count(AppointmentDto.AppType appType) throws SQLException;
+
+    String countAll() throws SQLException;
 }

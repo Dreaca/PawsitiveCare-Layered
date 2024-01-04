@@ -7,9 +7,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" prefHeight="725.0" prefWidth="1366.0" stylesheets="@../CSS/root.CSS" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EmployeeDashController">
+<AnchorPane fx:id="root" prefHeight="725.0" prefWidth="1366.0" stylesheets="@../CSS/root.CSS" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EmployeeDashController">
    <children>
-      <AnchorPane focusTraversable="true" layoutX="13.0" layoutY="639.0" prefHeight="60.0" prefWidth="1177.0" style="-fx-background-color: transparent; -fx-background-radius: 20;">
+      <AnchorPane focusTraversable="true" layoutX="41.0" layoutY="649.0" prefHeight="60.0" prefWidth="1177.0" style="-fx-background-color: transparent; -fx-background-radius: 20;">
          <children>
             <JFXButton fx:id="btnUser" layoutX="9.0" layoutY="4.0" onAction="#logoutOnAction" prefHeight="52.0" prefWidth="198.0" ripplerFill="#e80000" style="-fx-background-radius: 20; -fx-border-radius: 20; -fx-background-color: transparent;" text="user">
                <font>
@@ -84,9 +84,9 @@
                </graphic></JFXButton>
          </children></AnchorPane>
       <AnchorPane fx:id="sidePane" layoutX="11.0" layoutY="12.0" prefHeight="615.0" prefWidth="1341.0" stylesheets="@../CSS/sidePane.css" />
-      <JFXButton contentDisplay="GRAPHIC_ONLY" layoutX="1232.0" layoutY="629.0" onAction="#exitOnAction" prefHeight="80.0" prefWidth="69.0" style="-fx-background-color: transparent; -fx-border-color: red; -fx-background-radius: 180; -fx-border-radius: 180;">
+      <JFXButton contentDisplay="GRAPHIC_ONLY" layoutX="1223.0" layoutY="645.0" onAction="#exitOnAction" prefHeight="65.0" prefWidth="69.0" style="-fx-background-color: transparent; -fx-border-color: red; -fx-background-radius: 180; -fx-border-radius: 180;">
          <graphic>
-            <ImageView fitHeight="128.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="41.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../Assets/icon/turn-off.png" />
                </image>

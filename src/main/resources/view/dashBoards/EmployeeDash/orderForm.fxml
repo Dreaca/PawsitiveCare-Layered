@@ -12,22 +12,22 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="615.0" prefWidth="1341.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.OrderFormController">
+<AnchorPane prefHeight="615.0" prefWidth="1341.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.OrderFormController">
    <children>
-      <TableView fx:id="tblOrder" layoutX="24.0" layoutY="63.0" prefHeight="536.0" prefWidth="884.0" style="-fx-background-radius: 20; -fx-border-color: linear-gradient(to bottom, #d2a172, #faa80a);; -fx-border-radius: 20;">
+      <TableView fx:id="tblOrder" layoutX="65.0" layoutY="64.0" prefHeight="536.0" prefWidth="801.0" style="-fx-background-radius: 20; -fx-border-color: linear-gradient(to bottom, #d2a172, #faa80a);; -fx-border-radius: 20;">
         <columns>
-          <TableColumn fx:id="colItemCode" prefWidth="105.66666412353516" text="Item Code" />
-          <TableColumn fx:id="colDescription" prefWidth="253.0" text="Description" />
-            <TableColumn fx:id="colQty" prefWidth="170.0" text="Qty" />
-            <TableColumn fx:id="colUnitPrice" prefWidth="115.0" text="Unit Price" />
-            <TableColumn fx:id="colAmount" prefWidth="147.0" text="Amount" />
-            <TableColumn fx:id="colAmount1" prefWidth="91.0" text="Remove" />
+          <TableColumn fx:id="colItemCode" prefWidth="91.99999809265137" text="Item Code" />
+          <TableColumn fx:id="colDescription" prefWidth="214.00005340576172" text="Description" />
+            <TableColumn fx:id="colQty" prefWidth="89.333251953125" text="Qty" />
+            <TableColumn fx:id="colUnitPrice" prefWidth="123.99990844726562" text="Unit Price" />
+            <TableColumn fx:id="colAmount" prefWidth="92.0" text="Amount" />
+            <TableColumn fx:id="colAmount1" prefWidth="276.6666259765625" text="Remove" />
         </columns>
          <effect>
             <DropShadow />
          </effect>
       </TableView>
-      <AnchorPane layoutX="935.0" layoutY="62.0" prefHeight="537.0" prefWidth="386.0" style="-fx-background-color: linear-gradient(to bottom, #d2a172, #faa80a); -fx-background-radius: 20; -fx-border-color: black; -fx-border-radius: 20;">
+      <AnchorPane layoutX="892.0" layoutY="62.0" prefHeight="537.0" prefWidth="386.0" style="-fx-background-color: linear-gradient(to bottom, #d2a172, #faa80a); -fx-background-radius: 20; -fx-border-color: black; -fx-border-radius: 20;">
          <children>
             <Label layoutX="26.0" layoutY="18.0" prefHeight="43.0" prefWidth="108.0" text="Order ID" textFill="#fcfcfc">
                <font>
@@ -74,17 +74,17 @@
             <DropShadow />
          </effect>
       </AnchorPane>
-      <Label layoutX="1007.0" layoutY="7.0" text="Add a new Order" underline="true">
+      <Label layoutX="956.0" layoutY="7.0" text="Add a new Order" underline="true">
          <font>
             <Font name="Manjari Thin" size="34.0" />
          </font>
       </Label>
-      <Label layoutX="42.0" layoutY="28.0" prefHeight="16.0" prefWidth="61.0" text="Date ">
+      <Label layoutX="70.0" layoutY="28.0" prefHeight="16.0" prefWidth="61.0" text="Date ">
          <font>
             <Font name="Manjari Thin" size="20.0" />
          </font>
       </Label>
-      <Label fx:id="lblDate" layoutX="115.0" layoutY="28.0" prefHeight="25.0" prefWidth="145.0" text="DD/MM/YYYY">
+      <Label fx:id="lblDate" layoutX="143.0" layoutY="28.0" prefHeight="25.0" prefWidth="145.0" text="DD/MM/YYYY">
          <font>
             <Font name="Manjari Thin" size="22.0" />
          </font>

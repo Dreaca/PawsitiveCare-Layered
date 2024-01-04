@@ -60,9 +60,9 @@ public class EmployeeDashController {
     private void changeButtonColor(JFXButton btn) {
         JFXButton[] buttons = {btnAppointments,btnCustomer,btnOrders,btnPets,btnSchedule};
         for (int i = 0; i < buttons.length; i++) {
-            btn.setStyle("-fx-background-color : ffbe4f;");
+            btn.setStyle("-fx-border-color : ffbe4f;"+"-fx-background-radius : 20;"+"-fx-border-radius : 20");
             if(!btn.equals(buttons[i])) {
-                buttons[i].setStyle("-fx-background-color : white;");
+                buttons[i].setStyle("-fx-border-color : transparent;");
             }
         }
     }
@@ -100,6 +100,11 @@ public class EmployeeDashController {
 
     public void setUserName(String userName) {
         btnUser.setText(userName);
+    }
+
+    public void exitOnAction(ActionEvent actionEvent) {
+        Stage stage = (Stage) root.getScene().getWindow();
+        stage.close();
     }
 }
 

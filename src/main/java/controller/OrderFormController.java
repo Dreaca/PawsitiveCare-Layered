@@ -7,6 +7,7 @@ import bo.custom.OrdersBO;
 import dto.CustomerDto;
 import dto.ItemDto;
 import dto.PlaceOrderDto;
+import dto.Tm.AppointmentTm;
 import dto.Tm.OrderTm;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -15,12 +16,19 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class OrderFormController {
     public TableView tblOrder;
@@ -40,6 +48,7 @@ public class OrderFormController {
     public TextField txtCustomerName;
     public TextField txtCustomerContact;
     public Label lblDate;
+    public TableColumn colAmount1;
 
     private OrdersBO bo = (OrdersBO) BOFactory.getBOFactory().getBo(BOFactory.BoTypes.ORDERS);
     private ItemBo item = (ItemBo) BOFactory.getBOFactory().getBo(BOFactory.BoTypes.ITEM);
@@ -58,12 +67,22 @@ public class OrderFormController {
         txtUnitPrice.setText(String.valueOf(dto.getUnitPrice()));
     }
     public void btnAddItemOnAction(){
-        int itemCount = 0;
         String itemCode = (String) cmbItemCode.getValue();
         String desc = txtDescription.getText();
         int qty = Integer.parseInt(txtQty.getText());
         double uni = Double.parseDouble(txtUnitPrice.getText());
         double amount = qty*uni;
+        double total = calculateTotal()+amount;
+        lblNetTotal.setText(String.valueOf(total));
+        int itemCount = Integer.parseInt(lblItemCount.getText());
+        itemCount++;
+        lblItemCount.setText(String.valueOf(itemCount));
+//        int itemCount = 0;
+//        String itemCode = (String) cmbItemCode.getValue();
+//        String desc = txtDescription.getText();
+//        int qty = Integer.parseInt(txtQty.getText());
+//        double uni = Double.parseDouble(txtUnitPrice.getText());
+//        double amount = qty*uni;
 //        if (!oblist.isEmpty()){
 //            for (int i = 0; i < tblOrder.getItems().size(); i++) {
 //                if(colItemCode.getCellData(i).equals(itemCode)){
@@ -81,24 +100,36 @@ public class OrderFormController {
 //            }
 //        }
         var order = new OrderTm(itemCode,desc,qty,uni,amount);
-        System.out.println(order);
         oblist.add(order);
         tblOrder.setItems(oblist);
         txtQty.clear();
         txtDescription.clear();
         txtUnitPrice.clear();
-        cmbItemCode.promptTextProperty();
     }
 
-    private void calculateTotal() {
+    private double calculateTotal() {
         double total = 0;
-        for (int i = 0; i < tblOrder.getItems().size(); i++) {
-            total +=(double) colAmount.getCellData(i);
+        for (int i = 0; i < oblist.size(); i++) {
+            double amount = oblist.get(i).getAmount();
+            total = total+amount;
         }
-        lblNetTotal.setText(String.valueOf(total));
+        return total;
     }
 
     public void btnClearOnAction(){
+        ObservableList<AppointmentTm> oblist = FXCollections.observableArrayList();
+        oblist.add(null);
+        tblOrder.setItems(oblist);
+        tblOrder.refresh();
+        cmbItemCode.promptTextProperty();
+        txtDescription.clear();
+        txtUnitPrice.clear();
+        txtCustomerId.clear();
+        txtQty.clear();
+        txtCustomerName.clear();
+        txtCustomerContact.clear();
+        lblItemCount.setText("0");
+        lblNetTotal.setText("0.0");
 
     }
     public void placeOrderOnAction(){
@@ -115,6 +146,7 @@ public class OrderFormController {
         var placeOrderDto = new PlaceOrderDto(orderId,custId,date,orderList);
         try {
             if(bo.saveOrder(placeOrderDto)){
+                createJasperReport(orderList);
                 new Alert(Alert.AlertType.CONFIRMATION, "Order Saved").show();
             }
         } catch (SQLException e) {
@@ -164,5 +196,32 @@ public class OrderFormController {
         colQty.setCellValueFactory(new PropertyValueFactory<>("Qty"));
         colUnitPrice.setCellValueFactory(new PropertyValueFactory<>("unitPrice"));
         colAmount.setCellValueFactory(new PropertyValueFactory<>("amount"));
+    }
+    private void createJasperReport(List<OrderTm> orderList) {
+        try {
+            Map parameters = new HashMap<>();
+            parameters.put("OrderId", lblOrderId.getText());
+            parameters.put("NetTotal", lblNetTotal.getText());
+
+            for (int i = 0; i < orderList.size(); i++) {
+                parameters.put("code",orderList.get(i).getItemCode());
+                parameters.put("name",orderList.get(i).getDescription());
+                parameters.put("Qty",String.valueOf(orderList.get(i).getQty()));
+                parameters.put("unitPrice",String.valueOf(orderList.get(i).getUnitPrice()));
+                parameters.put("amount",String.valueOf(orderList.get(i).getAmount()));
+            }
+
+            InputStream ResourceAsStream = getClass().getResourceAsStream("/report/bill.jrxml");
+            JasperDesign load = JRXmlLoader.load(ResourceAsStream);
+            JasperReport jasperReport = JasperCompileManager.compileReport(load);
+
+
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, new JREmptyDataSource());
+
+            JasperViewer.viewReport(jasperPrint, false);
+        } catch (JRException e) {
+            e.printStackTrace();
+
+        }
     }
 }

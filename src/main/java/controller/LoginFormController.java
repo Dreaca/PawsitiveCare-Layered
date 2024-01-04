@@ -45,7 +45,7 @@ public class LoginFormController {
             String currentUser = bo.getUserDetail(loginFormDto);
             if(currentUser.startsWith("A")){
                loadAdminDash(userName);
-            } else if (currentUser.startsWith("E")) {
+            } else if (currentUser.startsWith("U")) {
                 loadEmployeeDash(userName);
             }
         }
