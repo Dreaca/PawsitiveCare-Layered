@@ -69,7 +69,7 @@ public class SupplierDaoImpl implements SupplierDao {
 
     @Override
     public boolean delete(String id) throws SQLException, ClassNotFoundException {
-        return false;
+       return SQLUtil.execute("DELETE FROM supplier WHERE suppId = ?",id);
     }
 
     @Override

@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SuppliyOrderFormController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SuppliyOrderFormController">
    <children>
       <Label layoutX="242.0" layoutY="6.0" text="Supply Order">
          <font>
@@ -21,7 +21,7 @@
          <font>
             <Font name="Manjari Thin" size="13.0" />
          </font></Label>
-      <Label fx:id="lblSupOrderNum" layoutX="152.0" layoutY="48.0" text="S001" textFill="#e80909">
+      <Label fx:id="lblSupOrderNum" layoutX="156.0" layoutY="48.0" text="S001" textFill="#e80909">
          <font>
             <Font name="Manjari Thin" size="13.0" />
          </font></Label>

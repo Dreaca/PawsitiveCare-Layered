@@ -10,6 +10,6 @@ public class ItemSupplier {
    private String suppOrderId;
    private String itemId;
    private String suppId;
-   private String qty;
+   private int qty;
    private LocalDate date;
 }

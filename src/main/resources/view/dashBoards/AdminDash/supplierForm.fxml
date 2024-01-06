@@ -22,12 +22,12 @@
       <TableView fx:id="tblSupplier" layoutX="53.0" layoutY="259.0" prefHeight="324.0" prefWidth="1226.0" style="-fx-background-color: faa85a;">
         <columns>
           <TableColumn fx:id="colSupplierId" prefWidth="113.66666412353516" text="SupplierID" />
-          <TableColumn fx:id="colSupName" prefWidth="313.3332977294922" text="Name" />
-            <TableColumn fx:id="coltype" prefWidth="178.00003051757812" text="type" />
-            <TableColumn fx:id="colContact" prefWidth="193.3333740234375" text="Contact" />
-            <TableColumn fx:id="colLocation" prefWidth="199.99993896484375" text="Location" />
-            <TableColumn fx:id="colInvoice" prefWidth="226.666748046875" text="Invoice" />
-            <TableColumn fx:id="colDel" prefWidth="70.6666259765625" text=" " />
+          <TableColumn fx:id="colSupName" prefWidth="227.99998474121094" text="Name" />
+            <TableColumn fx:id="coltype" prefWidth="190.66671752929688" text="type" />
+            <TableColumn fx:id="colContact" prefWidth="230.0" text="Contact" />
+            <TableColumn fx:id="colLocation" prefWidth="156.0" text="Location" />
+            <TableColumn fx:id="colInvoice" prefWidth="214.66656494140625" text="Invoice" />
+            <TableColumn fx:id="colDel" prefWidth="89.3333740234375" text=" " />
         </columns>
       </TableView>
       <TextField fx:id="txtSearch" layoutX="115.0" layoutY="82.0" onAction="#searchSupplier" prefHeight="46.0" prefWidth="1153.0" promptText="Search" style="-fx-border-color: faa80a; -fx-background-radius: 20; -fx-border-radius: 20;">

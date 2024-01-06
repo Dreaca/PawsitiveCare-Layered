@@ -3,6 +3,7 @@ package controller;
 import bo.BOFactory;
 import bo.custom.ItemBo;
 import dto.ItemDto;
+import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
@@ -23,6 +24,25 @@ public class UpdateItemFormController {
     private ItemBo bo = (ItemBo) BOFactory.getBOFactory().getBo(BOFactory.BoTypes.ITEM);
     public void initialize(){
         loadComboBox();
+        cmbItemCode.setOnAction(event -> handleComboBoxSelection((ActionEvent) event));
+    }
+    private void handleComboBoxSelection(ActionEvent event) {
+        String selectedCode = (String) cmbItemCode.getValue();
+        if (selectedCode != null) {
+            try {
+                ItemDto selectedItem = bo.searchItem(selectedCode); // Implement this method in your BO class
+                if (selectedItem != null) {
+                    // Fill the text fields with the selected item details
+                    description.setText(selectedItem.getDescription());
+                    txtQTO.setText(String.valueOf(selectedItem.getQtyOnHand()));
+                    txtUnitPrice.setText(String.valueOf(selectedItem.getUnitPrice()));
+                }
+            } catch (SQLException e) {
+                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            } catch (ClassNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
 
     private void loadComboBox() {

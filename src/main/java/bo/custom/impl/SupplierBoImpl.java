@@ -2,15 +2,10 @@ package bo.custom.impl;
 
 import bo.custom.SupplierBo;
 import dao.DaoFactory;
-import dao.SQLUtil;
 import dao.custom.SupplierDao;
 import dto.SupplierDto;
 import entity.Supplier;
 
-import javax.swing.*;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,9 +20,9 @@ public class SupplierBoImpl implements SupplierBo {
     @Override
     public boolean saveCustomer(SupplierDto dto) throws SQLException, ClassNotFoundException {
         return sDao.save(new Supplier(dto.getSuppId(),
-                dto.getLocation(),
                 dto.getName(),
                 dto.getType(),
+                dto.getLocation(),
                 dto.getContact()));
     }
 
@@ -40,9 +35,9 @@ public class SupplierBoImpl implements SupplierBo {
     @Override
     public boolean updateSupplier(SupplierDto dto) throws SQLException, ClassNotFoundException {
         return sDao.update(new Supplier(dto.getSuppId(),
-                dto.getLocation(),
                 dto.getName(),
                 dto.getType(),
+                dto.getLocation(),
                 dto.getContact()));
     }
 
@@ -65,5 +60,16 @@ public class SupplierBoImpl implements SupplierBo {
             ));
         }
        return list;
+    }
+
+    @Override
+    public boolean deleteSupplier(String suppId) throws SQLException, ClassNotFoundException {
+        return sDao.delete(suppId);
+    }
+
+    @Override
+    public String getSupplierName(String suppId) throws SQLException, ClassNotFoundException {
+        Supplier search = sDao.search(suppId);
+        return search.getName();
     }
 }

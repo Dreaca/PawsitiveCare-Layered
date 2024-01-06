@@ -17,4 +17,8 @@ public interface SupplierBo extends SuperBO {
     String generateSupplierId() throws SQLException;
 
     List<SupplierDto> getAllSuppliers() throws SQLException, ClassNotFoundException;
+
+    boolean deleteSupplier(String suppId) throws SQLException, ClassNotFoundException;
+
+    String getSupplierName(String suppId) throws SQLException, ClassNotFoundException;
 }

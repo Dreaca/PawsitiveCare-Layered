@@ -1,15 +1,16 @@
 package controller;
 
 import bo.BOFactory;
-import bo.custom.ItemBo;
-import bo.custom.SupplierBo;
+import bo.custom.SupplyOrderBo;
+import dto.SupplyOrderDto;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.util.AbstractList;
+import java.util.List;
 
 public class SuppliyOrderFormController {
     public ComboBox cmbItemCode;
@@ -20,11 +21,22 @@ public class SuppliyOrderFormController {
     public DatePicker dpkSelectDate;
     public Label lblIssuedDate;
     public Label lblSupOrderNum;
-    private ItemBo itemBo = (ItemBo) BOFactory.getBOFactory().getBo(BOFactory.BoTypes.ITEM);
-    private SupplierBo sBo = (SupplierBo) BOFactory.getBOFactory().getBo(BOFactory.BoTypes.SUPPLIER);
+    SupplyOrderBo bo = (SupplyOrderBo) BOFactory.getBOFactory().getBo(BOFactory.BoTypes.SO);
 
     public void placeOrderOnAction(ActionEvent actionEvent) {
-
+        String itemId = (String) cmbItemCode.getValue();
+        loadOtherStuff(itemId);
+        String Suppid = (String) cmbSupplier.getValue();
+        int qty = Integer.parseInt(txtQty.getText());
+        LocalDate date = dpkSelectDate.getValue();
+        String supporderId = lblSupOrderNum.getText();
+        try {
+            bo.placeSupplyOrder(new SupplyOrderDto(supporderId,itemId,Suppid,qty,date));
+            new Alert(Alert.AlertType.CONFIRMATION,"Order Placed Successfully").show();
+        } catch (SQLException | ClassNotFoundException e) {
+            new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
+            e.printStackTrace();
+        }
     }
 
     public void cancelOrderOnAction(ActionEvent actionEvent) {
@@ -36,17 +48,33 @@ public class SuppliyOrderFormController {
     }
     public void loadComboBoxes() {
         try {
-            cmbItemCode.getItems().setAll(itemBo.getItemcodes());
-            cmbSupplier.getItems().setAll(sBo.getSupplierIds());
+            List<String> itemcodes = bo.getItemcodes();
+            cmbItemCode.getItems().setAll(itemcodes);
+            cmbSupplier.getItems().setAll(bo.getSupplierIds());
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
     }
-    public void loadOtherStuff(){
-
+    public void loadOtherStuff(String value){
+        cmbItemCode.setOnAction(actionEvent -> {
+            try {
+                txtItemCode.setText(bo.getItemName(value));
+            } catch (SQLException | ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        });
     }
     public void initialize() throws SQLException {
         loadComboBoxes();
+    }
+
+    public void setSupplierId(String suppId) {
+        cmbSupplier.setValue(suppId);
+        try {
+            txtSupplierName.setText(bo.getSupplierName(suppId));
+        } catch (SQLException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

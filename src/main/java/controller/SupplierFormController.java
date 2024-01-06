@@ -9,13 +9,17 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.List;
@@ -105,14 +109,48 @@ public class SupplierFormController {
                                 getJFXbutton()
                         )
                 );
+                for (int i = 0; i < oblist.size(); i++) {
+                    JFXButton bt = oblist.get(i).getDelButton();
+                    int finalI = i;
+                    bt.setOnAction(actionEvent -> {
+                        deleteSupplier(oblist.get(finalI).getSuppId());
+                    });
+                    Hyperlink link = oblist.get(i).getInvoice();
+                    link.setOnAction(actionEvent -> {
+                        gotoInvoice(oblist.get(finalI).getSuppId());
+                    });
+                }
             }
             tblSupplier.setItems(oblist);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void gotoInvoice(String suppId) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/dashBoards/AdminDash/suppliyOrderForm.fxml"));
+        try {
+            Scene scene = new Scene(loader.load());
+            SuppliyOrderFormController controller = loader.getController();
+            controller.setSupplierId(suppId);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void deleteSupplier(String suppId) {
+        try {
+            if (bo.deleteSupplier(suppId)){
+                loadAllData();
+            }
+        } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
     }
+
     private JFXButton getJFXbutton() {
         JFXButton bt = new JFXButton();
         Image image = new Image("view/Assets/icon/delete.png");
@@ -134,7 +172,7 @@ public class SupplierFormController {
     }
     @FXML
     void addsupplierONAction(ActionEvent event) {
-        if(validateFields()){
+        if(!validateFields()){
             if(validateRegex()){
                 String supId = lblSupId.getText();
                 String supName = txtSupplierNAme.getText();
@@ -154,7 +192,6 @@ public class SupplierFormController {
                 }
             }
         }else {
-            // Show an alert or message indicating that some fields are empty
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Empty Fields");
             alert.setHeaderText(null);
@@ -228,7 +265,7 @@ public class SupplierFormController {
         if (Pattern.matches("!|@|#|\'$\'|%|^|_|\'*\'|",txtSupplierNAme.getText())){
             new Alert(Alert.AlertType.WARNING,"Name Not Valid!!!").show();
             return false;
-        } else if (!Pattern.matches(".", txtLocation.getText())) {
+        } else if (Pattern.matches(".", txtLocation.getText())) {
             new Alert(Alert.AlertType.WARNING,"Location Not Valid").show();
             return false;
         } else if (!Pattern.matches("(0|94|\\+94)([1-7]([0-9]))[0-9]{7}",txtContact.getText())) {
@@ -238,10 +275,8 @@ public class SupplierFormController {
         else return true;
     }
     private boolean validateFields() {
-        return !txtSupplierId.getText().isEmpty() &&
-                !txtSupplierNAme.getText().isEmpty() &&
-                !txtContact.getText().isEmpty() &&
-                !txtLocation.getText().isEmpty() &&
-                cmbType.getValue() != null;
+       return lblSupId.getText() == null || txtSupplierNAme.getText() == null ||
+               txtLocation.getText() == null || txtContact.getText() == null;
     }
+
 }
