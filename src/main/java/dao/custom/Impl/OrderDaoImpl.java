@@ -1,5 +1,6 @@
 package dao.custom.Impl;
 
+import dao.SQLUtil;
 import dao.custom.OrderDao;
 import db.DbConnection;
 import dto.OrderDto;
@@ -46,7 +47,7 @@ public class OrderDaoImpl implements OrderDao {
 
     @Override
     public boolean save(Orders dto) throws SQLException, ClassNotFoundException {
-        return false;
+       return SQLUtil.execute("INSERT INTO orders VALUES (?,?,?)",dto.getOrderId(),dto.getCustId(),dto.getDate());
     }
 
     @Override

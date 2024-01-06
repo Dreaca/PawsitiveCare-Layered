@@ -11,6 +11,7 @@ import dto.Tm.AppointmentTm;
 import dto.Tm.OrderTm;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -45,10 +46,11 @@ public class OrderFormController {
     public Label lblItemCount;
     public Label lblNetTotal;
     public TextField txtCustomerId;
-    public TextField txtCustomerName;
+
     public TextField txtCustomerContact;
     public Label lblDate;
     public TableColumn colAmount1;
+    public ComboBox cmbCustomerName;
 
     private OrdersBO bo = (OrdersBO) BOFactory.getBOFactory().getBo(BOFactory.BoTypes.ORDERS);
     private ItemBo item = (ItemBo) BOFactory.getBOFactory().getBo(BOFactory.BoTypes.ITEM);
@@ -126,7 +128,6 @@ public class OrderFormController {
         txtUnitPrice.clear();
         txtCustomerId.clear();
         txtQty.clear();
-        txtCustomerName.clear();
         txtCustomerContact.clear();
         lblItemCount.setText("0");
         lblNetTotal.setText("0.0");
@@ -148,25 +149,23 @@ public class OrderFormController {
             if(bo.saveOrder(placeOrderDto)){
                 createJasperReport(orderList);
                 new Alert(Alert.AlertType.CONFIRMATION, "Order Saved").show();
+                tblOrder.setItems(null);
             }
         } catch (SQLException e) {
+            System.out.println(e.getMessage());
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
     }
     public void cancelOnAction(){
-
-    }
-    public void customerOnAction() {
-        CustomerDto dt = null;
-        try {
-            dt = customerBo.searchCustomerByname(txtCustomerName.getText());
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        txtCustomerId.setText(dt.getCustomerId());
-        txtCustomerContact.setText(dt.getCustomerContact());
+        cmbCustomerName.setValue(null);
+        cmbItemCode.setValue(null);
+        txtCustomerContact.clear();
+        txtDescription.clear();
+        txtQty.clear();
+        txtUnitPrice.clear();
+        txtCustomerId.clear();
     }
     public void addNewCustomerOnAction() throws IOException {
         Stage stage = new Stage();
@@ -183,7 +182,8 @@ public class OrderFormController {
         try {
             lblOrderId.setText(bo.generateNextOrderId());
             cmbItemCode.getItems().setAll(item.getItemcodes());
-        } catch (SQLException e) {
+            cmbCustomerName.getItems().setAll(bo.getCustomerNameList());
+        } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
 
@@ -223,5 +223,16 @@ public class OrderFormController {
             e.printStackTrace();
 
         }
+    }
+
+    public void customreNameOnAction(ActionEvent actionEvent) {
+        CustomerDto dt = null;
+        try {
+            dt = customerBo.searchCustomerByname((String) cmbCustomerName.getValue());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        txtCustomerId.setText(dt.getCustomerId());
+        txtCustomerContact.setText(dt.getCustomerContact());
     }
 }

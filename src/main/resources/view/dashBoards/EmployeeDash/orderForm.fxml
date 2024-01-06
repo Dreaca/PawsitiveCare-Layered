@@ -20,8 +20,8 @@
           <TableColumn fx:id="colDescription" prefWidth="214.00005340576172" text="Description" />
             <TableColumn fx:id="colQty" prefWidth="89.333251953125" text="Qty" />
             <TableColumn fx:id="colUnitPrice" prefWidth="123.99990844726562" text="Unit Price" />
-            <TableColumn fx:id="colAmount" prefWidth="92.0" text="Amount" />
-            <TableColumn fx:id="colAmount1" prefWidth="276.6666259765625" text="Remove" />
+            <TableColumn fx:id="colAmount" prefWidth="158.6666259765625" text="Amount" />
+            <TableColumn fx:id="colAmount1" prefWidth="119.3333740234375" text="Remove" />
         </columns>
          <effect>
             <DropShadow />
@@ -66,9 +66,9 @@
             <Separator layoutX="23.0" layoutY="412.0" prefHeight="0.0" prefWidth="349.0" />
             <JFXButton buttonType="RAISED" layoutX="197.0" layoutY="489.0" onAction="#cancelOnAction" style="-fx-background-color: linear-gradient(to bottom, #d2a172, #e9e4d7); -fx-border-color: linear-gradient(to bottom, #d2a172, #faa80a);;" text="Cancel" />
             <TextField fx:id="txtCustomerId" disable="true" editable="false" layoutX="23.0" layoutY="283.0" prefHeight="32.0" prefWidth="343.0" promptText="Customer ID" style="-fx-border-color: linear-gradient(to bottom, #d2a172, #faa80a);;" />
-            <TextField fx:id="txtCustomerName" layoutX="23.0" layoutY="239.0" onAction="#customerOnAction" prefHeight="32.0" prefWidth="343.0" promptText="Customer Name" style="-fx-border-color: linear-gradient(to bottom, #d2a172, #faa80a);;" />
             <TextField fx:id="txtCustomerContact" disable="true" editable="false" layoutX="23.0" layoutY="326.0" prefHeight="32.0" prefWidth="343.0" promptText="Contact" style="-fx-border-color: linear-gradient(to bottom, #d2a172, #faa80a);;" />
             <JFXButton buttonType="RAISED" layoutX="210.0" layoutY="374.0" onAction="#addNewCustomerOnAction" prefHeight="24.0" prefWidth="154.0" style="-fx-background-color: linear-gradient(to bottom, #d2a172, #e9e4d7); -fx-border-color: linear-gradient(to bottom, #d2a172, #faa80a);;" text="Add new Customer" />
+            <ComboBox fx:id="cmbCustomerName" layoutX="24.0" layoutY="245.0" onAction="#customreNameOnAction" prefHeight="32.0" prefWidth="343.0" promptText="Customer Name" style="-fx-background-color: linear-gradient(to bottom, #d2a172, #e9e4d7); -fx-border-color: linear-gradient(to bottom, #d2a172, #faa80a);" />
          </children>
          <effect>
             <DropShadow />
