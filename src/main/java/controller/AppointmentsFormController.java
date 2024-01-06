@@ -53,7 +53,7 @@ public class AppointmentsFormController {
                                 d.getCustomerName(),
                                 d.getContact(),
                                 d.getType(),
-                                99999.99
+                                d.getPrice()
                         )
                 );
             }

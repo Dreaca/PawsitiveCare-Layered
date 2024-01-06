@@ -23,11 +23,13 @@ public class AppointmentBoImpl implements AppointmentBo {
     @Override
     public boolean saveAppointment(AppointmentDto dto) throws SQLException, ClassNotFoundException {
         String customerId = customerDao.getCustomerId(dto.getCustomerName());
-        return dao.save(new Appointment(dto.getAppId(),
+        if(customerId.equals("Unregistered")|customerId.equals("Not Registered")) return false;
+        else return dao.save(new Appointment(dto.getAppId(),
                         customerId,
                 String.valueOf(dto.getType()),
                 dto.getTime(),
-                dto.getDate()
+                dto.getDate(),
+                dto.getPrice()
                 ));
     }
 
@@ -37,7 +39,7 @@ public class AppointmentBoImpl implements AppointmentBo {
         ArrayList<AppointmentDto> dtos = new ArrayList<>();
         for (Appointment a: all) {
             Customer cusName = customerDao.search(a.getCustId());
-            dtos.add(new AppointmentDto(a.getAppId(),cusName.getName(), AppointmentDto.AppType.valueOf(cusName.getContact()),a.getType(),a.getTime(),a.getCustId()));
+            dtos.add(new AppointmentDto(a.getAppId(),cusName.getName(),cusName.getContact(), AppointmentDto.AppType.getvalueOf(a.getType()),a.getTime(),a.getDate(),a.getPrice()));
         }
         return dtos;
     }
@@ -51,4 +53,13 @@ public class AppointmentBoImpl implements AppointmentBo {
     public String countAll() throws SQLException {
         return dao.countAl();
     }
+
+    @Override
+    public CustomerDto getCustomer(String text) throws SQLException {
+        Customer customer = customerDao.searchCustomerByFname(text);
+        return new CustomerDto(customer.getCustId(),customer.getName(),customer.getAddress(),customer.getContact());
+
+    }
+
+
 }

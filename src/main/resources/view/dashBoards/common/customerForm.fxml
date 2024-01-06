@@ -2,7 +2,6 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -13,49 +12,45 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="615.0" prefWidth="1353.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CustomerFormController">
+<AnchorPane prefHeight="615.0" prefWidth="1353.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CustomerFormController">
    <children>
-      <TextField fx:id="txtCustomerID" layoutX="188.0" layoutY="62.0" onAction="#customerSearchOnaction" prefHeight="39.0" prefWidth="208.0" promptText="Customer Id " style="-fx-border-color: faa80a; -fx-background-radius: 20; -fx-border-radius: 20;">
+      <TextField fx:id="txtCustomerID" layoutX="209.0" layoutY="62.0" onAction="#customerSearchOnaction" prefHeight="39.0" prefWidth="144.0" promptText="Customer Id " style="-fx-border-color: faa80a; -fx-background-radius: 20; -fx-border-radius: 20;">
          <font>
             <Font name="Manjari Thin" size="15.0" />
          </font>
          <effect>
             <DropShadow />
          </effect></TextField>
-      <TextField fx:id="txtCustomerFname" layoutX="503.0" layoutY="63.0" onAction="#txtCustomerFnameSearch" prefHeight="39.0" prefWidth="186.0" promptText="First Name" style="-fx-border-color: faa80a; -fx-background-radius: 20; -fx-border-radius: 20;">
+      <TextField fx:id="txtCustomerFname" layoutX="460.0" layoutY="63.0" onAction="#txtCustomerFnameSearch" prefHeight="39.0" prefWidth="186.0" promptText="First Name" style="-fx-border-color: faa80a; -fx-background-radius: 20; -fx-border-radius: 20;">
          <font>
             <Font name="Manjari Thin" size="15.0" />
          </font>
          <effect>
             <DropShadow />
          </effect></TextField>
-      <TextField fx:id="txtCustomerLname" layoutX="819.0" layoutY="64.0" onAction="#customerLnameSearchOnAction" prefHeight="39.0" prefWidth="204.0" promptText="Last Name" style="-fx-border-color: faa80a; -fx-background-radius: 20; -fx-border-radius: 20;">
+      <TextField fx:id="txtCustomerLname" layoutX="776.0" layoutY="64.0" onAction="#customerLnameSearchOnAction" prefHeight="39.0" prefWidth="204.0" promptText="Last Name" style="-fx-border-color: faa80a; -fx-background-radius: 20; -fx-border-radius: 20;">
          <font>
             <Font name="Manjari Thin" size="15.0" />
          </font>
          <effect>
             <DropShadow />
          </effect></TextField>
-      <TextField fx:id="txtCusAddress" layoutX="190.0" layoutY="117.0" prefHeight="39.0" prefWidth="834.0" promptText="Address" style="-fx-border-color: faa80a; -fx-background-radius: 20; -fx-border-radius: 20;">
+      <TextField fx:id="txtCusAddress" layoutX="211.0" layoutY="117.0" prefHeight="39.0" prefWidth="771.0" promptText="Address" style="-fx-border-color: faa80a; -fx-background-radius: 20; -fx-border-radius: 20;">
          <font>
             <Font name="Manjari Thin" size="15.0" />
          </font>
          <effect>
             <DropShadow />
          </effect></TextField>
-      <TextField fx:id="txtContactNo" layoutX="190.0" layoutY="172.0" onAction="#customerContactSearch" prefHeight="39.0" prefWidth="212.0" promptText="Contact No ." style="-fx-border-color: faa80a; -fx-background-radius: 20; -fx-border-radius: 20;">
+      <TextField fx:id="txtContactNo" layoutX="211.0" layoutY="172.0" onAction="#customerContactSearch" prefHeight="39.0" prefWidth="212.0" promptText="Contact No ." style="-fx-border-color: faa80a; -fx-background-radius: 20; -fx-border-radius: 20;">
          <font>
             <Font name="Manjari Thin" size="15.0" />
          </font>
-         <effect>
-            <DropShadow />
-         </effect></TextField>
-      <TextField fx:id="txtContact2nd" disable="true" layoutX="779.0" layoutY="171.0" prefHeight="39.0" prefWidth="242.0" promptText="Contact No ." style="-fx-border-color: faa80a; -fx-background-radius: 20; -fx-border-radius: 20;">
          <effect>
             <DropShadow />
          </effect></TextField>
 
-      <TableView fx:id="tblCustomer" layoutX="216.0" layoutY="277.0" prefHeight="296.0" prefWidth="811.0" style="-fx-background-color: lightblue;">
+      <TableView fx:id="tblCustomer" layoutX="245.0" layoutY="277.0" prefHeight="296.0" prefWidth="811.0" style="-fx-background-color: lightblue;">
         <columns>
           <TableColumn fx:id="colCustomerID" prefWidth="97.0" text="CustomerID" />
           <TableColumn fx:id="colCustomerName" minWidth="0.0" prefWidth="247.0" text="Name" />
@@ -67,7 +62,7 @@
             <DropShadow />
          </effect>
       </TableView>
-      <JFXButton fx:id="btnSaveCustomer" buttonType="RAISED" layoutX="242.0" layoutY="238.0" onAction="#customerSaveOnaction" prefHeight="24.0" prefWidth="187.0" style="-fx-background-color: faa80a; -fx-background-radius: 20;" text="Save">
+      <JFXButton fx:id="btnSaveCustomer" buttonType="RAISED" layoutX="275.0" layoutY="238.0" onAction="#customerSaveOnaction" prefHeight="24.0" prefWidth="187.0" style="-fx-background-color: faa80a; -fx-background-radius: 20;" text="Save">
          <graphic>
             <ImageView fitHeight="16.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -75,7 +70,7 @@
                </image>
             </ImageView>
          </graphic></JFXButton>
-      <JFXButton fx:id="btnDeleteCustomer" buttonType="RAISED" layoutX="647.0" layoutY="239.0" onAction="#customerDeleteOnAction" prefHeight="18.0" prefWidth="141.0" style="-fx-background-color: faa80a; -fx-background-radius: 20;" text="Delete">
+      <JFXButton fx:id="btnDeleteCustomer" buttonType="RAISED" layoutX="680.0" layoutY="239.0" onAction="#customerDeleteOnAction" prefHeight="18.0" prefWidth="141.0" style="-fx-background-color: faa80a; -fx-background-radius: 20;" text="Delete">
          <graphic>
             <ImageView fitHeight="15.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -83,7 +78,7 @@
                </image>
             </ImageView>
          </graphic></JFXButton>
-      <JFXButton fx:id="btnUpdate" buttonType="RAISED" layoutX="443.0" layoutY="238.0" onAction="#btnUpdateOnAction" prefHeight="18.0" prefWidth="188.0" style="-fx-background-color: faa80a; -fx-background-radius: 20;" text="Update">
+      <JFXButton fx:id="btnUpdate" buttonType="RAISED" layoutX="476.0" layoutY="238.0" onAction="#btnUpdateOnAction" prefHeight="18.0" prefWidth="188.0" style="-fx-background-color: faa80a; -fx-background-radius: 20;" text="Update">
          <graphic>
             <ImageView fitHeight="15.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -91,7 +86,7 @@
                </image>
             </ImageView>
          </graphic></JFXButton>
-      <JFXButton fx:id="btnClear" buttonType="RAISED" layoutX="803.0" layoutY="239.0" onAction="#clearOnAction" prefHeight="18.0" prefWidth="198.0" style="-fx-background-color: faa80a; -fx-background-radius: 20;" text="Clear">
+      <JFXButton fx:id="btnClear" buttonType="RAISED" layoutX="836.0" layoutY="239.0" onAction="#clearOnAction" prefHeight="18.0" prefWidth="198.0" style="-fx-background-color: faa80a; -fx-background-radius: 20;" text="Clear">
          <graphic>
             <ImageView fitHeight="16.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -105,37 +100,32 @@
             <Font name="Serif Bold Italic" size="47.0" />
          </font>
       </Label>
-      <Label layoutX="407.0" layoutY="71.0" text="First Name : ">
+      <Label layoutX="364.0" layoutY="71.0" text="First Name : ">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label layoutX="722.0" layoutY="70.0" text="Last Name : ">
+      <Label layoutX="679.0" layoutY="70.0" text="Last Name : ">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label layoutX="26.0" layoutY="68.0" text="Customer ID : ">
+      <Label layoutX="47.0" layoutY="68.0" text="Customer ID : ">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label layoutX="26.0" layoutY="121.0" text="Address :">
+      <Label layoutX="47.0" layoutY="121.0" text="Address :">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label layoutX="26.0" layoutY="181.0" text="Customer Contact : ">
+      <Label layoutX="47.0" layoutY="181.0" text="Customer Contact : ">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label layoutX="627.0" layoutY="178.0" text="Customer Contact : ">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Label>
-      <AnchorPane layoutX="31.0" layoutY="256.0" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: faa80a; -fx-background-radius: 180; -fx-border-radius: 180;">
+      <AnchorPane layoutX="68.0" layoutY="256.0" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: faa80a; -fx-background-radius: 180; -fx-border-radius: 180;">
          <effect>
             <DropShadow />
          </effect>
@@ -152,17 +142,17 @@
             </Label>
          </children>
       </AnchorPane>
-      <Label layoutX="31.0" layoutY="535.0" text="Pawsitive Care">
+      <Label layoutX="67.0" layoutY="535.0" text="Pawsitive Care">
          <font>
             <Font name="Manjari Thin" size="24.0" />
          </font>
       </Label>
-      <ImageView fitHeight="62.0" fitWidth="64.0" layoutX="74.0" layoutY="484.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="62.0" fitWidth="64.0" layoutX="110.0" layoutY="484.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../Assets/icon/paw.png" />
          </image>
       </ImageView>
-      <AnchorPane layoutX="1078.0" layoutY="14.0" prefHeight="253.0" prefWidth="251.0" style="-fx-background-color: lightblue; -fx-border-radius: 180; -fx-background-radius: 180;">
+      <AnchorPane layoutX="1056.0" layoutY="14.0" prefHeight="253.0" prefWidth="251.0" style="-fx-background-color: lightblue; -fx-border-radius: 180; -fx-background-radius: 180;">
          <children>
             <Label fx:id="lblDate" layoutX="89.0" layoutY="150.0" prefHeight="30.0" prefWidth="95.0" text="Time">
                <font>

@@ -25,4 +25,6 @@ public interface CustomerBo extends SuperBO{
     CustomerDto searchCustomerByname(String name) throws SQLException;
 
     String getCount() throws SQLException;
+
+    boolean existCustomer(String id) throws SQLException, ClassNotFoundException;
 }

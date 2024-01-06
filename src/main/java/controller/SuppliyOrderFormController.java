@@ -6,6 +6,9 @@ import dto.SupplyOrderDto;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+import javafx.stage.Window;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -21,6 +24,7 @@ public class SuppliyOrderFormController {
     public DatePicker dpkSelectDate;
     public Label lblIssuedDate;
     public Label lblSupOrderNum;
+    public AnchorPane root;
     SupplyOrderBo bo = (SupplyOrderBo) BOFactory.getBOFactory().getBo(BOFactory.BoTypes.SO);
 
     public void placeOrderOnAction(ActionEvent actionEvent) {
@@ -40,11 +44,12 @@ public class SuppliyOrderFormController {
     }
 
     public void cancelOrderOnAction(ActionEvent actionEvent) {
-
+        Stage stage = (Stage) this.root.getScene().getWindow();
+        stage.close();
     }
 
     public void backOnAction(ActionEvent actionEvent) {
-
+        cancelOrderOnAction(actionEvent);
     }
     public void loadComboBoxes() {
         try {

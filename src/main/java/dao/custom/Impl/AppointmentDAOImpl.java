@@ -12,7 +12,13 @@ import java.util.ArrayList;
 public class AppointmentDAOImpl implements AppointmentDao {
     @Override
     public boolean save(Appointment entity) throws SQLException {
-        return SQLUtil.execute("INSERT INTO appointment VALUES(?,?,?,?,?)",entity.getAppId(),entity.getCustId(), entity.getType(),entity.getTime(),entity.getDate());
+        System.out.println("check dao save");
+        return SQLUtil.execute("INSERT INTO appointment VALUES(?,?,?,?,?,?)",entity.getAppId(),
+                entity.getCustId(),
+                entity.getType(),
+                entity.getTime(),
+                entity.getDate(),
+                entity.getPrice());
     }
 
     @Override
@@ -37,13 +43,13 @@ public class AppointmentDAOImpl implements AppointmentDao {
     @Override
     public String splitAppId(String nextId) {
         if(nextId!=null){
-            String []appId = nextId.split("App");
+            String []appId = nextId.split("APP");
             int num = Integer.parseInt(appId[1]);
             num++;
-            return "App"+num;
+            return String.format("APP%03d",num);
         }
         else {
-            return "App1";
+            return "APP001";
         }
     }
 
@@ -72,7 +78,8 @@ public class AppointmentDAOImpl implements AppointmentDao {
                             resultSet.getString("custId"),
                             resultSet.getString("type"),
                             resultSet.getString("time"),
-                            resultSet.getString("date")
+                            resultSet.getString("date"),
+                            resultSet.getDouble("price")
                     )
             );
         }

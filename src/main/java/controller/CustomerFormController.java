@@ -48,14 +48,10 @@ public class CustomerFormController {
     @FXML
     private TableColumn<?, ?> colCustomerPets;
 
-    @FXML
-    private RadioButton rdbtnCustomer2ndNum;
 
     @FXML
     private TableView<CustomerTm> tblCustomer;
 
-    @FXML
-    private TextField txtContact2nd;
 
     @FXML
     private TextField txtContactNo;
@@ -167,6 +163,9 @@ public class CustomerFormController {
             isDeleted = bo.deleteCustomer(id);
             if(isDeleted){
                 new Alert(Alert.AlertType.CONFIRMATION,"Customer Deleted !").show();
+                clearFields();
+                loadAllCustomer();
+                customerCount.setText(String.valueOf(bo.getCount()));
             }
             else{
                 new Alert(Alert.AlertType.INFORMATION,"Customer Not Deleted !").show();
@@ -209,15 +208,25 @@ public class CustomerFormController {
         String contact = txtContactNo.getText();
         String fullname = Fname+" "+Lname;
 
+        try {
 
-        var dto = new CustomerDto(Id,fullname,Address,contact);
+            if(bo.existCustomer(Id)){
+                new Alert(Alert.AlertType.ERROR,"Customer Id already exists !!!").show();
+                return;
+            }
+
+        } catch (SQLException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
         try{
+            var dto = new CustomerDto(Id,fullname,Address,contact);
             boolean isSaved = bo.saveCustomer(dto);
             tblCustomer.refresh();
             if(isSaved){
                 new Alert(Alert.AlertType.CONFIRMATION,"Customer Saved Successfully").show();
                 clearFields();
                 loadAllCustomer();
+                customerCount.setText(String.valueOf(bo.getCount()));
             }
         }
         catch (SQLException e){
@@ -237,7 +246,7 @@ public class CustomerFormController {
         txtCustomerFname.clear();
         txtCustomerLname.clear();
         txtContactNo.clear();
-        txtContact2nd.clear();
+        
     }
 
     @FXML

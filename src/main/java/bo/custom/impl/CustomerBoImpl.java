@@ -63,7 +63,7 @@ public class CustomerBoImpl implements CustomerBo {
 
     @Override
     public CustomerDto searchCustomerByFirstname(String fname) throws SQLException {
-        Customer customer = dao.searchCustomerByContact(fname);
+        Customer customer = dao.searchCustomerByFname(fname);
         return new CustomerDto(customer.getCustId(),customer.getName(),customer.getAddress(),customer.getContact());
     }
 
@@ -76,5 +76,11 @@ public class CustomerBoImpl implements CustomerBo {
     @Override
     public String getCount() throws SQLException {
        return dao.getCount();
+    }
+
+    @Override
+    public boolean existCustomer(String id) throws SQLException, ClassNotFoundException {
+        Customer search = dao.search(id);
+        return(search != null);
     }
 }

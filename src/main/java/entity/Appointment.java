@@ -12,4 +12,5 @@ public class Appointment {
     private String type;
     private String time;
     private String  date;
+    private Double price;
 }

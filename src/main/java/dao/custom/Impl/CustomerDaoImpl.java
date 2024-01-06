@@ -31,7 +31,7 @@ public class CustomerDaoImpl implements CustomerDao {
         if (resultSet.next()){
             return resultSet.getString(1);
         }
-        else return "Not registered";
+        else return "Unregistered";
     }
 
     @Override
@@ -69,7 +69,7 @@ public class CustomerDaoImpl implements CustomerDao {
     }
     @Override
     public Customer searchCustomerByFname(String fname) throws SQLException {
-        ResultSet resultSet = SQLUtil.execute("SELECT * FROM customer WHERE name LIKE ? %",fname);
+        ResultSet resultSet = SQLUtil.execute("SELECT * FROM customer WHERE name LIKE ?",(fname+"%"));
         Customer entity = null;
         if(resultSet.next()){
             String custId = resultSet.getNString("custId");
