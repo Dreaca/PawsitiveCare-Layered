@@ -36,8 +36,7 @@ public class ScheduleFormController {
 
 //    public  ScheduleModel model = new ScheduleModel();
     private ScheduleBo bo = (ScheduleBo) BOFactory.getBOFactory().getBo(BOFactory.BoTypes.SCHEDULE);
-    private Image image = new Image("/view/Assets/icon/settings.png");
-    private ImageView imageView = new ImageView(image);
+
     public void initialize() throws SQLException {
         setCellValueFactory();
         loadData();
@@ -142,6 +141,8 @@ public class ScheduleFormController {
     }
 
     private JFXButton getJFXButton() {
+        Image image = new Image("/view/Assets/icon/settings.png");
+        ImageView imageView = new ImageView(image);
         JFXButton bt = new JFXButton();
             imageView.setFitWidth(20);
             imageView.setFitHeight(20);
