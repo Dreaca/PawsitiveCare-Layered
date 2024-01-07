@@ -148,7 +148,6 @@ public class OrderFormController {
         try {
             if(bo.saveOrder(placeOrderDto)){
                 createJasperReport(orderList);
-                new Alert(Alert.AlertType.CONFIRMATION, "Order Saved").show();
                 tblOrder.setItems(null);
             }
         } catch (SQLException e) {

@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXButton;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -12,7 +13,7 @@ import java.time.LocalDate;
 @ToString
 public class ScheduleTm {
     private LocalDate date;
-    private String time;
+    private LocalTime time;
     private String vetName;
     private String duration;
     private JFXButton modButton;

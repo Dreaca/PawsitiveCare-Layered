@@ -6,6 +6,7 @@ import db.DbConnection;
 import entity.Schedule;
 
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class ScheduleDaoImpl implements ScheduleDao {
@@ -20,7 +21,7 @@ public class ScheduleDaoImpl implements ScheduleDao {
                             resultSet.getString("scheduleId"),
                             resultSet.getDate("date").toLocalDate(),
                             resultSet.getString("duration"),
-                            resultSet.getString("time")
+                            resultSet.getTime("time").toLocalTime()
                     )
             );
         }
@@ -29,13 +30,15 @@ public class ScheduleDaoImpl implements ScheduleDao {
 
     @Override
     public boolean delete(String id) throws SQLException, ClassNotFoundException {
-        return false;
+        System.out.println("delete check");
+        return SQLUtil.execute("DELETE FROM schedule WHERE scheduleId = ?",id);
     }
 
 
 
     @Override
     public boolean save(Schedule entity) throws SQLException {
+        System.out.println("check shedule dao");
         return (SQLUtil.execute("INSERT INTO schedule VALUES(?,?,?,?)",entity.getScheduleId(),
                 Date.valueOf(entity.getDate()),
                 entity.getDuration(),
@@ -74,5 +77,10 @@ public class ScheduleDaoImpl implements ScheduleDao {
         else {
             return String.format("S%03d",num);
         }
+    }
+
+    @Override
+    public void searchSchedule(String vetName, LocalDate date) {
+
     }
 }

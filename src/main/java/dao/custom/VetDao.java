@@ -11,4 +11,6 @@ public interface VetDao extends CrudDao<Veterinarian> {
     String getVetName(String vetId) throws SQLException;
 
     String getVetId(String vetName) throws SQLException;
+
+    String searchVetId(String vetName) throws SQLException;
 }

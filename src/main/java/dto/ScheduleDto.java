@@ -3,6 +3,7 @@ package dto;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Getter
 @ToString
@@ -12,7 +13,7 @@ import java.time.LocalDate;
 public class ScheduleDto {
     private String scheduleId;
     private LocalDate date;
-    private  String duration;
-    private String  time;
+    private LocalTime time;
     private String vetName;
+    private  String duration;
 }

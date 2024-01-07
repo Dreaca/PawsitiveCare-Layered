@@ -11,8 +11,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -39,7 +38,6 @@ public class ScheduleFormController {
     private ScheduleBo bo = (ScheduleBo) BOFactory.getBOFactory().getBo(BOFactory.BoTypes.SCHEDULE);
     private Image image = new Image("/view/Assets/icon/settings.png");
     private ImageView imageView = new ImageView(image);
-    ObservableList<ScheduleTm> oblist = FXCollections.observableArrayList();
     public void initialize() throws SQLException {
         setCellValueFactory();
         loadData();
@@ -47,9 +45,9 @@ public class ScheduleFormController {
 
 
     public void printScheduleOnAction(ActionEvent event) {
-            createJasperReport(oblist);
+            createJasperReport();
     }
-    private void createJasperReport(ObservableList<ScheduleTm> oblist) {
+    private void createJasperReport() {
 
         try {
             InputStream stream = getClass().getResourceAsStream("/report/schedule.jrxml");
@@ -80,27 +78,67 @@ public class ScheduleFormController {
     }
     public void loadData(){
         ObservableList<ScheduleTm> oblist = FXCollections.observableArrayList();
+
         try {
             List<ScheduleDto> list = bo.loadScheduleList();
+            oblist.clear();
             for (ScheduleDto d: list) {
                 oblist.add(
                         new ScheduleTm(
                                 d.getDate(),
                                 d.getTime(),
-                                d.getVetName(),
                                 d.getDuration(),
+                                d.getVetName(),
                                 getJFXButton()
                         )
                 );
+                for (int i = 0; i < oblist.size(); i++) {
+                    int finalI = i;
+                    oblist.get(i).getModButton().setOnAction(actionEvent -> {
+                        JFXButton modButton = oblist.get(finalI).getModButton();
+                        double x = modButton.localToScreen(modButton.getBoundsInLocal()).getMinX();
+                        double y = modButton.localToScreen(modButton.getBoundsInLocal()).getMinY();
+                        try {
+                            ContextMenu con = loadPopup(oblist.get(finalI).getModButton());
+                            con.getItems().get(0).setOnAction(actionEvent1 -> {
+
+                            });
+                            con.getItems().get(1).setOnAction(actionEvent1 -> {
+                                ScheduleTm tm = oblist.get(finalI);
+                                try {
+                                    boolean deleted = bo.deleteScheduleItem(tm.getVetName(),tm.getDate(),tm.getDuration(),tm.getTime());
+                                    if (deleted) {
+                                        loadData();
+                                    }
+                                } catch (SQLException e) {
+
+                                } catch (ClassNotFoundException e) {
+                                    throw new RuntimeException(e);
+                                }
+                            });
+                            con.show(modButton,x,y);
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
+                    });
+                }
             }
             tblSchedule.setItems(oblist);
-
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public ContextMenu loadPopup(JFXButton modifyButton) throws IOException {
+        ContextMenu con = new ContextMenu();
+        MenuItem button1 = new MenuItem("Update");
+        MenuItem button2 = new MenuItem("Delete");
+        con.getItems().addAll(button1, button2);
+
+        button2.setOnAction(actionEvent -> {
+            System.out.println("delete button clicked");
+        });
+        return con;
     }
 
     private JFXButton getJFXButton() {
@@ -113,7 +151,6 @@ public class ScheduleFormController {
 
     public void setCellValueFactory(){
         colDate.setCellValueFactory(new PropertyValueFactory<>("date"));
-//        colDay.setCellValueFactory(new PropertyValueFactory<>("day"));
         colTime.setCellValueFactory(new PropertyValueFactory<>("time"));
         colDuration.setCellValueFactory(new PropertyValueFactory<>("duration"));
         colVetName.setCellValueFactory(new PropertyValueFactory<>("vetName"));

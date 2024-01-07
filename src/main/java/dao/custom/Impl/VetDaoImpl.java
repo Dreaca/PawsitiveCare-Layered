@@ -94,4 +94,11 @@ public class VetDaoImpl implements VetDao {
             return null;
         }
     }
+
+    @Override
+    public String searchVetId(String vetName) throws SQLException {
+        ResultSet rst = SQLUtil.execute("SELECT vetId FROM veterinary WHERE name = ?", vetName);
+        rst.next();
+        return rst.getString(1);
+    }
 }

@@ -16,16 +16,16 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="68" splitType="Stretch">
+		<band height="76" splitType="Stretch">
 			<staticText>
-				<reportElement x="155" y="14" width="235" height="46" uuid="a873ee81-f1fb-4d19-9d8a-07b560dcdc6a"/>
+				<reportElement x="154" y="0" width="235" height="46" uuid="a873ee81-f1fb-4d19-9d8a-07b560dcdc6a"/>
 				<textElement textAlignment="Center">
 					<font fontName="SansSerif" size="26"/>
 				</textElement>
 				<text><![CDATA[Blue Husky Pet Clinic]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="400" y="16" width="100" height="52" uuid="42585b55-59ff-40bd-8151-313e51847ea3"/>
+				<reportElement x="230" y="30" width="100" height="46" uuid="42585b55-59ff-40bd-8151-313e51847ea3"/>
 				<text><![CDATA[Kosnathota Godakawela               071 222 3344 ]]></text>
 			</staticText>
 		</band>
@@ -57,27 +57,27 @@
 	<columnHeader>
 		<band height="47" splitType="Stretch">
 			<staticText>
-				<reportElement x="0" y="6" width="68" height="30" uuid="31377318-b0ac-4086-a433-e2dd80ad73df"/>
+				<reportElement x="0" y="1" width="68" height="30" uuid="31377318-b0ac-4086-a433-e2dd80ad73df"/>
 				<text><![CDATA[Item Code]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="80" y="6" width="100" height="30" uuid="86b881ac-9b09-4232-a3b7-d5a9ef5b1bc9"/>
-				<textElement textAlignment="Center"/>
+				<reportElement x="80" y="1" width="100" height="30" uuid="86b881ac-9b09-4232-a3b7-d5a9ef5b1bc9"/>
+				<textElement textAlignment="Left"/>
 				<text><![CDATA[Item Name]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="257" y="5" width="38" height="30" uuid="82868a40-66a6-4ebb-8ea4-48c5b475ef07"/>
-				<textElement textAlignment="Center"/>
+				<reportElement x="253" y="1" width="38" height="30" uuid="82868a40-66a6-4ebb-8ea4-48c5b475ef07"/>
+				<textElement textAlignment="Left"/>
 				<text><![CDATA[Qty]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="326" y="6" width="69" height="30" uuid="9a8cffe0-389e-4e2c-ba66-674fb740ce1b"/>
-				<textElement textAlignment="Center"/>
+				<reportElement x="321" y="1" width="69" height="30" uuid="9a8cffe0-389e-4e2c-ba66-674fb740ce1b"/>
+				<textElement textAlignment="Left"/>
 				<text><![CDATA[Unit Price]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="446" y="7" width="67" height="30" uuid="cfd0fcf5-e020-4110-999d-9a9c2c8d4648"/>
-				<textElement textAlignment="Center"/>
+				<reportElement x="473" y="1" width="67" height="30" uuid="cfd0fcf5-e020-4110-999d-9a9c2c8d4648"/>
+				<textElement textAlignment="Left"/>
 				<text><![CDATA[Amount]]></text>
 			</staticText>
 		</band>
@@ -97,7 +97,7 @@
 				<textFieldExpression><![CDATA[$P{unitPrice}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="430" y="0" width="100" height="30" uuid="c75608b4-71de-45e3-87da-076c658e9e0d"/>
+				<reportElement x="473" y="0" width="100" height="30" uuid="c75608b4-71de-45e3-87da-076c658e9e0d"/>
 				<textFieldExpression><![CDATA[$P{amount}]]></textFieldExpression>
 			</textField>
 			<textField>
@@ -109,11 +109,14 @@
 	<columnFooter>
 		<band height="56" splitType="Stretch">
 			<staticText>
-				<reportElement x="290" y="20" width="100" height="30" uuid="94ebd5e1-be8b-4f8a-9806-3bddbc72f9a4"/>
+				<reportElement x="360" y="20" width="100" height="30" uuid="94ebd5e1-be8b-4f8a-9806-3bddbc72f9a4"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
 				<text><![CDATA[Net Total]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="428" y="21" width="100" height="30" uuid="3a207c5d-9241-4e9d-8e91-3f49d38caddd"/>
+				<reportElement x="473" y="20" width="100" height="30" uuid="3a207c5d-9241-4e9d-8e91-3f49d38caddd"/>
 				<textFieldExpression><![CDATA[$P{NetTotal}]]></textFieldExpression>
 			</textField>
 		</band>

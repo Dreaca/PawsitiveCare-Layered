@@ -20,7 +20,7 @@
             <TableColumn fx:id="colTime" prefWidth="212.66668701171875" text="Time" />
             <TableColumn fx:id="colVetName" prefWidth="321.3333435058594" text="VetName" />
             <TableColumn fx:id="colDuration" prefWidth="260.666748046875" text="Duration" />
-            <TableColumn fx:id="colMod" minWidth="0.0" prefWidth="0.0" text=" " />
+            <TableColumn fx:id="colMod" minWidth="0.0" prefWidth="56.66668701171875" text=" " />
         </columns>
       </TableView>
       <JFXButton layoutX="1082.0" layoutY="526.0" onAction="#printScheduleOnAction" prefHeight="40.0" prefWidth="199.0" style="-fx-background-color: linear-gradient(to bottom, #d2a172, #faa80a); -fx-background-radius: 20;" text="Print Schedule">

@@ -33,7 +33,7 @@ public class VetScheduleDaoImpl implements VetScheduleDao {
 
     @Override
     public boolean save(VetSchedule entity) throws SQLException, ClassNotFoundException {
-        return false;
+       return SQLUtil.execute("INSERT INTO vet_schedule values (?,?)",entity.getScheduleId(),entity.getVetid());
     }
 
     @Override

@@ -3,6 +3,8 @@ package entity;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
+
 @Getter
 @ToString
 @NoArgsConstructor
@@ -12,5 +14,5 @@ public class Schedule {
     private String scheduleId;
     private LocalDate date;
     private String duration;
-    private String time;
+    private LocalTime time;
 }
