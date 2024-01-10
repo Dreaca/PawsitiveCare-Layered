@@ -18,12 +18,13 @@
       </Label>
       <TableView fx:id="tblAppointment" layoutX="56.0" layoutY="154.0" prefHeight="431.0" prefWidth="948.0" style="-fx-border-color: faa80a;">
         <columns>
-          <TableColumn fx:id="colDate" prefWidth="168.3333282470703" text="Date" />
-          <TableColumn fx:id="colTime" prefWidth="110.66665649414062" text="Time " />
-            <TableColumn fx:id="colCustomer" prefWidth="199.33334350585938" text="Customer" />
-            <TableColumn fx:id="colContact" prefWidth="214.6666259765625" text="Contact" />
-            <TableColumn fx:id="colType" prefWidth="97.3333740234375" text="Type" />
-            <TableColumn fx:id="colPrice" prefWidth="154.66668701171875" text="Price" />
+          <TableColumn fx:id="colDate" prefWidth="168.00000381469727" text="Date" />
+          <TableColumn fx:id="colTime" prefWidth="110.66667175292969" text="Time " />
+            <TableColumn fx:id="colCustomer" prefWidth="175.33343505859375" text="Customer" />
+            <TableColumn fx:id="colContact" prefWidth="163.33328247070312" text="Contact" />
+            <TableColumn fx:id="colType" prefWidth="130.6666259765625" text="Type" />
+            <TableColumn fx:id="colPrice" prefWidth="104.0" text="Price" />
+            <TableColumn fx:id="colMod" prefWidth="100.666748046875" text="Modfications" />
         </columns>
       </TableView>
       <JFXButton buttonType="RAISED" layoutX="1031.0" layoutY="78.0" onAction="#addNewAppointmentONAction" prefHeight="59.0" prefWidth="228.0" style="-fx-background-color: faa80a; -fx-border-radius: 40; -fx-background-radius: 40;" text="Add new appointment">

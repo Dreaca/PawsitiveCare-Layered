@@ -19,4 +19,10 @@ public interface AppointmentBo extends SuperBO{
 
 
     CustomerDto getCustomer(String text) throws SQLException;
+
+    boolean deleteAppointment(String appId) throws SQLException, ClassNotFoundException;
+
+    AppointmentDto getAppointment(String appId) throws SQLException, ClassNotFoundException;
+
+    boolean updateAppointment(AppointmentDto dto) throws SQLException, ClassNotFoundException;
 }

@@ -5,6 +5,8 @@ import dao.custom.LoginDao;
 import dto.LoginFormDto;
 import entity.User;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -125,5 +127,15 @@ public class LoginDaoImpl implements LoginDao {
     @Override
     public boolean updatePassword(String userId, String newpW) throws SQLException {
         return SQLUtil.execute("UPDATE user SET password = ? WHERE userId = ?",newpW,userId);
+    }
+
+    @Override
+    public String getNic(String nic) throws SQLException {
+            ResultSet resultSet = SQLUtil.execute("SELECT userId FROM employee WHERE NIC LIKE ?",("%"+nic));
+            if (resultSet.next()) {
+                return resultSet.getString(1);
+            }
+            else return null;
+
     }
 }

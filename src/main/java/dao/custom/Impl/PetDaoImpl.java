@@ -15,13 +15,15 @@ import java.util.ArrayList;
 public class PetDaoImpl implements PetDao {
     @Override
     public boolean save(Pet entity) throws SQLException {
-        return SQLUtil.execute("INSERT INTO pet VALUES(?,?,?,?,?,?)",entity.getPetId(),
+        return SQLUtil.execute("INSERT INTO pet VALUES(?,?,?,?,?,?,?)",
+                entity.getPetId(),
                 entity.getName(),
                 entity.getAge(),
                 entity.getBreed(),
                 entity.getGender(),
-                entity.getCustId(),
-                entity.getColor()
+                entity.getColor(),
+                entity.getCustId()
+
         );
     }
 
@@ -48,9 +50,11 @@ public class PetDaoImpl implements PetDao {
 
     @Override
     public boolean update(Pet dto) throws SQLException {
-        return SQLUtil.execute("UPDATE pet SET name = ?, breed = ?, gender = ?, custId = ?, color = ? WHERE petId = ?",dto.getName(),
+        return SQLUtil.execute("UPDATE pet SET name = ?, breed = ?, gender = ?, age = ?, custId = ?, color = ? WHERE petId = ?",
+                dto.getName(),
                 dto.getBreed(),
                 dto.getGender(),
+                dto.getAge(),
                 dto.getCustId(),
                 dto.getColor(),
                 dto.getPetId()
@@ -59,7 +63,18 @@ public class PetDaoImpl implements PetDao {
 
     @Override
     public Pet search(String id) throws SQLException, ClassNotFoundException {
-        return null;
+        ResultSet rst = SQLUtil.execute("SELECT * FROM pet WHERE petId = ?", id);
+        rst.next();
+        return new Pet(
+                rst.getString(1),
+                rst.getString(2),
+                rst.getInt(3),
+                rst.getString(4),
+                rst.getString(5),
+                rst.getString(6),
+                rst.getString(7)
+
+        );
     }
 
     @Override
@@ -69,21 +84,19 @@ public class PetDaoImpl implements PetDao {
 
     @Override
     public String getNextPetId() throws SQLException {
-        Connection connection = DbConnection.getInstance().getConnection();
-        PreparedStatement pstm = connection.prepareStatement("SELECT petId FROM pet ORDER BY petId DESC LIMIT 1");
-        ResultSet resultSet = pstm.executeQuery();
+        ResultSet resultSet = SQLUtil.execute("SELECT petId FROM pet ORDER BY petId DESC LIMIT 1");
         if(resultSet.next()){
             return splitPetId(resultSet.getString(1));
-        }else return null;
+        }else return splitPetId(null);
     }
 
     @Override
     public String splitPetId(String petId) {
-        String [] split = petId.split("P");
-        if(petId!=null){
+        if(petId!=(null)){
+            String [] split = petId.split("P");
             int id = Integer.parseInt(split[1]);
             id++;
-            return "P00"+id;
+            return String.format("P%03d",id);
         }
         else return "P001";
     }

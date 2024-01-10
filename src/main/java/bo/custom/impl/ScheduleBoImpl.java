@@ -79,18 +79,45 @@ public class ScheduleBoImpl implements ScheduleBo {
 
     @Override
     public boolean deleteScheduleItem(String vetName, LocalDate date, String duration, LocalTime time) throws SQLException, ClassNotFoundException {
-        System.out.println("delete button pressed");
+        String schedId = getScheduleId(vetName,duration,date,time);
+        return scheduleDao.delete(schedId);
+    }
+
+    @Override
+    public String getScheduleId(String vetName, String duration, LocalDate date, LocalTime time) throws SQLException {
         List<VetScheduleJoin> scheduleData = queryDao.getScheduleData();
         String schedId = "";
         for (VetScheduleJoin v: scheduleData) {
             if (v.getVetName().equals(vetName)&
-            v.getDate().equals(date)&
-            v.getTime().equals(time)&v.getDuration().equals(duration)){
+                    v.getDate().equals(date)&
+                    v.getTime().equals(time)&v.getDuration().equals(duration)){
                 schedId = v.getScheduleId();
                 System.out.println(schedId);
                 break;
             }
         }
-        return scheduleDao.delete(schedId);
+        return schedId;
+    }
+
+    @Override
+    public boolean updateScheduleItem(ScheduleDto dto) throws SQLException, ClassNotFoundException {
+        boolean update = scheduleDao.update(new Schedule(dto.getScheduleId(), dto.getDate(), dto.getDuration(), dto.getTime()));
+        String vetId = vetDao.getVetId(dto.getVetName());
+        boolean update1 = VSdao.update(new VetSchedule(dto.getScheduleId(), vetId));
+        boolean done = false;
+        Transaction.setAutoCommit(false);
+        if (update){
+            if (update1){
+                Transaction.commit();
+                Transaction.setAutoCommit(true);
+                done = true;
+            }
+        }else {
+            Transaction.rollback();
+            Transaction.setAutoCommit(false);
+            done = false;
+        }
+        return done;
+
     }
 }

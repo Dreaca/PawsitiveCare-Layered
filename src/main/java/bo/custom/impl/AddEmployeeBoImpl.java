@@ -24,7 +24,7 @@ public class AddEmployeeBoImpl implements AddEmployeeBo {
             Transaction.setAutoCommit(true);
             return false;
         }
-        if (!employeeDao.save(new Employee(dto.getEmpId(),dto.getName()
+        if (!employeeDao.save(new Employee(dto.getEmpId(),dto.getEmpName()
         ,dto.getAddress(),dto.getContact(),dto.getSalary(),dto.getUserId(),dto.getNIC()))){
             Transaction.rollback();
             Transaction.setAutoCommit(true);

@@ -18,4 +18,8 @@ public interface ScheduleBo extends SuperBO{
     ArrayList<String> getAllVetNames() throws SQLException, ClassNotFoundException;
 
     boolean deleteScheduleItem(String vetName, LocalDate date, String duration, LocalTime time) throws SQLException, ClassNotFoundException;
+
+    String getScheduleId(String vetName, String duration, LocalDate date, LocalTime time) throws SQLException;
+
+    boolean updateScheduleItem(ScheduleDto dto) throws SQLException, ClassNotFoundException;
 }

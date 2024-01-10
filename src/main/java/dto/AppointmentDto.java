@@ -24,9 +24,9 @@ public class AppointmentDto {
     public static enum AppType {
         SURGERY, VACCINATION, CHECKUP;
         public static AppType getvalueOf(String strings){
-            if(strings.equals("Surgery")){
+            if(strings.equals("Surgery")|(strings.equals("SURGERY"))){
                 return SURGERY;
-            } else if (strings.equals("Vaccination")) {
+            } else if (strings.equals("Vaccination")|(strings.equals("VACCINATION"))) {
                 return VACCINATION;
             }
             else return CHECKUP;

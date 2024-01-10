@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 
+import javax.sound.midi.Soundbank;
 import java.sql.SQLException;
 
 public class EmployeeTileController {
@@ -22,9 +23,11 @@ public class EmployeeTileController {
     private EmployeeBo bo = (EmployeeBo) BOFactory.getBOFactory().getBo(BOFactory.BoTypes.EMPLOYEE);
 
     public void setEmployeeData(EmployeeDto employee) {
-        //imgEmpImg.setImage(new Image(String.valueOf(employee.getPhoto())));
         lblEmpId.setText(employee.getEmpId());
-        lblEmpName.setText(employee.getName());
+
+//        System.out.println(employee);
+
+        lblEmpName.setText(employee.getEmpName());
         lblAddress.setText(employee.getAddress());
         lblContact.setText(employee.getContact());
         lblSalary.setText(String.valueOf(employee.getSalary()));

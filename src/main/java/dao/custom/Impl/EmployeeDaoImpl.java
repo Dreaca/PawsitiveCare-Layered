@@ -22,8 +22,8 @@ public class EmployeeDaoImpl implements EmployeeDao {
             list.add(
                     new Employee(
                             resultSet.getString("employeeId"),
-                            resultSet.getString("address"),
                             resultSet.getString("name"),
+                            resultSet.getString("address"),
                             resultSet.getString("contact"),
                             resultSet.getDouble("salary"),
                             resultSet.getString("userId"),

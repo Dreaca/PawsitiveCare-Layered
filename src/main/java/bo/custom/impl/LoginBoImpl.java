@@ -61,4 +61,9 @@ public class LoginBoImpl implements LoginBo {
     public String generateNExtUserID() throws SQLException {
         return loginDao.generateNExtUserID();
     }
+
+    @Override
+    public String checkValidity(String nic) throws SQLException {
+        return loginDao.getNic(nic);
+    }
 }

@@ -3,15 +3,19 @@ package controller;
 import bo.BOFactory;
 import bo.custom.PetBo;
 import dto.PetDto;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lombok.NoArgsConstructor;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -26,8 +30,9 @@ public class UpdatePetController implements Initializable {
     public TextField txtColor;
     public Label lblPetID;
     public String  petId;
+    public TextField txtAge;
 
-//    private PetModel model = new PetModel();
+    //    private PetModel model = new PetModel();
     private PetBo bo = (PetBo) BOFactory.getBOFactory().getBo(BOFactory.BoTypes.PET);
 
     private void loadData() throws SQLException {
@@ -42,8 +47,9 @@ public class UpdatePetController implements Initializable {
         String gender = cmbGender.getValue().toString();
         String ownerid = bo.getCustomerId(txtOwner.getText());
         String color = txtColor.getText();
+        int age = Integer.parseInt(txtAge.getText());
 
-        var dto = new PetDto(id,name,0,breed,gender,ownerid,color);
+        var dto = new PetDto(id,name,age,breed,gender,ownerid,color);
         try {
             if (bo.updatePet(dto)) {
                 new Alert(Alert.AlertType.CONFIRMATION,"Pet updated").show();
@@ -76,5 +82,21 @@ public class UpdatePetController implements Initializable {
     public void setPetId(String petId) {
         this.petId = petId;
         lblPetID.setText(petId);
+    }
+
+    public void addNewRecordOnAction(MouseEvent mouseEvent) {
+        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/view/dashBoards/pets/addNewRecord.fxml"));
+        AnchorPane rot = null;
+        try {
+            rot = loader.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        AddNewRecordController controller = loader.getController();
+        controller.setPetID(lblPetID.getText());
+        Scene scene = new Scene(rot);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.show();
     }
 }

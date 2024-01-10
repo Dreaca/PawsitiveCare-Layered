@@ -12,13 +12,13 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="615.0" prefWidth="1341.0" style="-fx-border-radius: 20; -fx-background-radius: 20;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PetFormController">
+<AnchorPane prefHeight="615.0" prefWidth="1341.0" style="-fx-border-radius: 20; -fx-background-radius: 20;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PetFormController">
    <children>
-      <TextField layoutX="16.0" layoutY="13.0" prefHeight="47.0" prefWidth="1007.0" promptText="Search Pets" style="-fx-background-radius: 20; -fx-border-radius: 20; -fx-border-color: faa80a;">
+      <TextField layoutX="52.0" layoutY="13.0" prefHeight="47.0" prefWidth="1007.0" promptText="Search Pets" style="-fx-background-radius: 20; -fx-border-radius: 20; -fx-border-color: faa80a;">
          <effect>
             <DropShadow />
          </effect></TextField>
-      <TableView fx:id="tblPet" layoutX="24.0" layoutY="121.0" prefHeight="430.0" prefWidth="995.0" style="-fx-background-color: linear-gradient(to bottom, #d2a172, #e9e4d7);;">
+      <TableView fx:id="tblPet" layoutX="58.0" layoutY="121.0" prefHeight="430.0" prefWidth="995.0" style="-fx-background-color: linear-gradient(to bottom, #d2a172, #e9e4d7);;">
         <columns>
           <TableColumn fx:id="colId" prefWidth="96.33332824707031" text="PetId" />
           <TableColumn fx:id="colName" prefWidth="119.0" text="Name" />
@@ -34,7 +34,7 @@
             <DropShadow />
          </effect>
       </TableView>
-      <JFXButton layoutX="25.0" layoutY="81.0" onAction="#addNewPetOnaction" prefHeight="24.0" prefWidth="167.0" style="-fx-background-color: linear-gradient(to bottom, #d2a172, #e9e4d7);; -fx-background-radius: 20; -fx-border-radius: 20;" text="Add new Pet">
+      <JFXButton layoutX="58.0" layoutY="81.0" onAction="#addNewPetOnaction" prefHeight="24.0" prefWidth="167.0" style="-fx-background-color: linear-gradient(to bottom, #d2a172, #e9e4d7);; -fx-background-radius: 20; -fx-border-radius: 20;" text="Add new Pet">
          <graphic>
             <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -42,7 +42,7 @@
                </image>
             </ImageView>
          </graphic></JFXButton>
-      <JFXButton layoutX="955.0" layoutY="64.0" onAction="#refreshOnAction" text=" ">
+      <JFXButton layoutX="981.0" layoutY="64.0" onAction="#refreshOnAction" text=" ">
          <graphic>
             <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -50,39 +50,39 @@
                </image>
             </ImageView>
          </graphic></JFXButton>
-      <ImageView fitHeight="215.0" fitWidth="230.0" layoutX="1070.0" layoutY="18.0" pickOnBounds="true">
+      <ImageView fitHeight="175.0" fitWidth="170.0" layoutX="1107.0" layoutY="16.0" pickOnBounds="true">
          <image>
             <Image url="@../../Assets/image/dog.png" />
          </image>
       </ImageView>
-      <Label layoutX="1106.0" layoutY="239.0" prefHeight="32.0" prefWidth="158.0" text="NO OF PETS REGISTERED" textAlignment="CENTER" wrapText="true" />
-      <Label fx:id="petCount" layoutX="1142.0" layoutY="269.0" text="00">
+      <Label layoutX="1113.0" layoutY="189.0" prefHeight="32.0" prefWidth="158.0" text="NO OF PETS REGISTERED" textAlignment="CENTER" wrapText="true" />
+      <Label fx:id="petCount" layoutX="1143.0" layoutY="228.0" text="00">
          <font>
             <Font size="67.0" />
          </font>
       </Label>
-      <Label fx:id="date" layoutX="1117.0" layoutY="379.0" text="Date">
+      <Label fx:id="date" layoutX="1131.0" layoutY="356.0" text="Date">
          <font>
             <Font size="22.0" />
          </font>
       </Label>
-      <Label fx:id="time" layoutX="1119.0" layoutY="433.0" text="Time">
+      <Label fx:id="time" layoutX="1133.0" layoutY="410.0" text="Time">
          <font>
             <Font size="22.0" />
          </font>
       </Label>
-      <Label layoutX="1055.0" layoutY="543.0" text="Pawsitive Care">
+      <Label layoutX="1081.0" layoutY="543.0" text="Pawsitive Care">
          <font>
             <Font name="Manjari Thin" size="39.0" />
          </font>
       </Label>
-      <ImageView fitHeight="88.0" fitWidth="83.0" layoutX="1148.0" layoutY="469.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="88.0" fitWidth="83.0" layoutX="1163.0" layoutY="471.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../Assets/icon/paw.png" />
          </image>
       </ImageView>
-      <Separator layoutX="1082.0" layoutY="418.0" prefWidth="200.0" />
-      <Separator layoutX="1083.0" layoutY="473.0" prefWidth="200.0" />
-      <Separator layoutX="1082.0" layoutY="360.0" prefWidth="200.0" />
+      <Separator layoutX="1096.0" layoutY="395.0" prefWidth="200.0" />
+      <Separator layoutX="1090.0" layoutY="453.0" prefWidth="200.0" />
+      <Separator layoutX="1096.0" layoutY="337.0" prefWidth="200.0" />
    </children>
 </AnchorPane>

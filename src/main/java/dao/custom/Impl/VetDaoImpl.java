@@ -83,10 +83,7 @@ public class VetDaoImpl implements VetDao {
 
     @Override
     public String getVetId(String vetName) throws SQLException {
-        Connection connection = DbConnection.getInstance().getConnection();
-        PreparedStatement pstm = connection.prepareStatement("SELECT vetId FROM veterinarian WHERE name = ?");
-        pstm.setString(1,vetName);
-        ResultSet resultSet = pstm.executeQuery();
+        ResultSet resultSet = SQLUtil.execute("SELECT vetId FROM veterinarian WHERE name = ?",vetName);
         if (resultSet.next()){
             return resultSet.getString(1);
         }

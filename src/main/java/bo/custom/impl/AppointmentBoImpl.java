@@ -61,5 +61,36 @@ public class AppointmentBoImpl implements AppointmentBo {
 
     }
 
+    @Override
+    public boolean deleteAppointment(String appId) throws SQLException, ClassNotFoundException {
+        return dao.delete(appId);
+    }
 
+    @Override
+    public AppointmentDto getAppointment(String appId) throws SQLException, ClassNotFoundException {
+        Appointment search = dao.search(appId);
+        Customer customer = customerDao.search(search.getCustId());
+        return new AppointmentDto(
+                search.getAppId(),
+                customer.getName(),
+                customer.getContact(),
+                AppointmentDto.AppType.getvalueOf(search.getType()),
+                search.getTime(),
+                search.getDate(),
+                search.getPrice()
+        );
+    }
+
+    @Override
+    public boolean updateAppointment(AppointmentDto dto) throws SQLException, ClassNotFoundException {
+        String customerId = customerDao.getCustomerId(dto.getCustomerName());
+       return dao.update(new Appointment(
+                dto.getAppId(),
+                customerId,
+                String.valueOf(dto.getType()),
+                dto.getTime(),
+                dto.getDate(),
+                dto.getPrice()
+        ));
+    }
 }

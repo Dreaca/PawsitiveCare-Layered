@@ -242,7 +242,7 @@ public class AdminFormController {
         System.out.println(dto+"Admin dash");
         LoginFormDto loginFormDto = userAdmin.getLoginFormDto();
         adminUserId1.setText(loginFormDto.getUserName());
-        adminName.setText(dto.getName());
+        adminName.setText(dto.getEmpName());
         adminNIC.setText(dto.getNIC());
         adminUserId.setText(loginFormDto.getUserID());
         adminPass.setText(loginFormDto.getPassword());
@@ -293,9 +293,12 @@ public class AdminFormController {
         stage.close();
     }
 
-    public void homeOnAction(ActionEvent actionEvent) throws IOException {
+    public void homeOnAction(ActionEvent actionEvent) throws IOException, SQLException {
         Stage window = (Stage) root.getScene().getWindow();
-        Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/view/dashBoards/AdminDash/adminDash.fxml")));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/dashBoards/AdminDash/adminDash.fxml"));
+        Scene scene = new Scene(loader.load());
+        AdminFormController controller = loader.getController();
+        controller.setUSerName(lblUser.getText());
         window.setScene(scene);
     }
 }

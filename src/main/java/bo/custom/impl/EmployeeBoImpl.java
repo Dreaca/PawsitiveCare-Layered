@@ -23,7 +23,7 @@ private EmployeeDao dao = (EmployeeDao) DaoFactory.getInstance().getDAO(DaoFacto
 
     @Override
     public boolean saveEmployee(EmployeeDto dto) throws SQLException, ClassNotFoundException {
-        return dao.save(new Employee(dto.getEmpId(),dto.getName(),dto.getAddress(),dto.getContact(),dto.getSalary(),dto.getUserId(),dto.getNIC()));
+        return dao.save(new Employee(dto.getEmpId(),dto.getEmpName(),dto.getAddress(),dto.getContact(),dto.getSalary(),dto.getUserId(),dto.getNIC()));
     }
 
     @Override

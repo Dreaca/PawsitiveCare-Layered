@@ -98,12 +98,18 @@ public class ScheduleFormController {
                         double x = modButton.localToScreen(modButton.getBoundsInLocal()).getMinX();
                         double y = modButton.localToScreen(modButton.getBoundsInLocal()).getMinY();
                         try {
+                            ScheduleTm tm = oblist.get(finalI);
                             ContextMenu con = loadPopup(oblist.get(finalI).getModButton());
                             con.getItems().get(0).setOnAction(actionEvent1 -> {
-
+                                try {
+                                    updateSheduleItem(tm);
+                                    loadData();
+                                } catch (IOException | SQLException e) {
+                                    throw new RuntimeException(e);
+                                }
                             });
                             con.getItems().get(1).setOnAction(actionEvent1 -> {
-                                ScheduleTm tm = oblist.get(finalI);
+
                                 try {
                                     boolean deleted = bo.deleteScheduleItem(tm.getVetName(),tm.getDate(),tm.getDuration(),tm.getTime());
                                     if (deleted) {
@@ -128,15 +134,23 @@ public class ScheduleFormController {
         }
     }
 
+    private void updateSheduleItem(ScheduleTm tm) throws IOException, SQLException {
+        Stage stage = new Stage();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/dashBoards/EmployeeDash/updateSchedule.fxml"));
+        Scene scene = new Scene(loader.load());
+        stage.setScene(scene);
+        stage.centerOnScreen();
+        UpdateScheduleController controller = loader.getController();
+        String id =  bo.getScheduleId(tm.getVetName(),tm.getDuration(),tm.getDate(),tm.getTime());
+        controller.setSchedId(id);
+        stage.show();
+    }
+
     public ContextMenu loadPopup(JFXButton modifyButton) throws IOException {
         ContextMenu con = new ContextMenu();
         MenuItem button1 = new MenuItem("Update");
         MenuItem button2 = new MenuItem("Delete");
         con.getItems().addAll(button1, button2);
-
-        button2.setOnAction(actionEvent -> {
-            System.out.println("delete button clicked");
-        });
         return con;
     }
 

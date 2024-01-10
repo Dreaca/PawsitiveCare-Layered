@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
@@ -17,13 +18,16 @@
 
 <AnchorPane fx:id="root" prefHeight="600.0" prefWidth="791.0" style="-fx-background-image: url(&quot;view/Assets/image/puppy.jpg&quot;);" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginFormController">
    <children>
-      <Hyperlink fx:id="hyperForgotPass" layoutX="328.0" layoutY="404.0" onAction="#forgotPassOnAction" prefHeight="22.0" prefWidth="168.0" text="Forgot Password?" visible="false" />
-      <Label fx:id="lblEnterNIC" layoutX="210.0" layoutY="432.0" text="Enter the last 4 digits for your NIC number" textFill="WHITE" visible="false">
+      <Hyperlink fx:id="hyperForgotPass" layoutX="469.0" layoutY="318.0" onAction="#forgotPassOnAction" prefHeight="22.0" prefWidth="168.0" text="Forgot Password?" visible="false" />
+      <Label fx:id="lblEnterNIC" layoutX="205.0" layoutY="464.0" text="Enter the last 4 digits for your NIC number" textFill="WHITE" visible="false">
          <font>
             <Font name="Manjari Thin" size="20.0" />
          </font>
+         <opaqueInsets>
+            <Insets top="-4.0" />
+         </opaqueInsets>
       </Label>
-      <TextField fx:id="txtNICDigit" layoutX="212.0" layoutY="474.0" onAction="#checkNIConAction" prefHeight="24.0" prefWidth="356.0" visible="false" />
+      <TextField fx:id="txtNICDigit" layoutX="210.0" layoutY="495.0" onAction="#checkNIConAction" prefHeight="24.0" prefWidth="356.0" visible="false" />
       <ImageView fitHeight="44.0" fitWidth="53.0" layoutX="165.0" layoutY="210.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../Assets/icon/paw.png" />

@@ -26,7 +26,7 @@ public class UpdateEmployeeBoImpl implements UpdateEmployeeBo {
             Transaction.setAutoCommit(true);
             return false;
         }
-        if(!employeeDao.update(new Employee(dto.getEmpId(),dto.getName(),dto.getAddress(),dto.getContact(),dto.getSalary(),dto.getUserId(),dto.getNIC()))){
+        if(!employeeDao.update(new Employee(dto.getEmpId(),dto.getEmpName(),dto.getAddress(),dto.getContact(),dto.getSalary(),dto.getUserId(),dto.getNIC()))){
             Transaction.rollback();
             Transaction.setAutoCommit(true);
             return false;

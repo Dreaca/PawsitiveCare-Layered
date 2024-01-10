@@ -19,4 +19,6 @@ public interface LoginBo extends SuperBO{
     String getUserDetail(LoginFormDto loginFormDto) throws SQLException;
 
     String generateNExtUserID() throws SQLException;
+
+    String checkValidity(String nic) throws SQLException;
 }

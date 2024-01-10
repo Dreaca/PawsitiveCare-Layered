@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="root" prefHeight="400.0" prefWidth="296.0" style="-fx-background-color: linear-gradient(to top, #f5f5dc, #e6b874);;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UpdateScheduleController">
+<children>
+    <DatePicker fx:id="dpkSchedule" layoutX="17.0" layoutY="72.0" prefHeight="39.0" prefWidth="264.0" promptText="Select Date" style="-fx-border-color: linear-gradient(to bottom, #d2a172, #faa80a);; -fx-background-color: linear-gradient(to bottom, #d2a172, #faa80a);;" />
+    <ComboBox fx:id="cmbVet" layoutX="17.0" layoutY="183.0" prefHeight="39.0" prefWidth="264.0" promptText="Select Veterinary" style="-fx-background-color: linear-gradient(to bottom, #d2a172, #e9e4d7);;" />
+    <ComboBox fx:id="cmbDuration" layoutX="17.0" layoutY="242.0" prefHeight="39.0" prefWidth="264.0" promptText="Duration" style="-fx-background-color: linear-gradient(to bottom, #d2a172, #e9e4d7);;" />
+    <!--      <ComboBox fx:id="cmbDay" layoutX="17.0" layoutY="172.0" prefHeight="39.0" prefWidth="264.0" promptText="Select Day" style="-fx-background-color: faa80a;" />-->
+    <Label layoutX="73.0" layoutY="6.0" text="Update Schedule Item">
+        <font>
+            <Font name="Manjari Thin" size="15.0" />
+        </font>
+    </Label>
+    <JFXButton layoutX="175.0" layoutY="347.0" onAction="#btnBackOnAction" prefHeight="22.0" prefWidth="34.0" style="-fx-background-color: linear-gradient(to bottom, #d2a172, #faa80a);;" text=" ">
+        <graphic>
+            <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                <image>
+                    <Image url="@../../Assets/icon/return.png" />
+                </image>
+            </ImageView>
+        </graphic>
+    </JFXButton>
+    <JFXButton layoutX="234.0" layoutY="347.0" onAction="#btnSaveOnAction" prefHeight="28.0" prefWidth="40.0" style="-fx-background-color: linear-gradient(to bottom, #d2a172, #faa80a);;" text=" ">
+        <graphic>
+            <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                <image>
+                    <Image url="@../../Assets/icon/diskette.png" />
+                </image>
+            </ImageView>
+        </graphic>
+    </JFXButton>
+    <ComboBox fx:id="cmbHours" layoutX="17.0" layoutY="127.0" prefHeight="39.0" prefWidth="264.0" promptText="Select Time" style="-fx-background-color: linear-gradient(to bottom, #d2a172, #e9e4d7);;" />
+      <Label layoutX="17.0" layoutY="37.0" text="Schedule ID : -">
+         <font>
+            <Font name="Manjari Thin" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="SchedId" layoutX="114.0" layoutY="37.0" text="S001">
+         <font>
+            <Font name="Manjari Thin" size="15.0" />
+         </font>
+      </Label>
+</children>
+</AnchorPane>

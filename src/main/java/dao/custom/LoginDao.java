@@ -18,4 +18,6 @@ public interface LoginDao extends CrudDao<User> {
     boolean updateUserName(String userName, String userIdText) throws SQLException;
     boolean checkPass(String userId, String oldPasswordText) throws SQLException;
     boolean updatePassword(String userId, String newpW) throws SQLException;
+
+    String getNic(String nic) throws SQLException;
 }

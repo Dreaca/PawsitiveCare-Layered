@@ -7,12 +7,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="459.0" prefWidth="308.0" style="-fx-border-color: linear-gradient(to bottom, #d2a172, #faa80a);; -fx-background-color: linear-gradient(to bottom, #d2a172, #faa80a);;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AddNewPetController">
+<AnchorPane fx:id="root" prefHeight="459.0" prefWidth="308.0" style="-fx-border-color: linear-gradient(to bottom, #d2a172, #faa80a);; -fx-background-color: linear-gradient(to bottom, #d2a172, #faa80a);;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AddNewPetController">
    <children>
       <TextField fx:id="txtPetName" layoutX="47.0" layoutY="59.0" prefHeight="31.0" prefWidth="215.0" promptText="Pet Name" style="-fx-border-color: faa80a; -fx-background-radius: 20; -fx-border-radius: 20;" />
       <ComboBox fx:id="cmbBreed" layoutX="47.0" layoutY="133.0" prefHeight="31.0" prefWidth="215.0" promptText="Breed" style="-fx-background-color: linear-gradient(to bottom, #d2a172, #e9e4d7);; -fx-background-radius: 20; -fx-border-radius: 20;" />
       <ComboBox fx:id="cmbGender" layoutX="47.0" layoutY="174.0" prefHeight="31.0" prefWidth="215.0" promptText="Gender" style="-fx-background-radius: 20; -fx-border-radius: 20; -fx-background-color: linear-gradient(to bottom, #d2a172, #e9e4d7);;" />
-      <TextField fx:id="txtOwner" layoutX="47.0" layoutY="219.0" prefHeight="31.0" prefWidth="215.0" promptText="Owner" style="-fx-background-radius: 20; -fx-border-radius: 20; -fx-border-color: faa80a;" />
       <Label layoutX="48.0" layoutY="29.0" text="Pet Id : ">
          <font>
             <Font name="Manjari Thin" size="15.0" />
@@ -25,5 +24,6 @@
       <JFXButton buttonType="RAISED" layoutX="63.0" layoutY="355.0" onAction="#savePetOnAction" prefHeight="24.0" prefWidth="183.0" style="-fx-background-color: linear-gradient(to bottom, #d2a172, #e9e4d7);; -fx-background-radius: 20; -fx-border-radius: 20;" text="save" />
       <TextField fx:id="txtPetAge" layoutX="47.0" layoutY="95.0" prefHeight="31.0" prefWidth="215.0" promptText="Pet Age" style="-fx-border-color: faa80a; -fx-background-radius: 20; -fx-border-radius: 20;" />
       <JFXButton buttonType="RAISED" layoutX="65.0" layoutY="388.0" onAction="#cancelPetOnAction" prefHeight="24.0" prefWidth="183.0" style="-fx-background-color: linear-gradient(to bottom, #d2a172, red); -fx-background-radius: 20; -fx-border-radius: 20;" text="Cancel" />
+      <ComboBox fx:id="txtOwner" layoutX="47.0" layoutY="217.0" prefHeight="31.0" prefWidth="215.0" promptText="Owner" style="-fx-background-radius: 20; -fx-border-radius: 20; -fx-background-color: linear-gradient(to bottom, #d2a172, #e9e4d7);;" />
    </children>
 </AnchorPane>
